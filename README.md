@@ -1,4 +1,4 @@
-# RailsCasts Example Application
+# CISeed Application
 
 Run these commands to try it out.
 
