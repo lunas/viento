@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: CISeed_development
+  pool: 5
+  username: postgres
+  password: pg
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: CISeed_test
+  pool: 5
+  username: postgres
+  password: pg
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: CISeed_production
+  pool: 5
+  username: postgres
+  password: pg

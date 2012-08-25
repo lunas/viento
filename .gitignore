@@ -1,0 +1,15 @@
+# Ignore the local .env file which contains secret stuff like passwords to S3, etc.
+.env
+.DS_Store
+*~
+.idea
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
