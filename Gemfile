@@ -7,6 +7,8 @@ gem 'rails', '3.2.6'
 
 gem 'pg'
 gem 'haml'
+gem 'cancan'
+gem 'factory_girl_rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,6 +21,31 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'compass_twitter_bootstrap'
+  gem 'compass-rails'
+
+end
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'ruby-debug19'
+  gem 'rspec-expectations'
+  gem 'watchr'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'awesome_print'
+  gem 'mocha'
+end
+
+group :test do
+  gem 'cucumber-rails'
+#  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
+  gem 'database_cleaner'
+  gem 'timecop'
+  gem 'shoulda-matchers'
+  gem 'launchy'
+  gem 'email_spec'
+  gem 'viewcumber'
 end
 
 #https://github.com/bkeepers/dotenv

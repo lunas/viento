@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: CISeed_development
+  database: viento_development
   pool: 5
   username: postgres
   password: pg
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: CISeed_test
+  database: viento_test
   pool: 5
   username: postgres
   password: pg
@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: CISeed_production
+  database: viento_production
   pool: 5
   username: postgres
   password: pg

@@ -1,0 +1,50 @@
+!!!
+%html{lang: 'de'}
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %title Viento
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+  %body
+    .row
+      #user_nav.pull-left
+        - if user_signed_in?
+          Logged in as
+          = succeed "." do
+            %strong= current_user.email
+          = link_to 'Edit profile', edit_user_registration_path
+          |
+          \#{link_to "Logout", destroy_user_session_path, method: :delete}
+        - else
+          = link_to "Sign up", new_user_registration_path
+          |
+          \#{link_to "Login", new_user_session_path} |
+          \#{link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)}
+    .navbar.navbar-inverse
+      .navbar-inner
+        .container
+          %a.brand Viento
+          .nav-collapse.collapse
+            %ul.nav
+              %li.active
+                =link_to "Kunden"
+              %li
+                =link_to "Teile"
+              %li
+                =link_to "Verkäufe"
+              %li.divider-vertical
+              %li
+                =link_to "Export"
+            %form.navbar-search.pull-left
+              %input.search-query{type:"text", placeholder:"Search"}
+    .container
+      .row
+        - flash.each do |name, msg|
+          = content_tag :div, msg, id: "flash_#{name}"
+      .row
+        %p gugus
+        = yield
+      %footer
+        %p * * *
