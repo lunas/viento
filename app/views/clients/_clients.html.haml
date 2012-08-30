@@ -1,0 +1,25 @@
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
+
+%table.table
+  %tr
+    %th= sortable 'first_name', 'Vorname'
+    %th= sortable 'last_name', 'Nachname'
+    %th= sortable 'city', 'Ort'
+    %th= sortable 'street', 'Strasse/Nr'
+    %th= sortable 'status', 'Status'
+    %th= sortable 'roles_mask', 'Rolle'
+
+
+  - @clients.each do |client|
+    %tr
+      %td= client.first_name
+      %td= client.last_name
+      %td= client.city
+      %td= client.address
+      %td= client.status
+      %td= client.role
+
+      %td= link_to 'Show', client
+      %td= link_to 'Edit', edit_client_path(client)
+      %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
