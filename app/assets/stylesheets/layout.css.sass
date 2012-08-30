@@ -4,12 +4,21 @@
   font-weight: normal
   font-style: normal
 
-body
+html, body
   color: black
   font: 21px Viento
   text-decoration:none
   line-height: 24px
+
+h1, th
   text-transform: uppercase
+
+#main
+  min-height: 100%
+
+footer
+  position: absolute
+  bottom: 0
 
 a
   img
@@ -58,6 +67,19 @@ form
   .field, .actions
     margin: 12px 0
 
+.navbar
+  text-transform: uppercase
+
 #user_nav
   float: right
+  text-transform: uppercase
 
+th
+  .current_column
+    padding-right: 12px
+    background-repeat: no-repeat
+    background-position: right center
+  .asc
+    background-image: url(icons/sort_up.png)
+  .desc
+    background-image: url(icons/sort_down.png)

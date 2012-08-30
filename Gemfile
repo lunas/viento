@@ -9,6 +9,10 @@ gem 'pg'
 gem 'haml'
 gem 'cancan'
 gem 'factory_girl_rails'
+gem 'jquery-rails'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,10 +35,9 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'ruby-debug19'
   gem 'rspec-expectations'
-  gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
   gem 'awesome_print'
-  gem 'mocha'
+  gem 'ffaker'
 end
 
 group :test do
@@ -46,15 +49,13 @@ group :test do
   gem 'launchy'
   gem 'email_spec'
   gem 'viewcumber'
+  gem 'mocha'
 end
 
 #https://github.com/bkeepers/dotenv
 #Reads environment variables from a .env file in the project root (.gitignored so secret variables aren't in github)
 gem 'dotenv', :groups => [:development, :test]
 
-gem 'jquery-rails'
-gem 'devise'
-gem 'omniauth-twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

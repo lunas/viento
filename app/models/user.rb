@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
-  # attr_accessible :title, :body
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -44,7 +43,7 @@ class User < ActiveRecord::Base
   ## Roles
 
   def self.with_role(role)
-    where(:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0" )
+    where("roles_mask & #{2**ROLES.index(role.to_s)} > 0" )
   end
 
   ROLES = %w[boss worker]

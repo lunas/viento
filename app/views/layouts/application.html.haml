@@ -39,12 +39,11 @@
                 =link_to "Export"
             %form.navbar-search.pull-left
               %input.search-query{type:"text", placeholder:"Search"}
-    .container
+    .container#main
       .row
         - flash.each do |name, msg|
           = content_tag :div, msg, id: "flash_#{name}"
       .row
-        %p gugus
         = yield
       %footer
         %p * * *
