@@ -8,7 +8,6 @@ gem 'rails', '3.2.6'
 gem 'pg'
 gem 'haml'
 gem 'cancan'
-gem 'factory_girl_rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'omniauth-twitter'
@@ -37,6 +36,7 @@ group :test, :development do
   gem 'rspec-expectations'
   gem 'spork', '~> 0.9.0.rc'
   gem 'awesome_print'
+  gem 'factory_girl_rails'
   gem 'ffaker'
 end
 
