@@ -230,7 +230,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
-  raise "Go register your app with dev.Twitter.com and put the consumer key and secret into your environment." if ENV["TWITTER_CONSUMER_KEY"].nil? or ENV["TWITTER_CONSUMER_SECRET"].nil?
-  config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
+  # raise "Go register your app with dev.Twitter.com and put the consumer key and secret into your environment." if ENV["TWITTER_CONSUMER_KEY"].nil? or ENV["TWITTER_CONSUMER_SECRET"].nil?
+  # config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
 
 end
