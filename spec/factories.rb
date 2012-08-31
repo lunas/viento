@@ -18,8 +18,14 @@ FactoryGirl.define do
     street        {Faker::Address.street_name}
     sequence(:street_number) {|n| n % 10 + 1}
     zip           {Faker::AddressUS.zip_code}
-
   end
 
+  factory :user do
+    username              'Anja'
+    email                 'anjaboije@viento.ch'
+    password              'viento'
+    password_confirmation 'viento'
+    roles                 ['boss']
+  end
 
 end

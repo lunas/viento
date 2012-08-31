@@ -1,6 +1,6 @@
 class SeedController < ApplicationController
 
   def index
-    flash[:notice] = "Welcome to Viento"
+    flash[:notice] = "start"
   end
 end
