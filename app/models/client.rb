@@ -4,7 +4,7 @@ class Client < ActiveRecord::Base
                   :street2, :street_number, :title, :zip, :roles_mask
 
   def self.search(search)
-    if search
+    if search.present?
       search_crit = "%#{search}%"
       where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
     else

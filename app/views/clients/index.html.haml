@@ -9,9 +9,5 @@
     = render :partial => 'clients'
 
 %br
--# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
-= will_paginate @clients,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'
-
-
 
 = link_to 'New Client', new_client_path

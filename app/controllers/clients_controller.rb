@@ -5,9 +5,6 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.order(sort_column + ' ' + sort_direction)
-    .paginate(:per_page => 30, :page => params[:page])
-
     @clients = Client.search(params[:search])
                      .order(sort_column + ' ' + sort_direction)
                      .paginate(:per_page => 5, :page => params[:page])
