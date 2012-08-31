@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'will_paginate'
+gem 'factory_girl_rails'
+gem 'ffaker'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,8 +38,6 @@ group :test, :development do
   gem 'rspec-expectations'
   gem 'spork', '~> 0.9.0.rc'
   gem 'awesome_print'
-  gem 'factory_girl_rails'
-  gem 'ffaker'
 end
 
 group :test do
