@@ -5,7 +5,7 @@ class Client < ActiveRecord::Base
 
   def self.search(search)
     if search.present?
-      search_crit = "%#{search}%"
+      search_crit = "%#{search.downcase}%"
       where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
     else
       scoped

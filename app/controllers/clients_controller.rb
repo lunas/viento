@@ -9,8 +9,8 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.search(params[:search])
                      .order(sort_column + ' ' + sort_direction)
-                     .paginate(:per_page => 5, :page => params[:page])
-
+                     .paginate(:per_page => 15, :page => params[:page])
+    @page_title = 'Kundinnen'
 
     respond_to do |format|
       format.html # index.html.erb

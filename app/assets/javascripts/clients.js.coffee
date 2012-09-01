@@ -5,7 +5,9 @@ $(document).ready ->
   )
 
   # search form
-  $('#clients_search input').keyup( ->
+  $('#clients_search input').keyup( (e)->
+    if (e.keyCode == 27)
+      $('#search').val('')
     $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
     return false
   )

@@ -1,13 +1,11 @@
-%h1 Kundinnen
 
 = form_tag clients_path, :method => 'get', id: 'clients_search' do
-  %p
-    = text_field_tag :search, params[:search]
-    = submit_tag "Search", :name => nil
+  .well.well-small
+    %ul.nav.nav-pills
+      %li= link_to 'Neue Kundin', new_client_path
+      %li= link_to 'Exportieren'
+      %li
+        = text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort"
 
   #clients
     = render :partial => 'clients'
-
-%br
-
-= link_to 'New Client', new_client_path
