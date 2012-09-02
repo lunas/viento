@@ -1,0 +1,6 @@
+%li.dropdown
+  %a.dropdown-toggle{:id => "dLabel", :role => "button", "data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+    = title
+    %b.caret
+  %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "dLabel", :id => "#{field}_filter"}
+    = render partial: "#{field}_filter"

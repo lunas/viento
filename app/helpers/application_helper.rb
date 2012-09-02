@@ -7,8 +7,4 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
-  def filter_menu_item(filter, item)
-    "<li>#{link_to filter, params.merge(filter => item, :page => nil)}</li>"
-  end
-
 end
