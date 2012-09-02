@@ -2,7 +2,11 @@
 = hidden_field_tag :sort, params[:sort]
 = hidden_field_tag :status, status_condition
 = hidden_field_tag :role, role_condition
+= hidden_field_tag :per_page, params[:per_page]
 
+.total_items
+  #{@clients.total_entries} Kundinnen
+  %br gefunden:
 %table.table
   %tr
     %th= sortable 'first_name', 'Vorname'

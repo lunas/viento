@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.filter(params[:search], status_condition, role_condition)
                      .order(sort_column + ' ' + sort_direction)
-                     .paginate(:per_page => 15, :page => params[:page])
+                     .paginate(:per_page => per_page, :page => params[:page])
     @page_title = 'Kundinnen'
 
     respond_to do |format|
@@ -109,4 +109,8 @@ class ClientsController < ApplicationController
     (Client::ROLES + ['alle']).include?(role) ? role : nil
   end
 
+  def per_page
+    pp = params[:per_page].to_i
+    [5, 10, 15, 20, 25, 50, 100, 1000].include?(pp) ? pp : 15
+  end
 end

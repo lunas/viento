@@ -1,15 +1,15 @@
 
-= form_tag clients_path, :method => 'get', id: 'clients_search' do
+= form_tag clients_path, :method => 'get', id: 'clients_search', :class => 'form-search' do
   .well.well-small
     %ul.nav.nav-pills
       %li= link_to 'Neue Kundin', new_client_path
       %li= link_to 'Exportieren'
-      %li= text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort"
+      %li= text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort", :class => 'search-query'
       %li.divider-vertical &nbsp;&nbsp;
-      = render 'filter_dropdown', field: 'status', title: 'Status', default: 'aktiv'
-      = render 'filter_dropdown', field: 'role', title: 'Rolle', default: 'Kundinnen'
+      = render 'filter_dropdown', field: 'status', title: 'Status', default: 'aktiv', css: ''
+      = render 'filter_dropdown', field: 'role', title: 'Rolle', default: 'Kundinnen', css: ''
       %li.divider-vertical &nbsp;&nbsp;
-      -#= render 'filter_dropdown', field: 'per_page', title: 'pro Seite', default: '15'
+      = render 'filter_dropdown', field: 'per_page', title: 'Pro Seite', default: '15', css: 'pull-right'
 
   #clients
     = render :partial => 'clients'
