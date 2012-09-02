@@ -5,8 +5,10 @@
       %li= link_to 'Neue Kundin', new_client_path
       %li= link_to 'Exportieren'
       %li= text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort"
-      = render 'filter_dropdown', field: 'status', title: 'Status'
-      = render 'filter_dropdown', field: 'role', title: 'Rolle'
+      %li.divider-vertical &nbsp;&nbsp;
+      = render 'filter_dropdown', field: 'status', title: 'Status', default: 'aktiv'
+      = render 'filter_dropdown', field: 'role', title: 'Rolle', default: 'Kundinnen'
+      %li#show_all= link_to 'Alle anzeigen'
 
   #clients
     = render :partial => 'clients'

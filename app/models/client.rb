@@ -10,10 +10,8 @@ class Client < ActiveRecord::Base
     else
       clients = scoped
     end
-    status = 'aktiv' if status.blank?
-    role = 'Kundinnen' if role.blank?
-    clients = clients.with_status(status)
-    clients = clients.with_role(role)
+    clients = clients.with_status(status) unless status.blank?
+    clients = clients.with_role(role) unless role.blank?
     clients
   end
 

@@ -1,2 +1,2 @@
 - Client::ROLES.each do |role|
-  %li= link_to role, params.merge(:role => role)
+  %li= filter_menu_item :role, role

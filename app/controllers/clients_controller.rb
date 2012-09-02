@@ -2,14 +2,14 @@ class ClientsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :status_condition, :role_condition
 
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.filter(params[:search], params[:status], params[:role])
+    @clients = Client.filter(params[:search], status_condition, role_condition)
                      .order(sort_column + ' ' + sort_direction)
-                     .paginate(:per_page => 25, :page => params[:page])
+                     .paginate(:per_page => 15, :page => params[:page])
     @page_title = 'Kundinnen'
 
     respond_to do |format|
@@ -98,4 +98,15 @@ class ClientsController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
+
+  def status_condition(status = params[:status])
+    status ||= "aktiv"
+    %w[aktiv passiv].include?(status) ? status : nil
+  end
+
+  def role_condition(role = params[:role])
+    role ||= "Kundinnen"
+    Client::ROLES.include?(role) ? role : nil
+  end
+
 end
