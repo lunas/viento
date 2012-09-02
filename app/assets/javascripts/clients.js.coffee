@@ -1,5 +1,5 @@
 $(document).ready ->
-  $('#clients th a, .pagination a').live('click', ()->
+  $('#clients th a, .pagination a, .dropdown-menu a').live('click', ()->
     $.getScript(this.href)
     return false
   )
@@ -11,3 +11,5 @@ $(document).ready ->
     $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
     return false
   )
+
+  $('.dropdown-toggle').dropdown()

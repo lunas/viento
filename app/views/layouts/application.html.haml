@@ -38,7 +38,7 @@
       .row
         - flash.each do |name, msg|
           = content_tag :div, msg, id: "flash_#{name}"
-      %div
+      #main
         = yield
       %footer
         %p * * *

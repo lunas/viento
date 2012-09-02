@@ -3,13 +3,22 @@ class Client < ActiveRecord::Base
                   :phone_home, :phone_mobile, :phone_work, :profession, :status, :street,
                   :street2, :street_number, :title, :zip, :roles_mask
 
-  def self.search(search)
+  def self.filter(search, status, role)
     if search.present?
-      search_crit = "%#{search.downcase}%"
-      where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
+      search_crit = "%#{search}%"
+      clients = where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
     else
-      scoped
+      clients = scoped
     end
+    status = 'aktiv' if status.blank?
+    role = 'Kundinnen' if role.blank?
+    clients = clients.with_status(status)
+    clients = clients.with_role(role)
+    clients
+  end
+
+  def self.with_status(status)
+    where('status = ?', status)
   end
 
   def address

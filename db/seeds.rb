@@ -1,4 +1,4 @@
-(1..40).each do
+(1..400).each do
   FactoryGirl.create(:client)
 end
 

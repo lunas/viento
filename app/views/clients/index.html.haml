@@ -4,8 +4,19 @@
     %ul.nav.nav-pills
       %li= link_to 'Neue Kundin', new_client_path
       %li= link_to 'Exportieren'
-      %li
-        = text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort"
+      %li= text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort"
+      %li.dropdown
+        %a.dropdown-toggle{:id => "dLabel", :role => "button", "data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+          Status
+          %b.caret
+        %ul#status_filter.dropdown-menu{:role => "menu", "aria-labelledby" => "dLabel"}
+          = render partial: "status_filter"
+      %li.dropdown
+        %a.dropdown-toggle{:id => "dLabel", :role => "button", "data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+          Rolle
+          %b.caret
+        %ul#role_filter.dropdown-menu{:role => "menu", "aria-labelledby" => "dLabel"}
+          = render partial: "role_filter"
 
   #clients
     = render :partial => 'clients'

@@ -7,9 +7,9 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.search(params[:search])
+    @clients = Client.filter(params[:search], params[:status], params[:role])
                      .order(sort_column + ' ' + sort_direction)
-                     .paginate(:per_page => 15, :page => params[:page])
+                     .paginate(:per_page => 25, :page => params[:page])
     @page_title = 'Kundinnen'
 
     respond_to do |format|
