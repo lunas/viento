@@ -13,10 +13,3 @@ $(document).ready ->
   )
 
   $('.dropdown-toggle').dropdown()
-
-  $('#show_all a').click( ->
-    $('input#search').val('')
-    $('input#status, input#role').val('all')
-    $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
-    return false
-  )

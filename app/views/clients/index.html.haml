@@ -8,7 +8,8 @@
       %li.divider-vertical &nbsp;&nbsp;
       = render 'filter_dropdown', field: 'status', title: 'Status', default: 'aktiv'
       = render 'filter_dropdown', field: 'role', title: 'Rolle', default: 'Kundinnen'
-      %li#show_all= link_to 'Alle anzeigen'
+      %li.divider-vertical &nbsp;&nbsp;
+      -#= render 'filter_dropdown', field: 'per_page', title: 'pro Seite', default: '15'
 
   #clients
     = render :partial => 'clients'
