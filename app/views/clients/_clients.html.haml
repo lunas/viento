@@ -26,8 +26,9 @@
       %td= client.status
       %td= client.role
 
-      %td= link_to 'Edit', edit_client_path(client)
-      %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
+      %td.delete
+        = link_to client, :confirm => 'Are you sure?', :method => :delete do
+          %i.icon-remove
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @clients,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

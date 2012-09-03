@@ -16,6 +16,9 @@ $(document).ready ->
 
   $('.edit_form').validate()
 
-  $('#clients tr').click ->
-    url = 'clients/' + $(this).attr('data-client_id') + '/edit'
-    window.location = url
+  attach_open_client = ()->
+    $('#clients tr td:not([class*=delete])').click (e)->
+      url = 'clients/' + $(this).parent().attr('data-client_id') + '/edit'
+      window.location = url
+
+  attach_open_client()

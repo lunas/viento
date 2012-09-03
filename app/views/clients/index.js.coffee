@@ -14,3 +14,6 @@ $('#role_filter').html('<%= escape_javascript(render("role_filter")) %>')
 
 $('#per_page_filter').html('<%= escape_javascript(render("per_page_filter")) %>')
 .prev().html('<%= params[:per_page] ? 'Pro Seite: ' + params[:per_page] : 'Pro Seite'%><b class="caret"</b>')
+
+attach_open_client()
+$('#messages').hide()
