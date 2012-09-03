@@ -34,6 +34,8 @@ class ClientsController < ApplicationController
   # GET /clients/new.json
   def new
     @client = Client.new
+    @client.role = "Kundinnen"
+    @client.status = "aktiv"
 
     respond_to do |format|
       format.html # new.html.erb

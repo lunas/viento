@@ -47,6 +47,10 @@ class Client < ActiveRecord::Base
     self.roles.first
   end
 
+  def role=(role)
+    self.roles = [role]
+  end
+
   STATES = %w[aktiv passiv]
 
 end
