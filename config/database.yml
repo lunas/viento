@@ -1,23 +1,23 @@
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
   database: viento_development
   pool: 5
-  username: postgres
-  password: pg
+  username: viento
+  password: viento
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
   database: viento_test
   pool: 5
-  username: postgres
-  password: pg
+  username: viento
+  password: viento
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: myssql2
+  encoding: utf8
   database: viento_production
   pool: 5
-  username: postgres
-  password: pg
+  username: viento
+  password: viento
