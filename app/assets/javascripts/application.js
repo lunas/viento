@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//xx = require_tree . << loads in wrong order; so load manually:
 //=require bootstrap-all
+//=require clients
+//=require jquery.validate
+//=additional-methods

@@ -1,7 +1,16 @@
-%h1 Editing client
+
+.row
+  .span6
+    .well.well-small
+      %ul.nav.nav-pills
+        -if @client.sales.empty?
+          %li= link_to 'Kundin loeschen', @client, :confirm => 'Kundin wirklich endg&uuml;ltig l&ouml;schen?', :method => :delete
+  .span6
+    .well.well-small
+      %ul.nav.nav-pills
+        -if @client.role? 'Kundinnen'
+          %li= link_to 'Neuer Kauf'
 
 = render 'form'
 
-= link_to 'Show', @client
-\|
-= link_to 'Back', clients_path
+

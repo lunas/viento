@@ -18,7 +18,7 @@
 
 
   - @clients.each do |client|
-    %tr
+    %tr{"data-client_id" => "#{client.id}"}
       %td= client.first_name
       %td= client.last_name
       %td= client.city
@@ -26,7 +26,6 @@
       %td= client.status
       %td= client.role
 
-      %td= link_to 'Show', client
       %td= link_to 'Edit', edit_client_path(client)
       %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
 

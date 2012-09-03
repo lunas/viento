@@ -13,3 +13,9 @@ $(document).ready ->
   )
 
   $('.dropdown-toggle').dropdown()
+
+  $('.edit_form').validate()
+
+  $('#clients tr').click ->
+    url = 'clients/' + $(this).attr('data-client_id') + '/edit'
+    window.location = url

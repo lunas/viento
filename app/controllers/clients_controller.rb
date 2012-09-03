@@ -33,6 +33,8 @@ class ClientsController < ApplicationController
   # GET /clients/new
   # GET /clients/new.json
   def new
+    @page_title = 'Neue Kundin'
+
     @client = Client.new
     @client.role = "Kundinnen"
     @client.status = "aktiv"
@@ -45,6 +47,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    @page_title = 'Kundin bearbeiten'
     @client = Client.find(params[:id])
   end
 
@@ -55,7 +58,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to clients_path, notice: 'Kundin erstellt.' }
         format.json { render json: @client, status: :created, location: @client }
       else
         format.html { render action: "new" }
@@ -71,7 +74,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to clients_path, notice: 'Kundin gespeichert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -87,7 +90,7 @@ class ClientsController < ApplicationController
     @client.destroy
 
     respond_to do |format|
-      format.html { redirect_to clients_url }
+      format.html { redirect_to clients_url, notice: 'Kundin geloescht.' }
       format.json { head :no_content }
     end
   end

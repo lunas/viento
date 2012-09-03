@@ -1,7 +1,13 @@
 class Client < ActiveRecord::Base
   attr_accessible :company, :country, :email, :first_name, :first_name2, :last_name, :last_name2, :notes,
                   :phone_home, :phone_mobile, :phone_work, :profession, :status, :street,
-                  :street2, :street_number, :title, :zip, :roles_mask
+                  :street2, :street_number, :title, :zip, :city, :roles_mask, :role
+
+  validates :last_name, presence: {message: 'Nachname darf nicht leer sein'}
+
+  def sales #TODO remove: temporary!
+    []
+  end
 
   def self.filter(search, status, role)
     if search.present?
