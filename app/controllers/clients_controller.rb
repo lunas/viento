@@ -100,10 +100,6 @@ class ClientsController < ApplicationController
     Client.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
   end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-  end
-
   def status_condition(status = params[:status])
     status ||= "aktiv"
     %w[aktiv passiv alle].include?(status) ? status : nil
@@ -114,8 +110,4 @@ class ClientsController < ApplicationController
     (Client::ROLES + ['alle']).include?(role) ? role : nil
   end
 
-  def per_page
-    pp = params[:per_page].to_i
-    [5, 10, 15, 20, 25, 50, 100, 1000].include?(pp) ? pp : 15
-  end
 end

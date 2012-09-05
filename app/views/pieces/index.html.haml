@@ -1,0 +1,31 @@
+%h1 Listing pieces
+
+%table
+  %tr
+    %th Name
+    %th Collection
+    %th Color
+    %th Fabric
+    %th Count
+    %th Price
+    %th Costs
+    %th
+    %th
+    %th
+
+  - @pieces.each do |piece|
+    %tr
+      %td= piece.name
+      %td= piece.collection
+      %td= piece.color
+      %td= piece.fabric
+      %td= piece.count
+      %td= piece.price
+      %td= piece.costs
+      %td= link_to 'Show', piece
+      %td= link_to 'Edit', edit_piece_path(piece)
+      %td= link_to 'Destroy', piece, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Piece', new_piece_path

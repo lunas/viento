@@ -13,6 +13,9 @@
     %th= sortable 'last_name', 'Nachname'
     %th= sortable 'city', 'Ort'
     %th= sortable 'street', 'Strasse/Nr'
+    %th= sortable 'sum_sales', 'Total gekauft für'
+    %th= sortable 'count_sales', 'Total gekaufte Teile'
+    %th= sortable 'last_sale', 'Datum letzter Kauf'
     %th= sortable 'status', 'Status'
     %th= sortable 'roles_mask', 'Rolle'
 
@@ -23,6 +26,9 @@
       %td= client.last_name
       %td= client.city
       %td= client.address
+      %td
+      %td
+      %td
       %td= client.status
       %td= client.role
 

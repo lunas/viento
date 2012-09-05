@@ -14,6 +14,8 @@ $(document).ready ->
 
   $('.dropdown-toggle').dropdown()
 
+  $('#messages').fadeOut(6000)
+
   $('.edit_form').validate()
 
   attach_open_client = ()->
@@ -22,3 +24,4 @@ $(document).ready ->
       window.location = url
 
   attach_open_client()
+

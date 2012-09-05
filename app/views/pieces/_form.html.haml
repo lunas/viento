@@ -1,0 +1,14 @@
+= simple_form_for(@piece) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :collection
+    = f.input :color
+    = f.input :fabric
+    = f.input :count
+    = f.input :price
+    = f.input :costs
+
+  .form-actions
+    = f.button :submit
