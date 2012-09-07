@@ -4,6 +4,14 @@ class Piece < ActiveRecord::Base
   has_and_belongs_to_many :clients, :join_table => "sales", :order => "sales.datum, clients.nachname, clients.vorname"
   has_many :sales
 
+  def self.collections
+    Piece.order("collection").pluck(:collection).uniq
+  end
+
+  def self.last_collection
+    order('collection desc').limit(1).pluck(:collection).first
+  end
+
 
   #sql = "Select p.id, kollektion, name, farbe, material, groesse, preis, anzahl, kosten,
 		#count(s.id) as verkauft,

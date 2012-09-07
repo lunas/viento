@@ -1,31 +1,15 @@
-%h1 Listing pieces
 
-%table
-  %tr
-    %th Name
-    %th Collection
-    %th Color
-    %th Fabric
-    %th Count
-    %th Price
-    %th Costs
-    %th
-    %th
-    %th
+= form_tag pieces_path, :method => 'get', id: 'pieces_search', :class => 'form-search' do |f|
+  .well.well-small
+    %ul.nav.nav-pills
+      %li= link_to 'Neues Teil', new_client_path
+      %li= text_field_tag :search, params[:search], placeholder: "Suche nach Name/Material/Farbe", :class => 'search-query'
+      %li.divider-vertical &nbsp;&nbsp;
+      %li= select_tag 'collection', options_for_select(Piece.collections.map{|c| [c, c]}, Piece.last_collection)
+      -#= render 'clients/filter_dropdown', field: 'collection', title: 'Kollektion', default: Piece.last_collection, css: ''
+      %li.divider-vertical &nbsp;&nbsp;
+      -#= render 'clients/filter_dropdown', field: 'per_page', title: 'Pro Seite', default: '15', css: 'pull-right'
 
-  - @pieces.each do |piece|
-    %tr
-      %td= piece.name
-      %td= piece.collection
-      %td= piece.color
-      %td= piece.fabric
-      %td= piece.count
-      %td= piece.price
-      %td= piece.costs
-      %td= link_to 'Show', piece
-      %td= link_to 'Edit', edit_piece_path(piece)
-      %td= link_to 'Destroy', piece, :confirm => 'Are you sure?', :method => :delete
+  #pieces
+    -#= render :partial => 'pieces'
 
-%br
-
-= link_to 'New Piece', new_piece_path
