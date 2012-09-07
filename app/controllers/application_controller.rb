@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
     [5, 10, 15, 20, 25, 50, 100, 1000].include?(pp) ? pp : 15
   end
 
+
 end

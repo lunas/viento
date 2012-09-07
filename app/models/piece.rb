@@ -8,7 +8,7 @@ class Piece < ActiveRecord::Base
     Piece.order("collection").pluck(:collection).uniq
   end
 
-  def self.last_collection
+  def self.latest_collection
     order('collection desc').limit(1).pluck(:collection).first
   end
 

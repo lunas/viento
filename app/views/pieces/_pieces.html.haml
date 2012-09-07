@@ -4,20 +4,20 @@
 = hidden_field_tag :per_page, params[:per_page]
 
 .total_items
-  #{@pieces.total_entries} Kundinnen
+  #{@pieces.total_entries} Teile
   %br gefunden:
 
 %table.table
   %tr
-    %th= sortable 'name'
-    %th= sortable 'collection', 'Kollektion'
-    %th= sortable 'color'
-    %th= sortable 'fabric', 'Material'
-    %th= sortable 'price', 'Preis'
-    %th= sortable 'costs', 'Kosten'
-    %th= sortable 'count', 'Produziert'
-    %th= sortable 'sold', 'Verkauft'
-    %th= sortable 'stock', 'Bestand'
+    %th= piece_sortable 'name'
+    %th= piece_sortable 'collection', 'Kollektion'
+    %th= piece_sortable 'color'
+    %th= piece_sortable 'fabric', 'Material'
+    %th= piece_sortable 'price', 'Preis'
+    %th= piece_sortable 'costs', 'Kosten'
+    %th= piece_sortable 'count', 'Produziert'
+    %th= piece_sortable 'sold', 'Verkauft'
+    %th= piece_sortable 'stock', 'Bestand'
 
   - @pieces.each do |piece|
     %tr{"data-piece_id" => "#{piece.id}"}
@@ -28,8 +28,8 @@
       %td= piece.price
       %td= piece.costs
       %td= piece.count
-      %td=
-      %td=
+      %td
+      %td
 
       %td.delete
         = link_to piece, :confirm => 'Are you sure?', :method => :delete do
