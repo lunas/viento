@@ -12,6 +12,20 @@ class Piece < ActiveRecord::Base
     order('collection desc').limit(1).pluck(:collection).first
   end
 
+  def self.with_collection(collection)
+    where('collection = ?', collection)
+  end
+
+  def self.filter(search, collection)
+    if search.present?
+      pieces = where('name LIKE ?', "%#{search}%")
+    else
+      pieces = scoped
+    end
+    pieces = pieces.with_collection(collection) unless collection.blank? || collection == 'alle'
+    pieces
+  end
+
 
   #sql = "Select p.id, kollektion, name, farbe, material, groesse, preis, anzahl, kosten,
 		#count(s.id) as verkauft,

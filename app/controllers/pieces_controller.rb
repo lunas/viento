@@ -2,12 +2,13 @@ class PiecesController < ApplicationController
 
   before_filter :authenticate_user!
 
-  helper_method :sort_column, :sort_direction, :collection_condition
+  helper_method :sort_column, :sort_direction, :collection_condition, :per_page
 
   # GET /pieces
   # GET /pieces.json
   def index
-    @pieces = Piece.where("collection = ?", collection_condition)
+    @pieces = Piece.filter(params[:search], collection_condition)
+                   .order(sort_column + ' ' + sort_direction)
                    .paginate(:per_page => per_page, :page => params[:page])
     @page_title = 'Teile'
 
@@ -100,7 +101,6 @@ class PiecesController < ApplicationController
     collection ||= Piece.latest_collection
     Piece.collections.include?(collection) ? collection: nil
   end
-
 
 
 end

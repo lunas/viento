@@ -4,15 +4,14 @@
     %ul.nav.nav-pills
       %li
         %label Kollektion:
-        = select_tag 'collection_filter', options_for_select(Piece.collections.map{|c| [c, c]}, Piece.latest_collection), class: 'span2'
+        = select_tag 'collection_filter', options_for_select((Piece.collections << 'alle').map{|c| [c, c]}, Piece.latest_collection), class: 'span2'
       %li.divider-vertical.span1 &nbsp;
       %li= text_field_tag :search, params[:search], placeholder: "Suche nach Name/Material/Farbe", :class => 'search-query'
       %li.divider-vertical.span1 &nbsp;
       %li= link_to 'Neues Teil', new_client_path
       %li.pull-right
         %label Pro Seite:
-        = select_tag 'per_page_filter', options_for_select(per_page_options, 50), class: 'span1'
-      -#= render 'clients/filter_dropdown', field: 'per_page', title: 'Pro Seite', default: '15', css: 'pull-right'
+        = select_tag 'per_page_filter', options_for_select(per_page_options, per_page), class: 'span1'
 
   #pieces
     = render :partial => 'pieces'
