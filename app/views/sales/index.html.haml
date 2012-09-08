@@ -13,7 +13,7 @@
   - @sales.each do |sale|
     %tr
       %td= sale.client_id
-      %td= sale.piece_id_integer
+      %td= sale.piece_id
       %td= sale.date
       %td= sale.actual_price
       %td= link_to 'Show', sale
