@@ -1,0 +1,25 @@
+%h1 Listing sales
+
+%table
+  %tr
+    %th Client
+    %th Piece id integer
+    %th Date
+    %th Actual price
+    %th
+    %th
+    %th
+
+  - @sales.each do |sale|
+    %tr
+      %td= sale.client_id
+      %td= sale.piece_id_integer
+      %td= sale.date
+      %td= sale.actual_price
+      %td= link_to 'Show', sale
+      %td= link_to 'Edit', edit_sale_path(sale)
+      %td= link_to 'Destroy', sale, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Sale', new_sale_path

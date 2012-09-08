@@ -36,14 +36,12 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
   gem 'ruby-debug19'
-  gem 'rspec-expectations'
-  gem 'spork', '~> 0.9.0.rc'
   gem 'awesome_print'
 end
 
 group :test do
+  gem 'spork'
   gem 'cucumber-rails'
 #  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'database_cleaner'
@@ -53,6 +51,8 @@ group :test do
   gem 'email_spec'
   gem 'viewcumber'
   gem 'mocha'
+  gem 'rspec-expectations'
+  gem 'rspec-rails'
 end
 
 #https://github.com/bkeepers/dotenv

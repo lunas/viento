@@ -28,7 +28,7 @@ FactoryGirl.define do
     name       { %w[Bastos Chelsea Sputnik Concorde Sphinx Merkaat Nuguru Klavia Onix Rados Phlux Xana Memphis].sample }
     costs      { %w[100, 200, 300, 400, 500, 600, 700].sample }
     price      { costs.to_i * 2 }
-    count      { [10, 15, 20, 25, 30, 35, 40].sample }
+    count_produced { [10, 15, 20, 25, 30, 35, 40].sample }
   end
 
   factory :user do
@@ -37,6 +37,13 @@ FactoryGirl.define do
     password              'viento'
     password_confirmation 'viento'
     roles                 ['boss']
+  end
+
+  factory :sale do
+    client
+    piece
+    date         { Time.now }
+    actual_price { piece.price }
   end
 
 end

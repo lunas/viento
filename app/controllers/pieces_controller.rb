@@ -94,7 +94,7 @@ class PiecesController < ApplicationController
   private
 
   def sort_column
-    Piece.column_names.include?(params[:sort]) ? params[:sort] : "collection"
+    (Piece.column_names + ['stock', 'sold']).include?(params[:sort]) ? params[:sort] : "collection"
   end
 
   def collection_condition(collection = params[:collection_filter])

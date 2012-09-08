@@ -1,4 +1,6 @@
 Blog::Application.routes.draw do
+  resources :sales
+
   resources :pieces
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},

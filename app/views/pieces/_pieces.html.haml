@@ -15,7 +15,7 @@
     %th= piece_sortable 'fabric', 'Material'
     %th= piece_sortable 'price', 'Preis'
     %th= piece_sortable 'costs', 'Kosten'
-    %th= piece_sortable 'count', 'Produziert'
+    %th= piece_sortable 'count_produced', 'Produziert'
     %th= piece_sortable 'sold', 'Verkauft'
     %th= piece_sortable 'stock', 'Bestand'
 
@@ -27,9 +27,9 @@
       %td= piece.fabric
       %td= piece.price
       %td= piece.costs
-      %td= piece.count
-      %td
-      %td
+      %td= piece.count_produced
+      %td= piece.sold
+      %td= piece.stock
 
       %td.delete
         = link_to piece, :confirm => 'Are you sure?', :method => :delete do

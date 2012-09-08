@@ -1,0 +1,11 @@
+= simple_form_for(@sale) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :client_id
+    = f.input :piece_id_integer
+    = f.input :date
+    = f.input :actual_price
+
+  .form-actions
+    = f.button :submit

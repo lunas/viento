@@ -5,9 +5,8 @@ class Client < ActiveRecord::Base
 
   validates :last_name, presence: {message: 'Nachname darf nicht leer sein'}
 
-  def sales #TODO remove: temporary!
-    []
-  end
+  has_many :sales
+  has_many :pieces, through: :sales
 
   def self.filter(search, status, role)
     if search.present?

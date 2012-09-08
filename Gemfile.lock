@@ -263,7 +263,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda-matchers
   simple_form
-  spork (~> 0.9.0.rc)
+  spork
   timecop
   uglifier (>= 1.0.3)
   viewcumber
