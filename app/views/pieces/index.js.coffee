@@ -4,6 +4,10 @@ $('#collection_filter').val('<%= collection_condition %>')
 
 $('#per_page_filter').val('<%= per_page %>')
 
-attach_open_piece()
+
+$('#pieces tr td:not([class*=delete])').click (e)->
+  url = 'pieces/' + $(this).parent().attr('data-piece_id') + '/edit'
+  window.location = url
 
 $('#messages').hide()
+

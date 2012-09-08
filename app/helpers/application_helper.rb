@@ -9,4 +9,8 @@ module ApplicationHelper
     [5,10,15,20,15,30,50,100,200,500,1000,10000]
   end
 
+  def nav_class_for(menu_item)
+    return controller_name.to_sym == menu_item ? 'active' : ''
+  end
+
 end

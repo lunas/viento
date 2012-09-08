@@ -13,7 +13,7 @@ class PiecesController < ApplicationController
     @page_title = 'Teile'
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.js
       format.json { render json: @pieces }
     end

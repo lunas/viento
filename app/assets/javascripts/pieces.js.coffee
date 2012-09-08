@@ -25,9 +25,6 @@ $(document).ready ->
 
   $('.edit_form').validate()
 
-  attach_open_piece = ()->
-    $('#pieces tr td:not([class*=delete])').click (e)->
-      url = 'pieces/' + $(this).parent().attr('data-piece_id') + '/edit'
-      window.location = url
-
-  attach_open_piece()
+  $('#pieces tr td:not([class*=delete])').click (e)->
+    url = 'pieces/' + $(this).parent().attr('data-piece_id') + '/edit'
+    window.location = url

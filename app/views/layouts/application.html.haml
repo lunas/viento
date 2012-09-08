@@ -14,11 +14,11 @@
           %a.brand Viento
           .nav-collapse.collapse
             %ul.nav
-              %li.active
+              %li{class: "#{nav_class_for(:clients)}"}
                 =link_to "Kundinnen", clients_path
-              %li
+              %li{class: "#{nav_class_for(:pieces)}"}
                 =link_to "Teile", pieces_path
-              %li
+              %li{class: "#{nav_class_for(:sales)}"}
                 =link_to "Verkäufe"
             %ul.nav.pull-right
               - if user_signed_in?
