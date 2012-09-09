@@ -7,8 +7,9 @@ class PiecesController < ApplicationController
   # GET /pieces
   # GET /pieces.json
   def index
+    second_order = sort_column == 'name' ? 'collection desc' : 'name'
     @pieces = Piece.filter(params[:search], collection_condition)
-                   .order(sort_column + ' ' + sort_direction)
+                   .order("#{sort_column} #{sort_direction}, #{second_order}" )
                    .paginate(:per_page => per_page, :page => params[:page])
     @page_title = 'Teile'
 
@@ -94,7 +95,7 @@ class PiecesController < ApplicationController
   private
 
   def sort_column
-    (Piece.column_names + ['stock', 'sold']).include?(params[:sort]) ? params[:sort] : "collection"
+    (Piece.column_names + ['stock', 'sold']).include?(params[:sort]) ? params[:sort] : "name"
   end
 
   def collection_condition(collection = params[:collection_filter])
