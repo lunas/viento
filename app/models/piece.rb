@@ -21,7 +21,7 @@ class Piece < ActiveRecord::Base
         select('pieces.id, collection, color, costs, count_produced, fabric, name, price, size')
               .select('count(sales.id) as sold')
               .select('count_produced - count(sales.id) as stock')
-              .joins('pieces LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
+              .joins('LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
               .group('pieces.id')
   end
 
@@ -36,11 +36,11 @@ class Piece < ActiveRecord::Base
   end
 
 
-  def stock
+  def count_stock
     self.count_produced - self.sales.size
   end
 
-  def sold
+  def count_sold
     self.sales.size
   end
 
