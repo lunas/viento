@@ -19,7 +19,7 @@
               %li{class: "#{nav_class_for(:pieces)}"}
                 =link_to "Teile", pieces_path
               %li{class: "#{nav_class_for(:sales)}"}
-                =link_to "Verkäufe"
+                =link_to "Verkäufe", sales_path
             %ul.nav.pull-right
               - if user_signed_in?
                 %strong= current_user.username

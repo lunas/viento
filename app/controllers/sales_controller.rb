@@ -1,4 +1,7 @@
 class SalesController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /sales
   # GET /sales.json
   def index

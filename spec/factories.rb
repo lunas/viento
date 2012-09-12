@@ -26,8 +26,8 @@ FactoryGirl.define do
     fabric     { %w[jeans velvet milano mahler cotton wolle satin glismet soie manchester ghaeklet].sample }
     size       { [34, 36, 38, 40, 42, 44].sample }
     name       { %w[Bastos Chelsea Sputnik Concorde Sphinx Merkaat Nuguru Klavia Onix Rados Phlux Xana Memphis].sample }
-    costs      { %w[100, 200, 300, 400, 500, 600, 700].sample }
-    price      { costs.to_i * 2 }
+    costs      { [100, 200, 300, 400, 500, 600, 700].sample }
+    price      { costs * 2 }
     count_produced { [10, 15, 20, 25, 30, 35, 40].sample }
   end
 
