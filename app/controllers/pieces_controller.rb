@@ -56,7 +56,7 @@ class PiecesController < ApplicationController
 
     respond_to do |format|
       if @piece.save
-        format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
+        format.html { redirect_to pieces_path, notice: 'Piece was successfully created.' }
         format.json { render json: @piece, status: :created, location: @piece }
       else
         @page_title = 'Neues Teil'
@@ -104,7 +104,7 @@ class PiecesController < ApplicationController
 
   def collection_condition(collection = params[:collection_filter])
     collection ||= Piece.latest_collection
-    Piece.collections.include?(collection) ? collection: nil
+    (Piece.collections << 'alle').include?(collection) ? collection: nil
   end
 
 

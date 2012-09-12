@@ -16,8 +16,10 @@ $(document).ready ->
 
   $('#messages').fadeOut(6000)
 
-  $('.edit_form').validate()
-
   $('#clients tr td:not([class*=delete])').click (e)->
     url = 'clients/' + $(this).parent().attr('data-client_id') + '/edit'
     window.location = url
+
+  if $('.edit_form').size() > 0
+    $('.edit_form').validate()
+

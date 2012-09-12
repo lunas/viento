@@ -1,22 +1,6 @@
 class Piece < ActiveRecord::Base
   attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten
 
-
-
-  def preis
-    price
-  end
-  def preis=(value)
-    price=value
-  end
-  def kosten
-    costs
-  end
-  def kosten=(value)
-    costs=value
-  end
-
-
   has_many :sales
   has_many :clients, through: :sales, order: "sales.date, clients.last_name, clients.first_name"
 
@@ -25,7 +9,7 @@ class Piece < ActiveRecord::Base
   validates_numericality_of :size, :count_produced, :price, :costs,
                             :message => "darf nur Zahlen enthalten."
 
-  validates_presence_of :collection, :name, :color, :fabric, #:groesse, :preis, :kosten, :anzahl,
+  validates_presence_of :collection, :name, :color, :fabric, :size, :preis, :kosten,
                         :message => "darf nicht leer sein."
 
   validates_inclusion_of :size,
@@ -72,7 +56,8 @@ class Piece < ActiveRecord::Base
 
   def self.filter(search, collection)
     if search.present?
-      pieces = with_stock_and_sold.where('name LIKE ?', "%#{search}%")
+      search = "%#{search}%"
+      pieces = with_stock_and_sold.where('name LIKE ? OR color LIKE ? OR fabric LIKE ?', search, search, search)
     else
       pieces = with_stock_and_sold
     end
@@ -87,6 +72,19 @@ class Piece < ActiveRecord::Base
 
   def count_sold
     self.sales.size
+  end
+
+  def preis
+    self.price
+  end
+  def preis=(value)
+    self.price=value
+  end
+  def kosten
+    self.costs
+  end
+  def kosten=(value)
+    self.costs=value
   end
 
   #sql = "Select p.id, kollektion, name, farbe, material, groesse, preis, anzahl, kosten,

@@ -8,7 +8,7 @@
       %li.divider-vertical.span1 &nbsp;
       %li= text_field_tag :search, params[:search], placeholder: "Suche nach Name/Material/Farbe", :class => 'search-query'
       %li.divider-vertical.span1 &nbsp;
-      %li= link_to 'Neues Teil', new_client_path
+      %li= link_to 'Neues Teil', new_piece_path
       %li.pull-right
         %label Pro Seite:
         = select_tag 'per_page_filter', options_for_select(per_page_options, per_page), class: 'span1'
