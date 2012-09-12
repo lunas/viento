@@ -35,6 +35,7 @@ class PiecesController < ApplicationController
   # GET /pieces/new.json
   def new
     @piece = Piece.new
+    @page_title = 'Neues Teil'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +46,7 @@ class PiecesController < ApplicationController
   # GET /pieces/1/edit
   def edit
     @piece = Piece.find(params[:id])
+    @page_title = 'Teil bearbeiten'
   end
 
   # POST /pieces
@@ -57,6 +59,7 @@ class PiecesController < ApplicationController
         format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
         format.json { render json: @piece, status: :created, location: @piece }
       else
+        @page_title = 'Neues Teil'
         format.html { render action: "new" }
         format.json { render json: @piece.errors, status: :unprocessable_entity }
       end
@@ -70,9 +73,10 @@ class PiecesController < ApplicationController
 
     respond_to do |format|
       if @piece.update_attributes(params[:piece])
-        format.html { redirect_to @piece, notice: 'Piece was successfully updated.' }
+        format.html { redirect_to pieces_path, notice: 'Piece was successfully updated.' }
         format.json { head :no_content }
       else
+        @page_title = 'Teil bearbeiten'
         format.html { render action: "edit" }
         format.json { render json: @piece.errors, status: :unprocessable_entity }
       end

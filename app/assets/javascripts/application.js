@@ -15,6 +15,7 @@
 //xx = require_tree . << loads in wrong order; so load manually:
 //=require bootstrap-all
 //=require clients
+//=require jquery
 //=require jquery.validate
-//=additional-methods
 //=require pieces
+//=require sales

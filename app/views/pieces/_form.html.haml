@@ -1,14 +1,40 @@
-= simple_form_for(@piece) do |f|
+= simple_form_for @piece,
+    html: {class: 'form-horizontal piece_form'} do |f|
   = f.error_notification
+  .row
+    .span6
+      = f.input :collection, label: 'Kollektion', input_html: {class: 'input-small'}
+      = f.input :name
+      = f.input :color
+      = f.input :fabric, label: 'Material'
+      = f.input :size, label: 'Gr&ouml;sse', input_html: {class: 'input-small'}
+      = f.input :count_produced, label: 'Produzierte St&uuml;ckzahl', input_html: {class: 'input-small'}
+      = f.input :preis, label: 'Preis', input_html: {class: 'input-small', type: 'text'}
+      = f.input :kosten, label: 'Produktionskosten', input_html: {class: 'input-small', type: 'text'}
 
-  .form-inputs
-    = f.input :name
-    = f.input :collection
-    = f.input :color
-    = f.input :fabric
-    = f.input :count_produced
-    = f.input :price
-    = f.input :costs
+      .actions.pull-right
+        = link_to 'Abbrechen', pieces_path
+        = f.submit 'Speichern'
 
-  .form-actions
-    = f.button :submit
+    - if !@piece.new_record?
+      .span6
+        Verkaeufe
+
+%script{:type =>'text/javascript'}
+  var collections = []
+  - Piece.collections.each do |collection|
+    collections.push("#{collection}")
+  var names = []
+  - Piece.names.each do |name|
+    names.push("#{name}")
+  var colors = []
+  - Piece.colors.each do |color|
+    colors.push("#{color}")
+  var fabrics = []
+  - Piece.fabrics.each do |fabric|
+    fabrics.push("#{fabric}")
+
+  $('#piece_collection').typeahead({source: collections})
+  $('#piece_name').typeahead({source: names})
+  $('#piece_color').typeahead({source: colors})
+  $('#piece_fabric').typeahead({source: fabrics})

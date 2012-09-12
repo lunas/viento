@@ -28,3 +28,70 @@ $(document).ready ->
   $('#pieces tr td:not([class*=delete])').click (e)->
     url = 'pieces/' + $(this).parent().attr('data-piece_id') + '/edit'
     window.location = url
+
+
+  # piece edit form
+
+  $('.piece_form').validate()
+
+  $('#piece_name, #piece_fabric, #piece_color').rules("add", {
+    required: true
+    minlength: 2
+    messages: {
+      required: "...darf nicht leer sein."
+      minlength: "...muss mindestens 2 Ziffern enthalten."
+    }
+  })
+  $('#piece_size').rules("add", {
+    required: true
+    range: [30, 44]
+    messages: {
+      required: "...darf nicht leer sein."
+      range: "...muss zwischen 30 und 44 liegen."
+    }
+  })
+  $('#piece_count_produced').rules("add", {
+    required: true
+    range: [0, 1000]
+    messages: {
+      required: "...darf nicht leer sein."
+      range: "...muss zwischen 0 und 1000 liegen."
+    }
+  })
+
+  jQuery.validator.addMethod "kollektion", ((value, element) ->
+    match = value.match(/^(\d\d)(\/\d\d)?$/)
+    return false if match == null
+    year1 = parseInt(match[1])
+    year2 = parseInt(match[2].replace('/',''))
+    return true if isNaN(year2) # i.e. only one match, like '12'
+    return true if year2 - year1 == 1
+    return false
+  ), "Kollektion muss entweder die Form '12' oder '12/13' haben."
+
+  jQuery.validator.addMethod "geld", ((value, element) ->
+    return value.match(/^\d+(\.?\d[05])?$/)
+  ), "Muss ein Geldbetrag der Form '600' oder '600.00' oder '600.25' sein."
+
+  $('#piece_preis').rules("add", {
+    required: true
+    geld: true
+    range: [0, 10000]
+    messages: {
+      required: "...darf nicht leer sein."
+      range: "...muss zwischen 0 und 10 000 liegen"
+    }
+  })
+  $('#piece_kosten').rules("add", {
+  required: true
+  geld: true
+  range: [0, 10000]
+  messages: {
+  required: "...darf nicht leer sein."
+  range: "...muss zwischen 0 und 10 000 liegen"
+  }
+  })
+
+  $('#piece_collection').rules("add", {
+    kollektion: true
+  })

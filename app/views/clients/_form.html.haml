@@ -28,7 +28,8 @@
         = link_to 'Abbrechen', clients_path
         = f.submit 'Speichern'
 
-    .span6
-      Verkaeufe
+    - if !@client.new_record?
+      .span6
+        Verkaeufe
 
 

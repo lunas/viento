@@ -1,7 +1,16 @@
-%h1 Editing piece
+.row
+  .span6
+    -if @piece.sales.empty?
+      .well.well-small
+        %ul.nav.nav-pills
+          %li= link_to 'Teil loeschen', @piece, :confirm => 'Teil wirklich endg&uuml;ltig l&ouml;schen?', :method => :delete
+    -else
+      .well-small
+        &nbsp;
+  .span6
+    .well.well-small
+      %ul.nav.nav-pills
+        %li= link_to 'Neuer Verkauf dieses Teils'
+        %li= link_to 'Verk&auml;ufe anzeigen'
 
 = render 'form'
-
-= link_to 'Show', @piece
-\|
-= link_to 'Back', pieces_path
