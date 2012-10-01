@@ -9,7 +9,7 @@ class Piece < ActiveRecord::Base
   validates_numericality_of :size, :count_produced, :price, :costs,
                             :message => "darf nur Zahlen enthalten."
 
-  validates_presence_of :collection, :name, :color, :fabric, :size, :preis, :kosten,
+  validates_presence_of :collection, :name, :color, :fabric, :size, :preis,
                         :message => "darf nicht leer sein."
 
   validates_inclusion_of :size,
@@ -45,15 +45,17 @@ class Piece < ActiveRecord::Base
     where('collection = ?', collection)
   end
 
+  # TODO rspec
   def self.with_stock_and_sold
   #scope :with_stock_and_sold,
         select('pieces.id, collection, color, costs, count_produced, fabric, name, price, size')
-              .select('count(sales.id) as sold')
-              .select('count_produced - count(sales.id) as stock')
-              .joins('LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
-              .group('pieces.id')
+          .select('count(sales.id) as sold')
+          .select('count_produced - count(sales.id) as stock')
+          .joins('LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
+          .group('pieces.id')
   end
 
+  # TODO rspec
   def self.filter(search, collection)
     if search.present?
       search = "%#{search}%"
@@ -85,6 +87,11 @@ class Piece < ActiveRecord::Base
   end
   def kosten=(value)
     self.costs=value
+  end
+
+  # Returns sum of actual_price of its sales.
+  def revenue
+    self.sales.inject(0){ |total, sale| total += sale.actual_price }
   end
 
   #sql = "Select p.id, kollektion, name, farbe, material, groesse, preis, anzahl, kosten,

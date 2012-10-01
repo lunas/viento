@@ -7,4 +7,9 @@ class Sale < ActiveRecord::Base
   def price
     piece.try(:price)
   end
+
+  def actual_price
+    p = read_attribute(:actual_price)
+    p.present? ? p : self.price
+  end
 end

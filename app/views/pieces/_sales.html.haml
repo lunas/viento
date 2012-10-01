@@ -1,0 +1,26 @@
+%table
+  %tr
+    %th Produziert
+    %th Verkauft
+    %th Bestand
+    %th Gesamterl&ouml;s
+  %tr
+    %td= piece.count_produced
+    %td= piece.count_sold
+    %td= piece.count_stock
+    %td= piece.revenue
+
+- if piece.count_sold > 0
+  %p= "#{piece.name} wurde #{times(piece.count_sold)} verkauft an:"
+
+  %table
+    %th Kundin
+    %th Ort
+    %th Preis
+    %th Datum
+    - piece.sales.each do |sale|
+      %tr
+        %th= link_to sale.client.name, edit_client_path(sale.client)
+        %th= sale.client.city
+        %th= sale.actual_price
+        %th= sale.date

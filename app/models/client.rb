@@ -28,6 +28,16 @@ class Client < ActiveRecord::Base
     "#{street} #{street_number}".strip
   end
 
+  def name_and_city
+    nac = "#{self.name}, #{self.city}"
+    nac.strip
+  end
+
+  def name
+    n = "#{self.first_name} #{self.last_name}"
+    n.strip
+  end
+
   ## Roles
 
   def self.with_role(role)

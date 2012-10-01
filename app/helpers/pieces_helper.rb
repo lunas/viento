@@ -8,4 +8,17 @@ module PiecesHelper
                                 collection: collection_condition), {:class => css_class}
   end
 
+  def times(number=nil)
+    word = case
+    when number.nil?
+       "nie"
+    when (1..3).member?(number)
+        %w[einmal zweimal dreimal][number-1]
+    when number > 3
+        "#{number.to_s} mal"
+    else
+        "nie"
+    end
+  end
+
 end
