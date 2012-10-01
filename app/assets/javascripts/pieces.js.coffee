@@ -97,3 +97,9 @@ $(document).ready ->
     $('#piece_collection').rules("add", {
       kollektion: true
     })
+
+    # table sorter for sales on edit piece form
+
+    $('#piece_sales').tablesorter(
+      {sortList: [[3,0]]}
+    )

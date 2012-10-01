@@ -13,14 +13,16 @@
 - if piece.count_sold > 0
   %p= "#{piece.name} wurde #{times(piece.count_sold)} verkauft an:"
 
-  %table
-    %th Kundin
-    %th Ort
-    %th Preis
-    %th Datum
-    - piece.sales.each do |sale|
-      %tr
-        %th= link_to sale.client.name, edit_client_path(sale.client)
-        %th= sale.client.city
-        %th= sale.actual_price
-        %th= sale.date
+  %table#piece_sales.tablesorter
+    %thead
+      %th Kundin
+      %th Ort
+      %th Preis
+      %th Datum
+    %tbody
+      - piece.sales.each do |sale|
+        %tr
+          %th= link_to sale.client.name, edit_client_path(sale.client)
+          %th= sale.client.city
+          %th= sale.actual_price
+          %th= sale.date
