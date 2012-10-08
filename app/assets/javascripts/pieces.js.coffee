@@ -102,4 +102,4 @@ $(document).ready ->
 
     $('#piece_sales').tablesorter(
       {sortList: [[3,0]]}
-    )
+    ).tablesorterPager({container: $(".tablesorter-pager"), size: 10});

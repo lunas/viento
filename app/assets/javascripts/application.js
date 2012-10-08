@@ -18,5 +18,6 @@
 //=require jquery
 //=require jquery.validate
 //=require jquery.tablesorter
+//=require jquery.tablesorter.pager
 //=require pieces
 //=require sales
