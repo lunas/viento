@@ -8,7 +8,7 @@
     .well.well-small
       %ul.nav.nav-pills
         -if @client.role? 'Kundinnen'
-          %li= link_to 'Neuer Kauf'
+          %li= link_to 'Neuer Kauf', new_client_sale_path(@client)
 
 = render 'form'
 

@@ -1,16 +1,12 @@
 .row
   .span6
-    -if @piece.sales.empty?
-      .well.well-small
-        %ul.nav.nav-pills
+    .well.well-small
+      %ul.nav.nav-pills
+        -if @piece.sales.empty?
           %li= link_to 'Teil loeschen', @piece, :confirm => 'Teil wirklich endg&uuml;ltig l&ouml;schen?', :method => :delete
-    -else
-      .well-small
-        &nbsp;
   .span6
     .well.well-small
       %ul.nav.nav-pills
-        %li= link_to 'Neuer Verkauf dieses Teils'
-        %li= link_to 'Verkäufe anzeigen'
+        %li= link_to 'Neuer Verkauf dieses Teils', new_client_sale_path(@piece)
 
 = render 'form'

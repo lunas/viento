@@ -43,6 +43,13 @@ class PiecesController < ApplicationController
     end
   end
 
+  def copy
+    @piece = Piece.find(params[:id]).dup # create a new copy
+    #@piece.id = nil
+    @page_title = 'Neues Teil (kopiert)'
+    render action: "new"
+  end
+
   # GET /pieces/1/edit
   def edit
     @piece = Piece.find(params[:id])
@@ -56,7 +63,13 @@ class PiecesController < ApplicationController
 
     respond_to do |format|
       if @piece.save
-        format.html { redirect_to pieces_path, notice: 'Piece was successfully created.' }
+        format.html do
+          if params[:copy_new]
+            redirect_to copy_piece_path(@piece.id), notice: 'Teil gespeichert.'
+          else
+            redirect_to pieces_path, notice: 'Teil gespeichert.'
+          end
+        end
         format.json { render json: @piece, status: :created, location: @piece }
       else
         @page_title = 'Neues Teil'
@@ -73,7 +86,13 @@ class PiecesController < ApplicationController
 
     respond_to do |format|
       if @piece.update_attributes(params[:piece])
-        format.html { redirect_to pieces_path, notice: 'Piece was successfully updated.' }
+        format.html do
+          if params[:copy_new]
+            redirect_to copy_piece_path(@piece.id), notice: 'Teil gespeichert.'
+          else
+            redirect_to pieces_path, notice: 'Teil gespeichert.'
+          end
+        end
         format.json { head :no_content }
       else
         @page_title = 'Teil bearbeiten'

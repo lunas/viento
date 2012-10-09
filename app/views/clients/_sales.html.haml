@@ -1,32 +1,28 @@
 %table#sales-overview
   %tr
-    %th Produziert
-    %th Verkauft
-    %th Bestand
-    %th Gesamterl&ouml;s
+    %th Total gekauft fuer
+    %th Total gekaufte Teile
+    %th Datum des letzten Kaufs
   %tr
-    %td= piece.count_produced
-    %td= piece.count_sold
-    %td= piece.count_stock
-    %td= piece.revenue
+    %td= client.name
+    %td= client.name
+    %td= client.name
 
-- if piece.count_sold > 0
-  %p= "#{piece.name} wurde #{times(piece.count_sold)} verkauft an:"
+- if client.sales.size > 0
+  %p= "#{client.name} hat #{client.sales.size} Teile erstanden:"
 
-  %table#piece_sales.tablesorter
+  %table#client_sales.tablesorter
     %thead
-      %th Kundin
-      %th Ort
+      %th Teil
       %th Preis
       %th Datum
     %tbody
-      - piece.sales.each do |sale|
+      - cllient.sales.each do |sale|
         %tr
-          %td= link_to sale.client.name, edit_client_path(sale.client)
-          %td= sale.client.city
+          %td= link_to sale.piece.name, edit_piece_path(sale.piece)
           %td= sale.actual_price
           %td= sale.date
-  - if piece.sales.size > 10
+  - if client.sales.size > 10
     .tablesorter-pager
       %form>
       =image_tag "icons/first.png", class: 'first'
