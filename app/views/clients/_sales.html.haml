@@ -1,25 +1,24 @@
-%table#sales-overview
-  %tr
-    %th Total gekauft fuer
-    %th Total gekaufte Teile
-    %th Datum des letzten Kaufs
-  %tr
-    %td= client.name
-    %td= client.name
-    %td= client.name
+%p= count_pieces_phrase(client.sales_count, client.sales_total)
 
 - if client.sales.size > 0
-  %p= "#{client.name} hat #{client.sales.size} Teile erstanden:"
 
   %table#client_sales.tablesorter
     %thead
       %th Teil
+      %th Kollektion
+      %th Material
+      %th Farbe
+      %th Groesse
       %th Preis
       %th Datum
     %tbody
-      - cllient.sales.each do |sale|
+      - client.sales.each do |sale|
         %tr
           %td= link_to sale.piece.name, edit_piece_path(sale.piece)
+          %td= sale.piece.collection
+          %td= sale.piece.fabric
+          %td= sale.piece.color
+          %td= sale.piece.size
           %td= sale.actual_price
           %td= sale.date
   - if client.sales.size > 10

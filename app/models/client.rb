@@ -5,7 +5,7 @@ class Client < ActiveRecord::Base
 
   validates :last_name, presence: {message: 'Nachname darf nicht leer sein'}
 
-  has_many :sales
+  has_many :sales, order: "date DESC"
   has_many :pieces, through: :sales
 
   def self.filter(search, status, role)
@@ -36,6 +36,18 @@ class Client < ActiveRecord::Base
   def name
     n = "#{self.first_name} #{self.last_name}"
     n.strip
+  end
+
+  def sales_total
+    self.sales.map(&:actual_price).inject(0, :+)
+  end
+
+  def sales_count
+    self.sales.size
+  end
+
+  def latest_sale_date
+    self.sales.first.try(:date) # works since sales are ordered by date DESC
   end
 
   ## Roles
