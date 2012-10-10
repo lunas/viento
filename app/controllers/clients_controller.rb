@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @client = Client.find(params[:id])
+    @client = Client.include(sales: piece).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -98,7 +98,8 @@ class ClientsController < ApplicationController
   private
 
   def sort_column
-    Client.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
+    (Client.column_names + %w[sales_total sales_count latest_sale_date])
+          .include?(params[:sort]) ? params[:sort] : "last_name"
   end
 
   def status_condition(status = params[:status])

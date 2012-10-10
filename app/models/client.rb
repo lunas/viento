@@ -11,9 +11,9 @@ class Client < ActiveRecord::Base
   def self.filter(search, status, role)
     if search.present?
       search_crit = "%#{search}%"
-      clients = where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
+      clients = includes(:sales).where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
     else
-      clients = scoped
+      clients = includes(:sales)
     end
     clients = clients.with_status(status) unless status.blank? || status == 'alle'
     clients = clients.with_role(role) unless role.blank? || role == 'alle'
