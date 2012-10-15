@@ -2,7 +2,7 @@
 
 - if client.sales.size > 0
 
-  %table#client_sales.tablesorter
+  %table#client_sales.dataTable
     %thead
       %th Teil
       %th Kollektion
@@ -21,17 +21,3 @@
           %td= sale.piece.size
           %td= sale.actual_price
           %td= sale.date
-  - if client.sales.size > 10
-    .tablesorter-pager
-      %form>
-      =image_tag "icons/first.png", class: 'first'
-      =image_tag "icons/prev.png",  class: 'prev'
-      %span.pagedisplay
-      =image_tag "icons/next.png",  class: 'next'
-      =image_tag "icons/last.png",  class: 'last'
-      %select.pagesize
-        %option{selected:"selected",value:"10"} 10
-        %option{value:"20"} 20
-        %option{value:"40"} 40
-        %option{value:"60"} 60
-        %option{value:"9000"} All

@@ -100,6 +100,17 @@ $(document).ready ->
 
     # table sorter for sales on edit piece form
 
-    $('#piece_sales').tablesorter(
-      {sortList: [[3,0]]}
-    ).tablesorterPager({container: $(".tablesorter-pager"), size: 10});
+    $('.dataTable').dataTable(
+      'iDisplayLength': 10
+      "sPaginationType": "full_numbers"
+      "sDom": "t<'row'<'span6'lp>>"
+      #"bJQueryUI": true
+      "aaSorting": [[ 3, "desc" ], [0, "asc"]]
+      #"sDom": '<"top">t<"bottom"lrp><"clear">'
+    )
+    # change css classes dataTable will use for sorting:
+#    $.extend( $.fn.dataTableExt.oStdClasses, {
+#    "sSortAsc": "header headerSortDown",
+#    "sSortDesc": "header headerSortUp",
+#    "sSortable": "header"
+#    } );

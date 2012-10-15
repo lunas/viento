@@ -13,7 +13,7 @@
 - if piece.count_sold > 0
   %p= "#{piece.name} wurde #{times(piece.count_sold)} verkauft an:"
 
-  %table#piece_sales.tablesorter
+  %table#piece_sales.dataTable
     %thead
       %th Kundin
       %th Ort
@@ -26,17 +26,3 @@
           %td= sale.client.city
           %td= sale.actual_price
           %td= sale.date
-  - if piece.sales.size > 10
-    .tablesorter-pager
-      %form>
-      =image_tag "icons/first.png", class: 'first'
-      =image_tag "icons/prev.png",  class: 'prev'
-      %span.pagedisplay
-      =image_tag "icons/next.png",  class: 'next'
-      =image_tag "icons/last.png",  class: 'last'
-      %select.pagesize
-        %option{selected:"selected",value:"10"} 10
-        %option{value:"20"} 20
-        %option{value:"40"} 40
-        %option{value:"60"} 60
-        %option{value:"9000"} All

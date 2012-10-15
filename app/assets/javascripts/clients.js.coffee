@@ -23,3 +23,12 @@ $(document).ready ->
   if $('.edit_form').size() > 0
     $('.edit_form').validate()
 
+
+
+    # table sorter for sales on edit client form
+    $('.dataTable').dataTable(
+      'iDisplayLength': 10
+      "sPaginationType": "full_numbers"
+      "sDom": "t<'row'<'span6'lp>>"
+      "aaSorting": [[ 6, "desc" ], [0, "asc"]]
+    )

@@ -17,7 +17,6 @@
 //=require clients
 //=require jquery
 //=require jquery.validate
-//=require jquery.tablesorter
-//=require jquery.tablesorter.pager
+//=require jquery.dataTables
 //=require pieces
 //=require sales
