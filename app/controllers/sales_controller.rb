@@ -28,6 +28,7 @@ class SalesController < ApplicationController
   # GET /sales/new.json
   def new
     @sale = Sale.new
+    @page_title = 'Neuer Verkauf'
 
     respond_to do |format|
       format.html # new.html.erb

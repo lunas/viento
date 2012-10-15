@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui-1.9.0.custom
 //xx = require_tree . << loads in wrong order; so load manually:
 //=require bootstrap-all
 //=require clients
@@ -20,3 +21,4 @@
 //=require jquery.dataTables
 //=require pieces
 //=require sales
+//=require dates

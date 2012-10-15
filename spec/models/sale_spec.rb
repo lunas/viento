@@ -36,17 +36,18 @@ describe Sale do
   describe "#before_update: #copy piece.price if actual_price is empty" do
     before do
       @piece = FactoryGirl.create(:piece, name: 'Testo', price: 1000)
+      @client = FactoryGirl.create(:client)
     end
     context "actual_price is present" do
       it "shouldn't overwrite the actual price with the piece's price" do
-        sale = Sale.new(actual_price: 500, piece_id: @piece.id)
+        sale = Sale.new(actual_price: 500, piece_id: @piece.id, client_id: @client.id)
         sale.save
         sale.actual_price.should == 500
       end
     end
     context "actual_price is not present" do
       it "should overwrite the actual price with the piece's price" do
-        sale = Sale.new(actual_price: nil, piece_id: @piece.id)
+        sale = Sale.new(actual_price: nil, piece_id: @piece.id, client_id: @client.id)
         sale.read_attribute(:actual_price).should be_nil
         sale.save
         sale.read_attribute(:actual_price).should == @piece.price
