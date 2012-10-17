@@ -3,6 +3,7 @@ Blog::Application.routes.draw do
 
   resources :pieces do
     get 'copy', on: :member
+    get 'find', on: :collection
     resources :sales
   end
 
@@ -11,6 +12,7 @@ Blog::Application.routes.draw do
   root to: 'seed#index'
 
   resources :clients do
+    get 'find', on: :collection
     resources :sales
   end
 

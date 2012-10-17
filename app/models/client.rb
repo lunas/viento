@@ -33,6 +33,10 @@ class Client < ActiveRecord::Base
     nac.strip
   end
 
+  def id_with_name_and_city
+    {id: self.id, label: self.name_and_city}
+  end
+
   def name
     n = "#{self.first_name} #{self.last_name}"
     n.strip

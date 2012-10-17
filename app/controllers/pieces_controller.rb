@@ -20,6 +20,19 @@ class PiecesController < ApplicationController
     end
   end
 
+  # GET /pieces/find?term=abc
+  def find
+    term = "%#{params[:term]}%"
+    @pieces = Piece.where("name like ?", term)
+                   .order("collection DESC, name, color, fabric, size")
+                   .limit(30)
+    respond_to do |format|
+      format.html
+      format.js
+      format.json {render json: @pieces.map(&:id_with_info_and_price)}
+    end
+  end
+
   # GET /pieces/1
   # GET /pieces/1.json
   def show

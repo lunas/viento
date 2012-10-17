@@ -2,9 +2,11 @@
   = f.error_notification
   .row
     .span6
-      = f.input :client_id, label: "Kundin"
-      = f.input :piece_id,  label: "Teil"
-      = f.input :date, as: :datepicker
+      = f.input :client_name_and_city, label: "Kundin"
+      = f.input :client_id, as: :hidden
+      = f.input :piece_info, label: "Teil"
+      = f.input :piece_id, as: :hidden
+      = f.input :date, as: :datepicker, label: "Datum"
       = f.input :actual_price, label: "Preis"
 
   .form-actions

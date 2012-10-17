@@ -23,8 +23,17 @@ class Sale < ActiveRecord::Base
     d.present? ? d : self.created_at.try(:to_date)
   end
 
+  def client_name_and_city
+    client.try(:name_and_city)
+  end
+
+  def piece_info
+    piece.try(:info)
+  end
+
   def copy_attributes_if_empty
     self.actual_price = price if self.read_attribute(:actual_price).blank?
     self.date = self.created_at if self.read_attribute(:date).blank?
+    self.date = Date.today if self.date.blank?
   end
 end

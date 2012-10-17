@@ -28,6 +28,8 @@ class SalesController < ApplicationController
   # GET /sales/new.json
   def new
     @sale = Sale.new
+    @sale.client_id = params[:client_id] if params[:client_id]
+    @sale.piece_id = params[:piece_id] if params[:piece_id]
     @page_title = 'Neuer Verkauf'
 
     respond_to do |format|
@@ -44,14 +46,20 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    cleanup_param
+    @client = Client.new(params[:client])
+
     @sale = Sale.new(params[:sale])
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+        format.html { redirect_to sales_path, notice: 'Verkauf gespeichert.' }
         format.json { render json: @sale, status: :created, location: @sale }
       else
-        format.html { render action: "new" }
+        format.html do
+          @page_title = 'Neuer Verkauf'
+          render action: "new"
+        end
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
     end
@@ -60,14 +68,18 @@ class SalesController < ApplicationController
   # PUT /sales/1
   # PUT /sales/1.json
   def update
+    cleanup_param
     @sale = Sale.find(params[:id])
 
     respond_to do |format|
       if @sale.update_attributes(params[:sale])
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+        format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html do
+          render action: "edit"
+          @page_title = 'Verkauf bearbeiten'
+        end
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
     end
@@ -84,4 +96,13 @@ class SalesController < ApplicationController
       format.json { head :no_content }
     end
   end
-end
+
+  private
+
+  def cleanup_param
+    params[:sale].delete(:client_name_and_city)
+    params[:sale].delete(:piece_info)
+  end
+
+
+  end

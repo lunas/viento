@@ -99,6 +99,13 @@ class Piece < ActiveRecord::Base
 		#anzahl - count_produced(s.id) as restbestand
 		#from pieces p left join sales s on p.id = s.piece_id "
 
+  def info
+    "#{self.collection} - #{self.name}: #{self.color}, #{self.size}, #{self.fabric}"
+  end
+
+  def id_with_info_and_price
+    {id: self.id, label: self.info, price: self.price}
+  end
 
   private
     # pr�ft, obs schon ein Teil mit genau gleichem Namen, Kollektion, Material, Farbe und Gr�sse gibt.

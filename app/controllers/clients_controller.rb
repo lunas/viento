@@ -19,6 +19,21 @@ class ClientsController < ApplicationController
     end
   end
 
+  # GET /clients/find?term=abc
+  def find
+    term = "%#{params[:term]}%"
+    @clients = Client.with_role('Kundinnen')
+                     .with_status('aktiv')
+                     .where("first_name like ? or last_name like ?", term, term)
+                     .order("last_name, first_name, city")
+                     .limit(20)
+    respond_to do |format|
+      format.html
+      format.js
+      format.json {render json: @clients.map(&:id_with_name_and_city)}
+    end
+  end
+
   # GET /clients/1
   # GET /clients/1.json
   def show
@@ -54,8 +69,6 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(params[:client])
-
     respond_to do |format|
       if @client.save
         format.html { redirect_to clients_path, notice: 'Kundin erstellt.' }
