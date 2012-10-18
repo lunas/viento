@@ -1,5 +1,5 @@
 class Piece < ActiveRecord::Base
-  attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten
+  attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten, :piece_info
 
   has_many :sales
   has_many :clients, through: :sales, order: "sales.date, clients.last_name, clients.first_name"

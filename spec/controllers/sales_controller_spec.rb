@@ -14,6 +14,7 @@ describe SalesController do
       { "client_id" => @client.id,
         "piece_id" => @piece.id,
         "client_name_and_city" => @client.name_and_city,
+        "piece_info" => @piece.info
       }
     end
 
@@ -79,6 +80,16 @@ describe SalesController do
       end
     end
 
+    context "with piece_info not matching pieceo.info" do
+      it "doesn't save the sale" do
+        Sale.all.size.should == 0 # before
+        expect {
+          post :create, sale: sale_hash.merge("piece_info" => 'wrong')
+        }.to_not change {@client.sales.size}.from 0
+        @piece.sales.size.should == 0
+        Sale.all.size.should == 0
+      end
+    end
 
   end
 end

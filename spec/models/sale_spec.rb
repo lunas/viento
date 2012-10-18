@@ -73,15 +73,38 @@ describe Sale do
   end
 
   describe "#client_name_and_city=" do
-    context "with client" do
-      it "returns client.name_and_city" do
+      it "sets @tmp_client_name_and_city" do
         sale = Sale.new
         sale.client_name_and_city = 'Something'
         sale.instance_variable_get(:@tmp_client_name_and_city).should == 'Something'
       end
+  end
+
+  describe "#piece_info" do
+    context "with piece" do
+      before do
+        @piece = FactoryGirl.create(:piece)
+      end
+      it "returns piece.info" do
+        sale = Sale.new(piece_id: @piece.id)
+        sale.piece_info.should == @piece.info
+      end
+    end
+    context "without piece" do
+      it "returns nil" do
+        sale = Sale.new
+        sale.piece_info.should be_nil
+      end
     end
   end
 
+  describe "#piece_info=" do
+    it "sets @tmp_piece_info" do
+      sale = Sale.new
+      sale.piece_info = 'something'
+      sale.instance_variable_get(:@tmp_piece_info).should == 'something'
+    end
+  end
 
   describe "#save" do
     context "client_name_and_city matches with client specified by client_id" do
@@ -106,5 +129,28 @@ describe Sale do
         sale.valid?.should be_false
       end
     end
+    context "piece_info matches with piece specified by piece_id" do
+      before do
+        @piece = FactoryGirl.create(:piece, name: 'Testo')
+        @client = FactoryGirl.create(:client)
+      end
+      it "is valid" do
+        sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+        sale.piece_info = @piece.info
+        sale.valid?.should be_true
+      end
+    end
+    context "piece_info doesn't match with piece specified by piece_id" do
+      before do
+        @piece = FactoryGirl.create(:piece, name: 'Testo')
+        @client = FactoryGirl.create(:client)
+      end
+      it "is not valid" do
+        sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+        sale.piece_info = 'wrong'
+        sale.valid?.should be_false
+      end
+    end
+
   end
 end

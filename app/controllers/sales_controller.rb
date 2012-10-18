@@ -54,6 +54,8 @@ class SalesController < ApplicationController
     # at least one client with matching sale_client_name_and_city exists!
     # > in sale.save possible
 
+    # TODO same for piece_info!
+
     @sale = Sale.new(params[:sale])
 
     respond_to do |format|
@@ -106,7 +108,7 @@ class SalesController < ApplicationController
 
   def cleanup_param
     #params[:sale].delete(:client_name_and_city)
-    params[:sale].delete(:piece_info)
+    #params[:sale].delete(:piece_info)
   end
 
 
