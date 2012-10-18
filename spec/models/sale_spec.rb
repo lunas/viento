@@ -30,7 +30,6 @@ describe Sale do
         @sale.errors[:actual_price].any?.should be_true
       end
     end
-
   end
 
   describe "#before_update: #copy piece.price if actual_price is empty" do
@@ -55,5 +54,57 @@ describe Sale do
     end
   end
 
+  describe "#client_name_and_city" do
+    context "with client" do
+      before do
+        @client = FactoryGirl.create(:client)
+      end
+      it "returns client.name_and_city" do
+        sale = Sale.new(client_id: @client.id)
+        sale.client_name_and_city.should == @client.name_and_city
+      end
+    end
+    context "without client" do
+      it "returns nil" do
+        sale = Sale.new
+        sale.client_name_and_city.should be_nil
+      end
+    end
+  end
 
+  describe "#client_name_and_city=" do
+    context "with client" do
+      it "returns client.name_and_city" do
+        sale = Sale.new
+        sale.client_name_and_city = 'Something'
+        sale.instance_variable_get(:@tmp_client_name_and_city).should == 'Something'
+      end
+    end
+  end
+
+
+  describe "#save" do
+    context "client_name_and_city matches with client specified by client_id" do
+      before do
+        @piece = FactoryGirl.create(:piece, name: 'Testo')
+        @client = FactoryGirl.create(:client)
+      end
+      it "is valid" do
+        sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+        sale.client_name_and_city = @client.name_and_city
+        sale.valid?.should be_true
+      end
+    end
+    context "client_name_and_city doesn't match with client specified by client_id" do
+      before do
+        @piece = FactoryGirl.create(:piece, name: 'Testo')
+        @client = FactoryGirl.create(:client)
+      end
+      it "is not valid" do
+        sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+        sale.client_name_and_city = 'wrong'
+        sale.valid?.should be_false
+      end
+    end
+  end
 end

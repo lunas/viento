@@ -30,6 +30,7 @@ class SalesController < ApplicationController
     @sale = Sale.new
     @sale.client_id = params[:client_id] if params[:client_id]
     @sale.piece_id = params[:piece_id] if params[:piece_id]
+    @sale.date = Date.today
     @page_title = 'Neuer Verkauf'
 
     respond_to do |format|
@@ -47,13 +48,17 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     cleanup_param
-    @client = Client.new(params[:client])
+
+    # TODO make sure
+    # client_name_and_city matches with client.id.name_and_city
+    # at least one client with matching sale_client_name_and_city exists!
+    # > in sale.save possible
 
     @sale = Sale.new(params[:sale])
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to sales_path, notice: 'Verkauf gespeichert.' }
+        format.html { redirect_to clients_path, notice: 'Verkauf gespeichert.' }
         format.json { render json: @sale, status: :created, location: @sale }
       else
         format.html do
@@ -73,7 +78,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.update_attributes(params[:sale])
-        format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
+        format.html { redirect_to clients_path, notice: 'Verkauf gespeichert.' }
         format.json { head :no_content }
       else
         format.html do
@@ -100,7 +105,7 @@ class SalesController < ApplicationController
   private
 
   def cleanup_param
-    params[:sale].delete(:client_name_and_city)
+    #params[:sale].delete(:client_name_and_city)
     params[:sale].delete(:piece_info)
   end
 
