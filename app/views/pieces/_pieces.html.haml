@@ -34,8 +34,9 @@
       %td= piece.stock
 
       %td.delete
-        = link_to piece, :confirm => 'Are you sure?', :method => :delete do
-          %i.icon-remove
+        - if piece.count_sold == 0
+          = link_to piece, :confirm => 'Are you sure?', :method => :delete do
+            %i.icon-remove
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @pieces,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'
