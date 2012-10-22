@@ -39,6 +39,10 @@ class Sale < ActiveRecord::Base
     @tmp_piece_info = value
   end
 
+  def info
+    "#{piece.name} fuer #{client.name}".strip
+  end
+
   def copy_attributes_if_empty
     self.actual_price = price if self.read_attribute(:actual_price).blank?
     self.date = self.created_at if self.read_attribute(:date).blank?

@@ -20,6 +20,9 @@ $(document).ready ->
     url = 'clients/' + $(this).parent().attr('data-client_id') + '/edit'
     window.location = url
 
+  $('#client_sales tr td:not([class*=delete])').click (e)->
+    window.location = $(this).parent().attr('data-edit_url')
+
   if $('.edit_form').size() > 0
     $('.edit_form').validate()
 
@@ -31,4 +34,5 @@ $(document).ready ->
       "sPaginationType": "full_numbers"
       "sDom": "t<'row'<'span6'lp>>"
       "aaSorting": [[ 6, "desc" ], [0, "asc"]]
+      "aoColumnDefs": [{"bSortable": false, "aTargets": [7]}]
     )

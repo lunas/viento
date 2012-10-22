@@ -29,8 +29,11 @@ $(document).ready ->
     url = 'pieces/' + $(this).parent().attr('data-piece_id') + '/edit'
     window.location = url
 
-
   # piece edit form
+
+  $('#piece_sales tr td:not([class*=delete])').click (e)->
+    window.location = $(this).parent().attr('data-edit_url')
+
   if $('.piece_form').size() > 0
     $('.piece_form').validate()
 
@@ -107,6 +110,7 @@ $(document).ready ->
       #"bJQueryUI": true
       "aaSorting": [[ 3, "desc" ], [0, "asc"]]
       #"sDom": '<"top">t<"bottom"lrp><"clear">'
+      "aoColumnDefs": [{"bSortable": false, "aTargets": [4]}]
     )
     # change css classes dataTable will use for sorting:
 #    $.extend( $.fn.dataTableExt.oStdClasses, {

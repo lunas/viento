@@ -8,13 +8,14 @@ module ClientsHelper
                                 status: status_condition, role: role_condition), {:class => css_class}
   end
 
-  def count_pieces_phrase(count, total)
-    if count == 0
+  def count_pieces_phrase(client)
+    c = client.reload.sales.size
+    if c == 0
       "Noch nichts gekauft."
-    elsif count == 1
-      "Bisher ein 1 Teil gekauft fuer #{total}:"
+    elsif c == 1
+      "Bisher ein 1 Teil gekauft fuer #{client.sales_total}:"
     else
-      "Bisher #{count} Teile gekauft fuer #{total}:"
+      "Bisher #{c} Teile gekauft fuer CHF #{client.sales_total}:"
     end
   end
 

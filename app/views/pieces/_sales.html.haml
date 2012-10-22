@@ -19,10 +19,15 @@
       %th Ort
       %th Preis
       %th Datum
+      %th
     %tbody
       - piece.sales.each do |sale|
-        %tr
+        %tr{"data-edit_url" => "#{edit_piece_sale_path(piece, sale)}"}
           %td= link_to sale.client.name, edit_client_path(sale.client)
           %td= sale.client.city
           %td= sale.actual_price
           %td= sale.date
+          %td.delete
+            = link_to piece_sale_path(piece, sale), :confirm => 'Are you sure?', :method => :delete do
+              %i.icon-remove
+

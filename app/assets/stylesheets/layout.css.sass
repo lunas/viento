@@ -38,6 +38,14 @@ table#sales-overview
   top:  70px
   text-align: right
 
+// overwriting bootstrap styles:
+form
+  .form-horizontal
+    label
+      .control-label
+        width: 100px !important
+        border:  1px solid red
+
 //footer
 
 
@@ -108,5 +116,6 @@ th
   .desc
     background-image: url(icons/sort_down.png)
 
-#clients tr[data-client_id], #pieces tr[data-piece_id]
+#clients tr[data-client_id], #pieces tr[data-piece_id], #client_sales tr[data-edit_url], #piece_sales[data-edit_url]
   cursor: pointer
+

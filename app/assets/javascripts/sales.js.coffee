@@ -27,4 +27,3 @@ jQuery ->
       $( "#sale_piece_id" ).val( ui.item.id)
       return false
 
-

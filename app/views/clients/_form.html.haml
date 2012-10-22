@@ -2,23 +2,23 @@
     html: {class: 'form-horizontal edit_form'} do |f|
   = f.error_notification
   .row
-    .span6
+    .span5
       = f.input :title, label: 'Anrede', input_html: {class: 'input-mini'}
       = f.input :first_name, label: 'Vorname'
       = f.input :last_name, label: 'Nachname', input_html: {class: 'required'}
       = f.input :status, collection: Client::STATES, as: :radio_buttons, item_wrapper_class: 'inline'
       = f.input :role, label: 'Rolle', collection: Client::ROLES
       .form-inputs.row
-        = f.input :street, label: 'Strasse, Nr.', wrapper_html: {class: 'span3'}
+        = f.input :street, label: 'Strasse, Nr.', wrapper_html: {class: 'span2'}
         = f.input :street_number, label: false, wrapper_html: {class: 'span1'}, input_html: {class: 'input-mini'}
       .form-inputs.row
         = f.input :zip, label: 'PLZ, Ort', wrapper_html: {class: 'span1'}, input_html: {class: 'input-mini'}
-        = f.input :city, label: false, wrapper_html: {class: 'span4'}
+        = f.input :city, label: false, wrapper_html: {class: 'span3'}
       = f.input :email, input_html: {class: 'email'}
       = f.input :phone_home, label: 'Tel privat'
       = f.input :phone_work, label: 'Tel Arbeit'
       = f.input :phone_mobile, label: 'Tel mobile'
-      = f.input :notes, label: 'Notizen', input_html: {rows: 5}
+      = f.input :notes, label: 'Notizen', input_html: {rows: 4}
       = f.input :profession, label: 'Beruf'
       = f.input :first_name2, label: 'Vorname 2'
       = f.input :last_name2, label: 'Nachname 2'
@@ -29,7 +29,7 @@
         = f.submit 'Speichern'
 
     - if !@client.new_record?
-      .span6
+      .span7
         = render 'sales', client: @client
 
 

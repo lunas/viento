@@ -1,4 +1,4 @@
-%p= count_pieces_phrase(client.sales_count, client.sales_total)
+%p= count_pieces_phrase(client)
 
 - if client.sales.size > 0
 
@@ -11,9 +11,10 @@
       %th Groesse
       %th Preis
       %th Datum
+      %th
     %tbody
       - client.sales.each do |sale|
-        %tr
+        %tr{"data-edit_url" => "#{edit_client_sale_path(client, sale)}"}
           %td= link_to sale.piece.name, edit_piece_path(sale.piece)
           %td= sale.piece.collection
           %td= sale.piece.fabric
@@ -21,3 +22,6 @@
           %td= sale.piece.size
           %td= sale.actual_price
           %td= sale.date
+          %td.delete
+            = link_to client_sale_path(client, sale), :confirm => 'Are you sure?', :method => :delete do
+              %i.icon-remove
