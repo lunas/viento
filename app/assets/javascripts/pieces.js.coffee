@@ -34,16 +34,16 @@ $(document).ready ->
   $('#piece_sales tr td:not([class*=delete])').click (e)->
     window.location = $(this).parent().attr('data-edit_url')
 
+
   if $('.piece_form').size() > 0
     $('.piece_form').validate()
-
 
     $(element).rules("add", {
       required: true
       minlength: 2
       messages: {
         required: "...darf nicht leer sein."
-        minlength: "...muss mindestens 2 Buchstaben enthalten."
+        minlength: "...muss mindestens 2 Zeichen enthalten."
       }
     }) for element in ['#piece_name', '#piece_fabric', '#piece_color']
 
@@ -92,8 +92,8 @@ $(document).ready ->
     geld: true
     range: [0, 10000]
     messages: {
-    required: "...darf nicht leer sein."
-    range: "...muss zwischen 0 und 10 000 liegen"
+      required: "...darf nicht leer sein."
+      range: "...muss zwischen 0 und 10 000 liegen"
     }
     })
 

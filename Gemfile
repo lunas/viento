@@ -18,6 +18,8 @@ gem 'will_paginate'
 gem 'factory_girl_rails'
 gem 'ffaker'
 gem 'coffee-rails', '~> 3.2.1'
+gem 'client_side_validations'
+# gem 'client_side_validations-simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.

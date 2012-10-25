@@ -22,3 +22,5 @@
 //=require pieces
 //=require sales
 //=require dates
+//xx = require rails.validations
+//xx = require rails.validations.simple_form

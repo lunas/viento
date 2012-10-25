@@ -1,4 +1,4 @@
-= simple_form_for [@parent, @sale], html: {class: 'form-horizontal sale_form'} do |f|
+= simple_form_for [@parent, @sale], html: {class: 'form-horizontal sale_form'}, validate: true  do |f|
   = f.error_notification
   .row
     .span6
@@ -6,8 +6,9 @@
       = f.input :client_id, as: :hidden
       = f.input :piece_info, label: "Teil"
       = f.input :piece_id, as: :hidden
-      = f.input :date, as: :datepicker, label: "Datum"
-      = f.input :actual_price, label: "Preis"
+      = f.input :date, input_html: {value: @sale.date}, as: :datepicker, label: "Datum"
+      = f.input :actual_price, input_html: {value: @sale.actual_price}, label: "Preis"
 
   .form-actions
+    = link_to 'Abbrechen', back_path(@parent)
     = f.button :submit

@@ -7,6 +7,7 @@ class Sale < ActiveRecord::Base
   # checks whether actual_price OR self.piece.price is present!
   validates :client_id, :piece_id, :actual_price, presence: true
   validate :client_name_and_city_matches_client, :piece_info_matches_piece
+  validate :date
   before_save :copy_attributes_if_empty
 
   def price
