@@ -7,7 +7,8 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.filter(params[:search], status_condition, role_condition)
+    @clients = Client.with_sales_data
+                     .filter(params[:search], status_condition, role_condition)
                      .order(sort_column + ' ' + sort_direction)
                      .paginate(:per_page => per_page, :page => params[:page])
     @page_title = 'Kundinnen'

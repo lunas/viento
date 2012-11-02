@@ -28,6 +28,12 @@ jQuery ->
       return false
 
   if $('.sale_form').size() > 0
+
+    $('input.datepicker').change( (event) ->
+      if $('.sale_form').valid()
+        $('input.date-alt').val( $(this).val() )
+    )
+
     $('.sale_form').validate()
 
     jQuery.validator.addMethod "geld", ((value, element) ->
@@ -44,7 +50,7 @@ jQuery ->
     $('#sale_date').rules("add", {
       date: true
       messages: {
-        required: "...muss ein gueltiges Datum sein."
+        date: "...muss ein gueltiges Datum sein."
       }
     })
 

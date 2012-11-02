@@ -1,12 +1,18 @@
 class Client < ActiveRecord::Base
   attr_accessible :company, :country, :email, :first_name, :first_name2, :last_name, :last_name2, :notes,
                   :phone_home, :phone_mobile, :phone_work, :profession, :status, :street,
-                  :street2, :street_number, :title, :zip, :city, :roles_mask, :role
+                  :street2, :street_number, :title, :zip, :city, :roles_mask, :role,
+                  :sales_count, :sales_total, :latest_sale_date
 
   validates :last_name, presence: {message: 'Nachname darf nicht leer sein'}
 
   has_many :sales, order: "date DESC"
   has_many :pieces, through: :sales
+
+  scope :with_sales_data, select('clients.*')
+    .select('sum(s.actual_price) as sales_total, max(s.date) as latest_sale_date')
+    .joins('left outer join sales s on clients.id = s.client_id')
+    .group('clients.id')
 
   def self.filter(search, status, role)
     if search.present?
