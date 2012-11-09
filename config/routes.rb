@@ -22,5 +22,5 @@ Blog::Application.routes.draw do
   match 'analysis/size' => 'analysis#by_size', as: :analysis_size
   match 'analysis/color' => 'analysis#by_color', as: :analysis_color
   match 'analysis/fabric' => 'analysis#by_fabric', as: :analysis_fabric
-  match 'analysis/period' => 'analysis#by_period', as: :analysis_period
+  match 'analysis/collection' => 'analysis#by_collection', as: :analysis_collection
 end

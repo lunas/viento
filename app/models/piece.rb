@@ -45,7 +45,7 @@ class Piece < ActiveRecord::Base
   end
 
   def self.with_collection(collection)
-    where('collection = ?', collection)
+    collection.nil? ? scoped : where('collection = ?', collection)
   end
 
   # TODO rspec
@@ -111,12 +111,29 @@ class Piece < ActiveRecord::Base
   end
 
   def self.table_by_size(collection = nil)
-    Piece.all.pivot("size") {|p| p.size }.pivot("name") {|p| p.name }.to_2d("Anzahl") do |pieces|
+    with_collection(collection).table_by(:size, "Groesse")
+  end
+
+  def self.table_by_color(collection = nil)
+    with_collection(collection).table_by(:color, "Color")
+  end
+
+  def self.table_by_fabric(collection = nil)
+    with_collection(collection).table_by(:fabric, "Material")
+  end
+
+  def self.table_by_collection(from, to)
+    period(from, to).table_by(:collection, "Kollektion, collection")
+  end
+
+  private
+
+  def self.table_by(pivot_column, pivot_column_name)
+    Piece.all.pivot(pivot_column_name) {|p| p.send(pivot_column) }.pivot("name") {|p| p.name }.to_2d("Anzahl") do |pieces|
       pieces.inject(0) { |result, piece| result += piece.sales_count.to_i; result }
     end
   end
 
-  private
     # pr�ft, obs schon ein Teil mit genau gleichem Namen, Kollektion, Material, Farbe und Gr�sse gibt.
     # Wenn nichts gefunden wird, ist gut (true, sonst false)
   def validate
