@@ -6,6 +6,8 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'pg'
+gem 'rake', '0.8.7'  # version 0.9.2 somehow broken, according to stackoverflow
+
 gem 'mysql2'
 
 gem 'simple_form'
@@ -20,6 +22,7 @@ gem 'ffaker'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'client_side_validations'
 # gem 'client_side_validations-simple_form'
+gem 'goldmine',  :git => 'https://github.com/lunas/goldmine.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

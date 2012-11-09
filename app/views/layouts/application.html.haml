@@ -20,6 +20,8 @@
                 =link_to "Teile", pieces_path
               %li{class: "#{nav_class_for(:sales)}"}
                 =link_to "Neuer Verkauf", new_sale_path
+              %li{class: "#{nav_class_for(:sales)}"}
+                =link_to "Auswertung", analysis_menu_path
             %ul.nav.pull-right
               - if user_signed_in?
                 %strong= current_user.username

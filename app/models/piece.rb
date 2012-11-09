@@ -1,4 +1,7 @@
 class Piece < ActiveRecord::Base
+
+  require 'goldmine'
+
   attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten, :piece_info
 
   has_many :sales
@@ -105,6 +108,12 @@ class Piece < ActiveRecord::Base
 
   def id_with_info_and_price
     {id: self.id, label: self.info, price: self.price}
+  end
+
+  def self.table_by_size(collection = nil)
+    Piece.all.pivot("size") {|p| p.size }.pivot("name") {|p| p.name }.to_2d("Anzahl") do |pieces|
+      pieces.inject(0) { |result, piece| result += piece.sales_count.to_i; result }
+    end
   end
 
   private
