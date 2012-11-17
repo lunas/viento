@@ -58,6 +58,11 @@ class Piece < ActiveRecord::Base
           .group('pieces.id')
   end
 
+  def period(from, to)
+    Piece.select("collection, max(date) as last_sale, min(date) as first_sale")
+         .group("collection").joins(:sales).having("min(date) > '2010-10-10' and max(date) < '2012-12-12'")
+  end
+
   # TODO rspec
   def self.filter(search, collection)
     if search.present?
@@ -129,7 +134,7 @@ class Piece < ActiveRecord::Base
   private
 
   def self.table_by(pivot_column, pivot_column_name)
-    Piece.all.pivot(pivot_column_name) {|p| p.send(pivot_column) }.pivot("name") {|p| p.name }.to_2d("Anzahl") do |pieces|
+    Piece.all.pivot(pivot_column_name) {|p| p.send(pivot_column) }.pivot("Name") {|p| p.name }.to_2d("Anzahl") do |pieces|
       pieces.inject(0) { |result, piece| result += piece.sales_count.to_i; result }
     end
   end
