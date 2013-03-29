@@ -1,5 +1,8 @@
 Blog::Application.routes.draw do
-  resources :sales
+
+  resources :sales do
+    get 'filter', on: :collection
+  end
 
   resources :pieces do
     get 'copy', on: :member

@@ -23,7 +23,7 @@ $(document).ready ->
 
   $('#messages').fadeOut(6000)
 
-  $('.edit_form').validate()
+  $('.edit_form').validate() if $('.edit_form').length != 0
 
   $('#pieces tr td:not([class*=delete])').click (e)->
     url = 'pieces/' + $(this).parent().attr('data-piece_id') + '/edit'
@@ -68,8 +68,8 @@ $(document).ready ->
       match = value.match(/^(\d\d)(\/\d\d)?$/)
       return false if match == null
       year1 = parseInt(match[1])
+      return true if match[2] == undefined # i.e. only one match, like '12'
       year2 = parseInt(match[2].replace('/',''))
-      return true if isNaN(year2) # i.e. only one match, like '12'
       return true if year2 - year1 == 1
       return false
     ), "Kollektion muss entweder die Form '12' oder '12/13' haben."

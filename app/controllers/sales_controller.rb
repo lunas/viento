@@ -2,15 +2,26 @@ class SalesController < ApplicationController
 
   before_filter :authenticate_user!
 
+
   # GET /sales
   # GET /sales.json
+
   def index
     @sales = Sale.all
+    @page_title = 'Verkaeufe'
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sales }
     end
+  end
+
+  def filter
+    criteria = get_criteria
+    @sales = Sale.filter criteria
+    @page_title = create_title criteria
+
+    render :index
   end
 
   # GET /sales/new
@@ -121,6 +132,29 @@ class SalesController < ApplicationController
         clients_path
       end
     end
+  end
+
+  def get_criteria
+    criteria = { name: params[:name], collection: params[:collection] }
+    if params[:date_from].present?
+      criteria[:attribute] = :date
+      criteria[:value] = params[:date_from]..params[:date_to]
+      return criteria
+    end
+    [:size, :color, :fabric].each do |attr|
+      if params[attr].present?
+        criteria[:attribute] = "pieces.#{attr}"
+        criteria[:value] = params[attr]
+        return criteria
+      end
+    end
+    criteria
+  end
+
+  def create_title(criteria)
+    attribute = criteria[:attribute].gsub("pieces.", "").capitalize
+    title = "Verkaeufe: #{criteria[:name]}, #{attribute} #{criteria[:value]}"
+    title
   end
 
   end

@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 3.2.1'
 gem 'client_side_validations'
 # gem 'client_side_validations-simple_form'
 gem 'goldmine',  :git => 'https://github.com/lunas/goldmine.git'
+gem 'decent_exposure'
 
 # Gems used only for assets and not required
 # in production environments by default.

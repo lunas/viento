@@ -12,7 +12,7 @@ $(document).ready ->
     return false
   )
 
-  $('.dropdown-toggle').dropdown()
+  # $('.dropdown-toggle').dropdown()
 
   $('#messages').fadeOut(6000)
 

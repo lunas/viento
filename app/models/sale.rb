@@ -10,6 +10,13 @@ class Sale < ActiveRecord::Base
   validate :date
   before_save :copy_attributes_if_empty
 
+  # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
+  def self.filter(criteria)
+    Sale.joins(:piece).where("pieces.name" => criteria[:name] )
+                      .where( criteria[:attribute] => criteria[:value] )
+                      .order( criteria[:attribute] )
+  end
+
   def price
     piece.try(:price)
   end
@@ -63,4 +70,5 @@ class Sale < ActiveRecord::Base
       errors.add(:piece_info, "Angabe zum Teil war unklar; meintest du dieses? (Es muss eins aus der Liste sein.")
     end
   end
+
 end
