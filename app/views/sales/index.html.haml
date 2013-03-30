@@ -1,24 +1,9 @@
+= form_tag filter_sales_path, :method => 'get', id: 'sales_search', :class => 'form-search' do |f|
+  .well.well-small
+    %ul.nav.nav-pills
+      %li.pull-right
+        %label Pro Seite:
+        = select_tag 'per_page_filter', options_for_select(per_page_options, per_page), class: 'span1'
 
-%table
-  %tr
-    %th Client
-    %th Piece id integer
-    %th Date
-    %th Actual price
-    %th
-    %th
-    %th
-
-  - @sales.each do |sale|
-    %tr
-      %td= sale.client_id
-      %td= sale.piece_id
-      %td= sale.date
-      %td= sale.actual_price
-      %td= link_to 'Show', sale
-      %td= link_to 'Edit', edit_sale_path(sale)
-      %td= link_to 'Destroy', sale, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Sale', new_sale_path
+  #sales
+    = render :partial => 'sales'

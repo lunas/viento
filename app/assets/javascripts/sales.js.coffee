@@ -3,6 +3,24 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
+  # Sale index
+  $('#sales th a').live('click', ()->
+    $.getScript(this.href)
+    return false
+  )
+
+  $('#sales_search #per_page_filter').on('change', ()->
+    $('#per_page').val( $('#sales_search #per_page_filter').val() )
+    $.get( $('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script')
+    return false
+  )
+
+  $('#sales tr td:not([class*=delete])').click (e)->
+    url = '/sales/' + $(this).parent().attr('data-sale_id') + '/edit'
+    window.location = url
+
+
+  # Sale new/edit form
   $('.sale_form input#sale_client_name_and_city').autocomplete
     source: "/clients/find"
     minLength: 1

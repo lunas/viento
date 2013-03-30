@@ -1,0 +1,35 @@
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
+= hidden_field_tag :per_page, per_page
+= hidden_field_tag :name, params[:name]
+= hidden_field_tag :color, params[:color]
+= hidden_field_tag :size, params[:size]
+= hidden_field_tag :fabric, params[:fabric]
+= hidden_field_tag :date_from, params[:date_from]
+= hidden_field_tag :date_to, params[:date_to]
+
+.total_items
+  #{@sales.total_entries} Teile
+  %br gefunden:
+
+%table.table
+  %tr
+    %th= sale_sortable 'clients.last_name', 'Kundin'
+    %th= sale_sortable 'name', 'Teil'
+    %th= sale_sortable 'actual_price', 'Preis'
+    %th= sale_sortable 'date', 'Verkaufsdatum'
+
+  - @sales.each do |sale|
+    %tr{"data-sale_id" => "#{sale.id}"}
+      %td= sale.client.name
+      %td= sale.piece.name
+      %td= sale.actual_price
+      %td= sale.date
+
+      %td.delete
+        - if sale.piece.count_sold == 0
+          = link_to sale, :confirm => 'Are you sure?', :method => :delete do
+            %i.icon-remove
+
+-# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
+= will_paginate @sales,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

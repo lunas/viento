@@ -2,6 +2,7 @@ class SalesController < ApplicationController
 
   before_filter :authenticate_user!
 
+  helper_method :sort_column, :sort_direction, :per_page
 
   # GET /sales
   # GET /sales.json
@@ -17,10 +18,12 @@ class SalesController < ApplicationController
   end
 
   def filter
+    second_order = sort_column == 'name' ? 'date' : 'pieces.name'
     criteria = get_criteria
-    @sales = Sale.filter criteria
+    @sales = Sale.filter(criteria)
+                 .order("#{sort_column} #{sort_direction}, #{second_order}" )
+                 .paginate(:per_page => per_page, :page => params[:page])
     @page_title = create_title criteria
-
     render :index
   end
 
@@ -157,4 +160,13 @@ class SalesController < ApplicationController
     title
   end
 
+
+  private
+
+  def sort_column
+    sort_by = params[:sort]
+    return "clients.last_name" if sort_by == "clients.last_name"
+    Sale.column_names.include?(sort_by) ? sort_by : "name"
   end
+
+end

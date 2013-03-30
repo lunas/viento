@@ -12,9 +12,8 @@ class Sale < ActiveRecord::Base
 
   # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
   def self.filter(criteria)
-    Sale.joins(:piece).where("pieces.name" => criteria[:name] )
+    Sale.joins(:piece, :client).where("pieces.name" => criteria[:name] )
                       .where( criteria[:attribute] => criteria[:value] )
-                      .order( criteria[:attribute] )
   end
 
   def price
