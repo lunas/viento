@@ -12,8 +12,11 @@ class Sale < ActiveRecord::Base
 
   # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
   def self.filter(criteria)
-    Sale.joins(:piece, :client).where("pieces.name" => criteria[:name] )
-                      .where( criteria[:attribute] => criteria[:value] )
+    sales = Sale.joins(:piece, :client)
+    sales = sales.where("pieces.name" => criteria[:name] )          if criteria[:name] != 'total Anzahl'
+    sales = sales.where( criteria[:attribute] => criteria[:value] ) if criteria[:value] != 'total Anzahl' && criteria.has_key?(:attribute)
+    sales = sales.where( "pieces.collection" => criteria[:collection] ) if criteria.has_key?(:collection) && criteria[:collection] != 'total Anzahl'
+    sales
   end
 
   def price

@@ -18,7 +18,7 @@ class SalesController < ApplicationController
   end
 
   def filter
-    second_order = sort_column == 'name' ? 'date' : 'pieces.name'
+    second_order = sort_column == 'date' ? 'clients.last_name' : 'date'
     criteria = get_criteria
     @sales = Sale.filter(criteria)
                  .order("#{sort_column} #{sort_direction}, #{second_order}" )
@@ -138,7 +138,8 @@ class SalesController < ApplicationController
   end
 
   def get_criteria
-    criteria = { name: params[:name], collection: params[:collection] }
+    criteria = { name: params[:name] }
+    criteria[:collection] = params[:collection] if params[:collection]
     if params[:date_from].present?
       criteria[:attribute] = :date
       criteria[:value] = params[:date_from]..params[:date_to]
@@ -155,8 +156,19 @@ class SalesController < ApplicationController
   end
 
   def create_title(criteria)
-    attribute = criteria[:attribute].gsub("pieces.", "").capitalize
-    title = "Verkaeufe: #{criteria[:name]}, #{attribute} #{criteria[:value]}"
+    if criteria.has_key? :attribute
+      if criteria[:attribute] == :date
+        attribute = "verkauft zwischen "
+        value = criteria[:value]
+        value = "#{value.begin} und #{value.end}"
+      else
+        attribute = criteria[:attribute].gsub("pieces.", "").capitalize
+        value = criteria[:value] if criteria.has_key? :value
+      end
+    end
+
+    title = "Verkaeufe: #{criteria[:name]}, #{attribute} #{value}".strip
+    title += " Kollektion #{criteria[:collection]}" if criteria.has_key? :collection && criteria[:collection] != 'total Anzahl'
     title
   end
 
@@ -165,8 +177,14 @@ class SalesController < ApplicationController
 
   def sort_column
     sort_by = params[:sort]
-    return "clients.last_name" if sort_by == "clients.last_name"
-    Sale.column_names.include?(sort_by) ? sort_by : "name"
+    #return "clients.last_name" if sort_by == "clients.last_name"
+    #Sale.column_names.include?(sort_by) ? sort_by : "name"
+    (Sale.column_names  + ['clients.last_name']).include?(sort_by) ? sort_by : "date"
   end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
+  end
+
 
 end

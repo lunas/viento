@@ -16,7 +16,7 @@ jQuery ->
   )
 
   $('#sales tr td:not([class*=delete])').click (e)->
-    url = '/sales/' + $(this).parent().attr('data-sale_id') + '/edit'
+    url = '/  sales/' + $(this).parent().attr('data-sale_id') + '/edit'
     window.location = url
 
 

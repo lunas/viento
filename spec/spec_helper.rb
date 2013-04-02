@@ -11,11 +11,14 @@ Spork.prefork do
   require "capybara/rspec"
   require 'database_cleaner'
 
+
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
+    config.render_views
+
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -31,8 +34,6 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     #config.use_transactional_fixtures = true
-    # ...no, we want instead:
-    DatabaseCleaner.strategy = :truncation
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -54,8 +55,20 @@ Spork.each_run do
     # This code will be run each time you run your specs.
 
     RSpec.configure do |config|
-      config.before :each do
-        DatabaseCleaner.clean
+
+      config.before :suite do
+        DatabaseCleaner.strategy = :transaction
+        DatabaseCleaner.clean_with :truncation
       end
+
+      config.before :each do
+        DatabaseCleaner.start
+      end
+
+      config.after :each do
+        DatabaseCleaner.clean
+        Timecop.return
+      end
+
     end
 end

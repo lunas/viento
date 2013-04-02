@@ -1,7 +1,21 @@
 %p Verkaufte Teile...
 
-%ul
-  %li= link_to "...pro Groesse", analysis_size_url
-  %li= link_to "...pro Color", analysis_color_url
-  %li= link_to "...pro Material", analysis_fabric_url
-  %li= link_to "...pro Zeitraum", analysis_collection_url
+.analysis_form
+  = simple_form_for :analysis, url: analysis_size_path, method: 'get', html: {class: 'form-horizontal'} do |f|
+    = f.input :collection, label: "...pro Groesse", collection: Piece.collections, required: false
+    = f.submit 'Ok'
+.analysis_form
+  = simple_form_for :analysis, url: analysis_color_path, method: 'get', html: {class: 'form-horizontal'} do |f|
+    = f.input :collection, label: "...pro Color", collection: Piece.colors, required: false
+    = f.submit 'Ok'
+.analysis_form
+  = simple_form_for :analysis, url: analysis_fabric_path, method: 'get', html: {class: 'form-horizontal'} do |f|
+    = f.input :collection, label: "...pro Material", collection: Piece.fabrics, required: false
+    = f.submit 'Ok'
+.analysis_form
+  = simple_form_for :analysis, url: analysis_collection_path, :method => 'get',
+    html: {class:'form-horizontal'} do |f|
+    = f.label "...pro Zeitraum", required: false
+    = f.input :date_from, as: :datepicker, label: "von", required: false
+    = f.input :date_to, as: :datepicker, label: "bis", required: false
+    = f.submit 'Ok'

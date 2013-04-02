@@ -48,6 +48,21 @@ class Piece < ActiveRecord::Base
     collection.nil? ? scoped : where('collection = ?', collection)
   end
 
+  def self.period(from, to)
+    #Piece.select("pieces.id, name, collection, max(date) as last_sale, min(date) as first_sale, count(pieces.id) as sales_count")
+    #.group("pieces.id").joins(:sales).having("min(date) >= ? and max(date) <= ?", from, to)
+
+    Piece.select("pieces.id, name, collection, count(pieces.id) as sales_count")
+      .joins(:sales)
+      .where("sales.date" => (from..to) )
+      .group("pieces.id")
+
+    #Piece.select("pieces.id, name, collection, count(pieces.id) as sales_count")
+    #     .joins(:sales)
+    #     .where("sales.date" => (from..to))
+    #Piece.joins(:sales).where("sales.date" => (from..to))
+  end
+
   # TODO rspec
   def self.with_stock_and_sold
   #scope :with_stock_and_sold,
@@ -56,11 +71,6 @@ class Piece < ActiveRecord::Base
           .select('count_produced - count(sales.id) as stock')
           .joins('LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
           .group('pieces.id')
-  end
-
-  def period(from, to)
-    Piece.select("collection, max(date) as last_sale, min(date) as first_sale")
-         .group("collection").joins(:sales).having("min(date) > '2010-10-10' and max(date) < '2012-12-12'")
   end
 
   # TODO rspec
@@ -128,7 +138,7 @@ class Piece < ActiveRecord::Base
   end
 
   def self.table_by_collection(from, to)
-    period(from, to).table_by(:collection, "Kollektion, collection")
+    period(from, to).table_by(:collection, "Kollektion")
   end
 
   private
@@ -139,18 +149,4 @@ class Piece < ActiveRecord::Base
     end
   end
 
-    # pr�ft, obs schon ein Teil mit genau gleichem Namen, Kollektion, Material, Farbe und Gr�sse gibt.
-    # Wenn nichts gefunden wird, ist gut (true, sonst false)
-  def validate
-    p = Piece.find(:first, :conditions => ["name = ? AND kollektion = ? AND material = ? AND farbe = ? AND groesse = ?",
-                                           self.name, self.kollektion, self.material, self.farbe, self.groesse])
-    if p.nil? then
-      return true
-    elsif p.id == self.id then
-      return true
-    else
-      errors.add_to_base("Es gibt schon ein Teil mit genau diesem Namen, Material, dieser Farbe, Gr&ouml;sse und Kollektion.")
-      return false
-    end
-  end
 end

@@ -1,5 +1,8 @@
 class AnalysisController < ApplicationController
 
+  expose(:date_from) { params[:analysis][:date_from] || Sale.minimum(:date) }
+  expose(:date_to)   { params[:analysis][:date_to]   || Sale.maximum(:date) }
+
   def index
     @page_title = "Auswertung"
   end
@@ -27,7 +30,7 @@ class AnalysisController < ApplicationController
 
   def by_collection
     @page_title = "Auswertung pro Kollektion"
-    @table = Piece.table_by_collection params[:from], params[:to]
+    @table = Piece.table_by_collection date_from, date_to
     @analyzed_by = :collection
     render :result
   end

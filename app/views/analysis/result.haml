@@ -1,8 +1,11 @@
 %table.analysis
-  - @table.first.each do |header|
-    %th= header
-  - @table[1..-1].each_with_index do |row, row_index|
-    %tr
-      %th= row[0]
-      - row[1..-1].each_with_index do |cell, col_index|
-        %td= cell_link(cell.to_s, row_index+1, col_index+1, @table, @analyzed_by)
+  - if @table.empty?
+    %p Keine Verkäufe für diesen Zeitraum gefunden.
+  - else
+    - @table.first.each do |header|
+      %th= header
+    - @table[1..-1].each_with_index do |row, row_index|
+      %tr
+        %th= row[0]
+        - row[1..-1].each_with_index do |cell, col_index|
+          %td= cell_link(cell.to_s, row_index+1, col_index+1, @table, @analyzed_by)
