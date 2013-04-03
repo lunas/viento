@@ -16,6 +16,7 @@ Blog::Application.routes.draw do
 
   resources :clients do
     get 'find', on: :collection
+    get 'export', on: :collection
     resources :sales
   end
 

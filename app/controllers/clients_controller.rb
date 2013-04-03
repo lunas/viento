@@ -35,6 +35,14 @@ class ClientsController < ApplicationController
     end
   end
 
+  def export
+    @clients = Client.for_export
+    respond_to do |format|
+      format.csv { send_data @clients.to_csv }
+      format.xls
+    end
+  end
+
   # GET /clients/1
   # GET /clients/1.json
   def show

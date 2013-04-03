@@ -14,6 +14,8 @@ class Client < ActiveRecord::Base
     .joins('left outer join sales s on clients.id = s.client_id')
     .group('clients.id')
 
+  scope :for_export, with_sales_data.order("last_name, first_name, zip")
+
   def self.filter(search, status, role)
     if search.present?
       search_crit = "%#{search}%"
@@ -28,6 +30,18 @@ class Client < ActiveRecord::Base
 
   def self.with_status(status)
     where('status = ?', status)
+  end
+
+  def self.to_csv( options = {} )
+    CSV.generate(options) do |csv|
+      cols = column_names.delete_if{ |col| col == 'roles_mask' }
+      cols += %w{sales_total latest_sale_date}
+      csv << (cols + ['role'])
+      for_export.each do |client|
+        row = client.attributes.values_at(*cols) << client.role
+        csv << row
+      end
+    end
   end
 
   def address
@@ -59,6 +73,7 @@ class Client < ActiveRecord::Base
   def latest_sale_date
     self.sales.first.try(:date) # works since sales are ordered by date DESC
   end
+
 
   ## Roles
 

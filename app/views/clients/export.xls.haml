@@ -1,0 +1,57 @@
+%table
+  %tr
+    %th id
+    %th title
+    %th first_name
+    %th last_name
+    %th street
+    %th company
+    %th street_number
+    %th zip
+    %th country
+    %th email
+    %th phone_work
+    %th phone_home
+    %th phone_mobile
+    %th notes
+    %th profession
+    %th first_name2
+    %th last_name2
+    %th street2
+    %th created_at
+    %th updated_at
+    %th city
+    %th sales_count
+    %th sales_total
+    %th latest_sale_date
+    %th status
+    %th role
+
+  -@clients.each do |client|
+    %tr
+      %td= client.id
+      %td= client.title
+      %td= client.first_name
+      %td= client.last_name
+      %td= client.street
+      %td= client.company
+      %td= client.street_number
+      %td= client.zip
+      %td= client.country
+      %td= client.email
+      %td= client.phone_work
+      %td= client.phone_home
+      %td= client.phone_mobile
+      %td= client.notes
+      %td= client.profession
+      %td= client.first_name2
+      %td= client.last_name2
+      %td= client.street2
+      %td= client.created_at
+      %td= client.updated_at
+      %td= client.city
+      %td= client.sales_count
+      %td= client.sales_total
+      %td= client.latest_sale_date
+      %td= client.status
+      %td= client.role
