@@ -14,8 +14,7 @@
     = f.submit 'Ok'
 .analysis_form
   = simple_form_for :analysis, url: analysis_collection_path, :method => 'get',
-    html: {class:'form-horizontal'} do |f|
-    = f.label "...pro Zeitraum", required: false
-    = f.input :date_from, as: :datepicker, label: "von", required: false
+    html: {class:'form-horizontal', id: 'zeitraum'} do |f|
+    = f.input :date_from, as: :datepicker, label: "...im Zeitraum:  von", required: false
     = f.input :date_to, as: :datepicker, label: "bis", required: false
     = f.submit 'Ok'
