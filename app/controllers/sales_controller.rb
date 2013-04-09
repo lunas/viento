@@ -4,6 +4,13 @@ class SalesController < ApplicationController
 
   helper_method :sort_column, :sort_direction, :per_page
 
+  expose(:collection){ params[:collection].present? ?
+                       params[:collection] : nil }
+  expose(:date_from) { params[:date_from].present? ?
+                       params[:date_from] : Sale.minimum(:date).to_s }
+  expose(:date_to)   { params[:date_to].present? ?
+                       params[:date_to] : Sale.maximum(:date).to_s }
+
   # GET /sales
   # GET /sales.json
 
@@ -151,5 +158,26 @@ class SalesController < ApplicationController
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
   end
 
+  def create_subtitle(criteria)
+    total = 'total Anzahl'
+    if criteria.has_key? :attribute
+      if criteria[:attribute] == :date
+        value = criteria[:value]
+        text = t('analysis.sold_between', from: value.begin, to: value.end)
+      else
+        attribute = criteria[:attribute].gsub("pieces.", '')
+        text = criteria[:value] == total ?
+          t("analysis.by_#{attribute}.total") :
+          t("analysis.by_#{attribute}.attribute", value: criteria[:value])
+      end
+    end
+
+    name = criteria[:name] == total ? t('analysis.total.name') : criteria[:name]
+    collection = criteria[:collection] == total || criteria[:collection].nil? ?
+      t("analysis.total.collection") :
+      t("analysis.collection", collection: criteria[:collection])
+    subtitle = "#{name}, #{text}, #{collection}".strip
+    subtitle
+  end
 
 end

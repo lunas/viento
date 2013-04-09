@@ -1,0 +1,37 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  start: "Shalom"
+  ok: "Ok"
+  analysis:
+    index:
+      title: "Auswertung"
+      sold_by: "Verkaufte Teile..."
+      by_size: "...pro Grösse"
+      by_color: "...pro Farbe"
+      by_fabric: "...pro Material"
+      by_date_from: "...im Zeitraum: von"
+      by_date_to: "bis"
+      all_collections: "Alle Kollektionen"
+    result:
+      no_results: "Keine Verkäufe für diesen Zeitraum gefunden."
+    sold_between: "verkauft zwischen %{from} und %{to}"
+    collection: "Kollektion %{collection}"
+    by_size:
+      title: "Auswertung pro Grösse"
+      total: "alle Grössen"
+      attribute: "Grösse %{value}"
+    by_color:
+      title: "Auswertung pro Farbe"
+      total: "alle Farben"
+      attribute: "Farbe %{value}"
+    by_fabric:
+      title: "Auswertung pro Material"
+      total: "alle Materialien"
+      attribute: "Material %{value}"
+    by_collection:
+      title: "Auswertung pro Kollektion"
+    total:
+      name: "alle Teile"
+      collection: "alle Kollektionen"

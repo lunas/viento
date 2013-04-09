@@ -1,6 +1,6 @@
 class StartController < ApplicationController
 
   def index
-    flash[:notice] = "start"
+    flash[:notice] = t :start
   end
 end

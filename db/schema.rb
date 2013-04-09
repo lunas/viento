@@ -39,7 +39,12 @@ ActiveRecord::Schema.define(:version => 20130403065525) do
     t.integer  "sales_count"
   end
 
+  add_index "clients", ["city"], :name => "city_ix"
+  add_index "clients", ["first_name"], :name => "first_name_ix"
   add_index "clients", ["last_name"], :name => "last_name_ix"
+  add_index "clients", ["roles_mask"], :name => "roles_mask_ix"
+  add_index "clients", ["status"], :name => "status_ix"
+  add_index "clients", ["street"], :name => "street_ix"
 
   create_table "pieces", :force => true do |t|
     t.string   "name"
@@ -55,7 +60,13 @@ ActiveRecord::Schema.define(:version => 20130403065525) do
     t.integer  "sales_count"
   end
 
+  add_index "pieces", ["collection"], :name => "collection_ix"
+  add_index "pieces", ["color"], :name => "color_ix"
+  add_index "pieces", ["count_produced"], :name => "count_produced_ix"
+  add_index "pieces", ["fabric"], :name => "fabric_ix"
   add_index "pieces", ["name"], :name => "name_ix"
+  add_index "pieces", ["price"], :name => "price_ix"
+  add_index "pieces", ["size"], :name => "size_ix"
 
   create_table "sales", :force => true do |t|
     t.integer  "client_id"
@@ -66,7 +77,9 @@ ActiveRecord::Schema.define(:version => 20130403065525) do
     t.datetime "updated_at",                                  :null => false
   end
 
+  add_index "sales", ["actual_price"], :name => "actual_price_ix"
   add_index "sales", ["client_id"], :name => "client_id_ix"
+  add_index "sales", ["date"], :name => "date_ix"
   add_index "sales", ["piece_id"], :name => "piece_id_ix"
 
   create_table "users", :force => true do |t|

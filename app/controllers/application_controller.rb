@@ -12,13 +12,21 @@ class ApplicationController < ActionController::Base
     [5, 10, 15, 20, 25, 50, 100, 200, 500, 1000, 9999].include?(pp) ? pp : 15
   end
 
+  # Returns a hash that has
+  # in any case a key :name
+  # maybe a key :collection
+  # maybe a key :attribute which has a value of either
+  #   :date, "pieces.size", "pieces.color", "pieces.fabric"
+  # If there is a key "attribute", there is also a key :value
+  # containing a value corresponding to the attribute;
+  # if :attribute is :date, then value is a range (date_from..date_to).
   def get_criteria
     parameters = params[:analysis] ? params[:analysis] : params
     criteria = { name: parameters[:name] }
     criteria[:collection] = parameters[:collection] if parameters[:collection]
-    if parameters[:date_from].present?
+    if not parameters[:date_from].nil?
       criteria[:attribute] = :date
-      criteria[:value] = parameters[:date_from]..parameters[:date_to]
+      criteria[:value] = date_from..date_to
       return criteria
     end
     [:size, :color, :fabric].each do |attr|
@@ -29,26 +37,6 @@ class ApplicationController < ActionController::Base
       end
     end
     criteria
-  end
-
-  def create_subtitle(criteria)
-    if criteria.has_key? :attribute
-      if criteria[:attribute] == :date
-        attribute = "verkauft zwischen "
-        value = criteria[:value]
-        value = "#{value.begin} und #{value.end}"
-      else
-        attribute = criteria[:attribute].gsub("pieces.", "").capitalize
-        if criteria.has_key? :value
-          value = criteria[:value] == 'total Anzahl' ? 'alle' : criteria[:value]
-        end
-      end
-    end
-
-    name = criteria[:name] == 'total Anzahl' ? 'alle' : criteria[:name]
-    subtitle = "#{name}, #{attribute} #{value}".strip
-    subtitle += ", Kollektion #{criteria[:collection]}" if criteria.has_key?(:collection) && criteria[:collection] != 'total Anzahl'
-    subtitle
   end
 
 end

@@ -1,6 +1,6 @@
 %table.analysis
   - if @table.empty?
-    %p Keine Verkäufe für diesen Zeitraum gefunden.
+    %p= t('.no_results')
   - else
     - @table.first.each do |header|
       %th= header

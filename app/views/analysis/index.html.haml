@@ -1,20 +1,20 @@
-%p Verkaufte Teile...
+%p= t('.sold_by')
 
 .analysis_form
   = simple_form_for :analysis, url: analysis_size_path, method: 'get', html: {class: 'form-horizontal'} do |f|
-    = f.input :collection, label: "...pro Groesse", collection: Piece.collections, required: false, prompt: 'alle Kollektionen'
-    = f.submit 'Ok'
+    = f.input :collection, label: t('.by_size'), collection: Piece.collections, required: false, prompt: t('.all_collections')
+    = f.submit t('ok')
 .analysis_form
   = simple_form_for :analysis, url: analysis_color_path, method: 'get', html: {class: 'form-horizontal'} do |f|
-    = f.input :collection, label: "...pro Color", collection: Piece.collections, required: false, prompt: 'alle Kollektionen'
-    = f.submit 'Ok'
+    = f.input :collection, label: t('.by_color'), collection: Piece.collections, required: false, prompt: t('.all_collections')
+    = f.submit t('ok')
 .analysis_form
   = simple_form_for :analysis, url: analysis_fabric_path, method: 'get', html: {class: 'form-horizontal'} do |f|
-    = f.input :collection, label: "...pro Material", collection: Piece.collections, required: false, prompt: 'alle Kollektionen'
-    = f.submit 'Ok'
+    = f.input :collection, label: t('.by_fabric'), collection: Piece.collections, required: false, prompt: t('.all_collections')
+    = f.submit t('ok')
 .analysis_form
   = simple_form_for :analysis, url: analysis_collection_path, :method => 'get',
     html: {class:'form-horizontal', id: 'zeitraum'} do |f|
-    = f.input :date_from, as: :datepicker, label: "...im Zeitraum:  von", required: false
-    = f.input :date_to, as: :datepicker, label: "bis", required: false
-    = f.submit 'Ok'
+    = f.input :date_from, as: :datepicker, label: t('.by_date_from'), required: false
+    = f.input :date_to, as: :datepicker, label: t('.by_date_to'), required: false
+    = f.submit t('ok')
