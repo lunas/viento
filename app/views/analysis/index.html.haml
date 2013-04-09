@@ -2,15 +2,15 @@
 
 .analysis_form
   = simple_form_for :analysis, url: analysis_size_path, method: 'get', html: {class: 'form-horizontal'} do |f|
-    = f.input :collection, label: "...pro Groesse", collection: Piece.collections, required: false
+    = f.input :collection, label: "...pro Groesse", collection: Piece.collections, required: false, prompt: 'alle Kollektionen'
     = f.submit 'Ok'
 .analysis_form
   = simple_form_for :analysis, url: analysis_color_path, method: 'get', html: {class: 'form-horizontal'} do |f|
-    = f.input :collection, label: "...pro Color", collection: Piece.colors, required: false
+    = f.input :collection, label: "...pro Color", collection: Piece.collections, required: false, prompt: 'alle Kollektionen'
     = f.submit 'Ok'
 .analysis_form
   = simple_form_for :analysis, url: analysis_fabric_path, method: 'get', html: {class: 'form-horizontal'} do |f|
-    = f.input :collection, label: "...pro Material", collection: Piece.fabrics, required: false
+    = f.input :collection, label: "...pro Material", collection: Piece.collections, required: false, prompt: 'alle Kollektionen'
     = f.submit 'Ok'
 .analysis_form
   = simple_form_for :analysis, url: analysis_collection_path, :method => 'get',

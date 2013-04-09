@@ -13,14 +13,13 @@
 //= require jquery
 //= require jquery-ui-1.9.0.custom
 //= require jquery_ujs
-//xx = require_tree . << loads in wrong order; so load manually:
+//xx = xxrequire_tree . << loads in wrong order; so load manually:
 //=require bootstrap-all
 //=require clients
-//=require jquery
 //=require jquery.validate
 //=require jquery.dataTables
 //=require pieces
 //=require sales
 //=require dates
-//xx = require rails.validations
-//xx = require rails.validations.simple_form
+//xx = xxrequire rails.validations
+//xx = xxrequire rails.validations.simple_form

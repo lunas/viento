@@ -23,7 +23,8 @@ class SalesController < ApplicationController
     @sales = Sale.filter(criteria)
                  .order("#{sort_column} #{sort_direction}, #{second_order}" )
                  .paginate(:per_page => per_page, :page => params[:page])
-    @page_title = create_title criteria
+    @page_title = "Verkaeufe"
+    @page_subtitle = create_subtitle criteria
     render :index
   end
 
@@ -136,42 +137,6 @@ class SalesController < ApplicationController
       end
     end
   end
-
-  def get_criteria
-    criteria = { name: params[:name] }
-    criteria[:collection] = params[:collection] if params[:collection]
-    if params[:date_from].present?
-      criteria[:attribute] = :date
-      criteria[:value] = params[:date_from]..params[:date_to]
-      return criteria
-    end
-    [:size, :color, :fabric].each do |attr|
-      if params[attr].present?
-        criteria[:attribute] = "pieces.#{attr}"
-        criteria[:value] = params[attr]
-        return criteria
-      end
-    end
-    criteria
-  end
-
-  def create_title(criteria)
-    if criteria.has_key? :attribute
-      if criteria[:attribute] == :date
-        attribute = "verkauft zwischen "
-        value = criteria[:value]
-        value = "#{value.begin} und #{value.end}"
-      else
-        attribute = criteria[:attribute].gsub("pieces.", "").capitalize
-        value = criteria[:value] if criteria.has_key? :value
-      end
-    end
-
-    title = "Verkaeufe: #{criteria[:name]}, #{attribute} #{value}".strip
-    title += " Kollektion #{criteria[:collection]}" if criteria.has_key? :collection && criteria[:collection] != 'total Anzahl'
-    title
-  end
-
 
   private
 

@@ -1,4 +1,4 @@
-class SeedController < ApplicationController
+class StartController < ApplicationController
 
   def index
     flash[:notice] = "start"

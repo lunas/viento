@@ -17,7 +17,10 @@ $(document).ready ->
   $('#pieces_search input').keyup( (e)->
     if (e.keyCode == 27)
       $('#search').val('')
-    $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
+      esc = true
+    num_chars = $('#search').val().length
+    if esc or num_chars == 0 or num_chars > 1
+      $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
     return false
   )
 

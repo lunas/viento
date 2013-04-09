@@ -34,7 +34,9 @@
                 \#{link_to "Login", new_user_session_path} |
                 -# \#{link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)}
     .container#main_container
-      %h1= @page_title
+      %h1.main= @page_title
+      - if @page_subtitle.present?
+        %h2.main= @page_subtitle
       #messages
         - flash.each do |name, msg|
           = content_tag :div, msg, id: "flash_#{name}"

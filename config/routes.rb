@@ -12,7 +12,7 @@ Blog::Application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  root to: 'seed#index'
+  root to: 'start#index'
 
   resources :clients do
     get 'find', on: :collection

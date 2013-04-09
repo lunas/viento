@@ -6,9 +6,12 @@ $(document).ready ->
 
   # search form
   $('#clients_search input').keyup( (e)->
-    if (e.keyCode == 27)
+    if (e.keyCode == 27)  # ESC
       $('#search').val('')
-    $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
+      esc = true
+    num_chars = $('#search').val().length
+    if esc or num_chars == 0 or num_chars > 1
+      $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
     return false
   )
 

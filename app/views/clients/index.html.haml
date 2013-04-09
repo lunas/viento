@@ -4,7 +4,7 @@
     %ul.nav.nav-pills
       %li= link_to 'Neue Kundin', new_client_path
       %li= link_to 'Exportieren', '/clients/export.xls'
-      %li= text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort", :class => 'search-query'
+      %li= text_field_tag :search, params[:search], placeholder: "Suche nach Vorname/Nachname/Ort", :class => 'search-queryxx'
       %li.divider-vertical &nbsp;&nbsp;
       = render 'filter_dropdown', field: 'status', title: 'Status', default: 'aktiv', css: ''
       = render 'filter_dropdown', field: 'role', title: 'Rolle', default: 'Kundinnen', css: ''

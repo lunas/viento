@@ -13,7 +13,7 @@ module AnalysisHelper
       analyzed_by.to_sym => table.first[col_index]
     }
     if params[:analysis]
-      hash[:collection] = params[:analysis][:collection] if params[:analysis][:collection]
+      hash[:collection] = params[:analysis][:collection] if params[:analysis][:collection].present?
       hash[:date_from]  = params[:analysis][:date_from]  if params[:analysis][:date_from]
       hash[:date_to]    = params[:analysis][:date_to]    if params[:analysis][:date_to]
     end
