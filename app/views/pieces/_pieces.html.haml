@@ -3,22 +3,20 @@
 = hidden_field_tag :collection, collection_condition
 = hidden_field_tag :per_page, per_page
 
-.total_items
-  #{@pieces.total_entries} Teile
-  %br gefunden:
+.total_items= t('.total_found_html', number: @pieces.total_entries)
 
 %table.table
   %tr
-    %th= piece_sortable 'name'
-    %th= piece_sortable 'collection', 'Kollektion'
-    %th= piece_sortable 'color'
-    %th= piece_sortable 'fabric', 'Material'
-    %th= piece_sortable 'size', 'Grösse'
-    %th= piece_sortable 'price', 'Preis'
-    %th= piece_sortable 'costs', 'Kosten'
-    %th= piece_sortable 'count_produced', 'Produziert'
-    %th= piece_sortable 'sold', 'Verkauft'
-    %th= piece_sortable 'stock', 'Bestand'
+    %th= piece_sortable t('pieces.name')
+    %th= piece_sortable 'collection', t('collection')
+    %th= piece_sortable 'color', t('color')
+    %th= piece_sortable 'fabric', t('fabric')
+    %th= piece_sortable 'size', t('size')
+    %th= piece_sortable 'price', t('price')
+    %th= piece_sortable 'costs', t('.costs')
+    %th= piece_sortable 'count_produced', t('.produced')
+    %th= piece_sortable 'sold', t('.sold')
+    %th= piece_sortable 'stock', t('.stock')
 
   - @pieces.each do |piece|
     %tr{"data-piece_id" => "#{piece.id}"}
@@ -35,7 +33,7 @@
 
       %td.delete
         - if piece.count_sold == 0
-          = link_to piece, :confirm => 'Are you sure?', :method => :delete do
+          = link_to piece, confirm: t('actions.confirm_delete'), :method => :delete do
             %i.icon-remove
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html

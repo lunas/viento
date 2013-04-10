@@ -11,28 +11,27 @@
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container#main_nav
-          %a.brand Viento
+          %a.brand= t('viento')
           .nav-collapse.collapse
             %ul.nav
               %li{class: "#{nav_class_for(:clients)}"}
-                =link_to "Kundinnen", clients_path
+                =link_to t('main_menu.clients'), clients_path
               %li{class: "#{nav_class_for(:pieces)}"}
-                =link_to "Teile", pieces_path
+                =link_to t('main_menu.pieces'), pieces_path
               %li{class: "#{nav_class_for(:sales)}"}
-                =link_to "Neuer Verkauf", new_sale_path
+                =link_to t('main_menu.new_sale'), new_sale_path
               %li{class: "#{nav_class_for(:sales)}"}
-                =link_to "Auswertung", analysis_menu_path
+                =link_to t('main_menu.analysis'), analysis_menu_path
             %ul.nav.pull-right
               - if user_signed_in?
                 %strong= current_user.username
-                = link_to 'Edit profile', edit_user_registration_path
+                = link_to t('meta.profile'), edit_user_registration_path
                 |
-                \#{link_to "Logout", destroy_user_session_path, method: :delete}
+                \#{link_to t('meta.logout'), destroy_user_session_path, method: :delete}
               - else
-                = link_to "Sign up", new_user_registration_path
+                = link_to t('meta.register'), new_user_registration_path
                 |
-                \#{link_to "Login", new_user_session_path} |
-                -# \#{link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)}
+                \#{link_to t('meta.login'), new_user_session_path} |
     .container#main_container
       %h1.main= @page_title
       - if @page_subtitle.present?

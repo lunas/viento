@@ -3,10 +3,10 @@
     .well.well-small
       %ul.nav.nav-pills
         -if @piece.sales.empty?
-          %li= link_to 'Teil loeschen', @piece, :confirm => 'Teil wirklich endg&uuml;ltig l&ouml;schen?', :method => :delete
+          %li= link_to t('.delete'), @piece, confirm: t('.confirm_delete'), :method => :delete
   .span6
     .well.well-small
       %ul.nav.nav-pills
-        %li= link_to 'Neuer Verkauf dieses Teils', new_piece_sale_path(@piece)
+        %li= link_to t('.new_sale'), new_piece_sale_path(@piece)
 
 = render 'form'

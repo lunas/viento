@@ -3,7 +3,41 @@
 
 de:
   start: "Shalom"
+  viento: "Viento"
   ok: "Ok"
+  status: "Status"
+  role: "Rolle"
+  piece: "Teil"
+  collection: "Kollektion"
+  color: "Farbe"
+  size: "Grösse"
+  fabric: "Material"
+  prize: "Preis"
+  date: "Datum"
+  active: "aktiv"
+  passive: "passiv"
+  all: "alle"
+  per_page: "Pro Seite"
+  actions:
+    cancel: "Abbrechen"
+    save: "Speichern"
+    ok: "Ok"
+    new_sale: "Neuer Verkauf"
+    new_piece: "Neues Teil"
+    confirm_delete: "Wirklich löschen?"
+  will_paginate:
+    next_label: "nächste"
+    previous_label: "vorherige"
+  main_menu:
+    clients: "Kundinnen"
+    pieces: "Teile"
+    new_sale: "Neuer Verkauf"
+    analysis: "Auswertung"
+  meta:
+    profile: "Profil"
+    login: "Anmelden"
+    logout: "Abmelden"
+    register: "Registrieren"
   analysis:
     index:
       title: "Auswertung"
@@ -35,3 +69,60 @@ de:
     total:
       name: "alle Teile"
       collection: "alle Kollektionen"
+  clients:
+    clients:
+      total_found_html: "%{number} Kundinnen<br>gefunden"
+      firstname: "Vorname"
+      lastname: "Nachname"
+      city: "Ort"
+      street: "Strasse/Nr"
+      sales_total: "Total gekauft für"
+      sales_count: "Total gekaufte Teile"
+      latest_sale_date: "Datum letzter Kauf"
+    form:
+      title: "Anrede"
+      firstname: "Vorname"
+      lastname: "Nachname"
+      street: "Strasse & Nr"
+      zip_city: "PLZ, Ort"
+      phone_home: "Tel privat"
+      phone_work: "Tel Arbeit"
+      phone_mobile: "Tel mobile"
+      notes: "Notizen"
+      profession: "Beruf"
+      firstname2: "Vorname 2"
+      lastname2: "Nachname 2"
+      street2: "Strasse & Nr 2"
+    edit:
+      delete: "Kundin löschen"
+      confirm_delete: "Kundin wirklich endgültig löschen?"
+    index:
+      new_client: "Neue Kundin"
+      export: "Exportieren"
+      search: "Suche nach Vorname/Nachname/Ort"
+
+  pieces:
+    name: "Name"
+    form:
+      produced: "Produzierte Stückzahl"
+      costs: "Produktionskosten"
+      copy_new: "nach dem Speichern neues Teil mit gleichen Angaben anzeigen"
+    pieces:
+      total_found_html: "%{number} Kundinnen<br>gefunden"
+      costs: "Kosten"
+      produced: "Produziert"
+      sold: "Verkauft"
+      stock: "Bestand"
+    sales:
+      revenue: "Gesamterlös"
+      sold_to: "%{name} wurde %{number} verkauft an:"
+      client: "Kundin"
+      city: "Ort"
+      prize: "Preis"
+      date: "Datum"
+    edit:
+      delete: "Teil löschen"
+      confirm_delete: "Teil wirklich endgültig löschen?"
+      new_sale: "Neuer Verkauf dieses Teils"
+    index:
+      search: "Suche nach Name/Material/Farbe"

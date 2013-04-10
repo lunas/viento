@@ -2,22 +2,22 @@
   = f.error_notification
   .row
     .span6
-      = f.input :collection, label: 'Kollektion', input_html: {class: 'input-small'}
-      = f.input :name
-      = f.input :color
-      = f.input :fabric, label: 'Material'
-      = f.input :size, label: 'Gr&ouml;sse', input_html: {class: 'input-small'}
-      = f.input :count_produced, label: 'Produzierte St&uuml;ckzahl', input_html: {class: 'input-small'}
-      = f.input :preis, label: 'Preis', input_html: {class: 'input-small', type: 'text'}
-      = f.input :kosten, label: 'Produktionskosten', input_html: {class: 'input-small', type: 'text'}
+      = f.input :collection, label: t('collection'), input_html: {class: 'input-small'}
+      = f.input :name, label: t('piece.name')
+      = f.input :color, label: t('color')
+      = f.input :fabric, label: t('fabric')
+      = f.input :size, label: t('size'), input_html: {class: 'input-small'}
+      = f.input :count_produced, label: t('.produced'), input_html: {class: 'input-small'}
+      = f.input :preis, label: t('prize'), input_html: {class: 'input-small', type: 'text'}
+      = f.input :kosten, label: t('.costs'), input_html: {class: 'input-small', type: 'text'}
 
       .pull-right
         %label.checkbox{for: :copy_new}
-          = check_box_tag(:copy_new, :class => "checkbox") + 'nach dem Speichern neues Teil mit gleichen Angaben anzeigen'
+          = check_box_tag(:copy_new, :class => "checkbox") + t('.copy_new')
 
       .actions.pull-right
-        = link_to 'Abbrechen', pieces_path
-        = f.submit 'Speichern'
+        = link_to t('actions.cancel'), pieces_path
+        = f.submit t('actions.save')
 
     - if !@piece.new_record?
       .span6

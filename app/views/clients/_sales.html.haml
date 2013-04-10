@@ -4,13 +4,13 @@
 
   %table#client_sales.dataTable
     %thead
-      %th Teil
-      %th Kollektion
-      %th Material
-      %th Farbe
-      %th Groesse
-      %th Preis
-      %th Datum
+      %th= t('piece')
+      %th= t('collection')
+      %th= t('fabric')
+      %th= t('color')
+      %th= t('size')
+      %th= t('prize')
+      %th= t('date')
       %th
     %tbody
       - client.sales.each do |sale|
@@ -23,5 +23,5 @@
           %td= sale.actual_price
           %td= sale.date
           %td.delete
-            = link_to client_sale_path(client, sale), :confirm => 'Are you sure?', :method => :delete do
+            = link_to client_sale_path(client, sale), confirm: t('action.confirm_delete'), :method => :delete do
               %i.icon-remove

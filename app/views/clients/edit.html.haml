@@ -3,12 +3,12 @@
     .well.well-small
       %ul.nav.nav-pills
         -if @client.sales.empty?
-          %li= link_to 'Kundin loeschen', @client, :confirm => 'Kundin wirklich endg&uuml;ltig l&ouml;schen?', :method => :delete
+          %li= link_to t('.delete'), @client, :confirm => t('.confirm_delete'), :method => :delete
   .span7
     .well.well-small
       %ul.nav.nav-pills
         -if @client.role? 'Kundinnen'
-          %li= link_to 'Neuer Kauf', new_client_sale_path(@client)
+          %li= link_to t('actions.new_sale'), new_client_sale_path(@client)
 
 = render 'form'
 

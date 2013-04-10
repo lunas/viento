@@ -1,9 +1,9 @@
 %table#sales-overview
   %tr
-    %th Produziert
-    %th Verkauft
-    %th Bestand
-    %th Gesamterl&ouml;s
+    %th= t('pieces.pieces.produced')
+    %th= t('pieces.pieces.sold')
+    %th= t('pieces.pieces.stock')
+    %th= t('.revenue')
   %tr
     %td= piece.count_produced
     %td= piece.count_sold
@@ -11,14 +11,14 @@
     %td= piece.revenue
 
 - if piece.count_sold > 0
-  %p= "#{piece.name} wurde #{times(piece.count_sold)} verkauft an:"
+  %p= t('.sold_to', name: piece.name, number: times(piece.count_sold) )
 
   %table#piece_sales.dataTable
     %thead
-      %th Kundin
-      %th Ort
-      %th Preis
-      %th Datum
+      %th= t('.client')
+      %th= t('.city')
+      %th= t('.prize')
+      %th= t('.date')
       %th
     %tbody
       - piece.sales.each do |sale|
@@ -28,6 +28,6 @@
           %td= sale.actual_price
           %td= sale.date
           %td.delete
-            = link_to piece_sale_path(piece, sale), :confirm => 'Are you sure?', :method => :delete do
+            = link_to piece_sale_path(piece, sale), confirm: t('actions.confirm_delete'), :method => :delete do
               %i.icon-remove
 
