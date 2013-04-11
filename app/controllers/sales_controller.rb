@@ -16,7 +16,7 @@ class SalesController < ApplicationController
 
   def index
     @sales = Sale.all
-    @page_title = 'Verkaeufe'
+    @page_title = t('sales.index.sales')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,7 +30,7 @@ class SalesController < ApplicationController
     @sales = Sale.filter(criteria)
                  .order("#{sort_column} #{sort_direction}, #{second_order}" )
                  .paginate(:per_page => per_page, :page => params[:page])
-    @page_title = "Verkaeufe"
+    @page_title = t('sales.index.sales')
     @page_subtitle = create_subtitle criteria
     render :index
   end
@@ -42,7 +42,7 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     prepare_new_sale
-    @page_title = 'Neuer Verkauf'
+    @page_title = t('actions.new_sale')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,7 +56,7 @@ class SalesController < ApplicationController
   def edit
     @sale = Sale.find(params[:id])
     @parent = find_current_parent
-    @page_title = 'Verkauf bearbeiten'
+    @page_title = t('actions.edit_sale')
   end
 
   # POST /sales
@@ -66,11 +66,11 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to back_url, notice: "Verkauf gespeichert: #{@sale.info}" }
+        format.html { redirect_to back_url, notice: t('sales.create.created', info: @sale.info) }
         format.json { render json: @sale, status: :created, location: @sale }
       else
         format.html do
-          @page_title = 'Neuer Verkauf'
+          @page_title = t('actions.new_sale')
           render action: "new"
         end
         format.json { render json: @sale.errors, status: :unprocessable_entity }
@@ -86,12 +86,12 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.update_attributes(params[:sale])
-        format.html { redirect_to back_url, notice: "Verkauf gespeichert: #{@sale.info}" }
+        format.html { redirect_to back_url, notice: t('sales.update.updated', info: @sale.info) }
         format.json { head :no_content }
       else
         format.html do
           render action: "edit"
-          @page_title = 'Verkauf bearbeiten'
+          @page_title = t('actions.edit_sale')
         end
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
@@ -106,7 +106,7 @@ class SalesController < ApplicationController
     @sale.destroy
 
     respond_to do |format|
-      format.html { redirect_to back_url, notice: "Verkauf geloescht: #{@sale.info}" }
+      format.html { redirect_to back_url, notice: t('sales.destroy.destroyed', info: @sale.info) }
       format.json { head :no_content }
     end
   end

@@ -2,13 +2,13 @@
   = f.error_notification
   .row
     .span6
-      = f.input :client_name_and_city, label: "Kundin"
+      = f.input :client_name_and_city, label: t('.client')
       = f.input :client_id, as: :hidden
-      = f.input :piece_info, label: "Teil"
+      = f.input :piece_info, label: t('.piece')
       = f.input :piece_id, as: :hidden
-      = f.input :date, input_html: {value: @sale.date}, as: :datepicker, label: "Datum"
-      = f.input :actual_price, input_html: {value: @sale.actual_price}, label: "Preis"
+      = f.input :date, input_html: {value: @sale.date}, as: :datepicker, label: t('.date')
+      = f.input :actual_price, input_html: {value: @sale.actual_price}, label: t('.prize')
 
   .form-actions
-    = link_to 'Abbrechen', back_path(@parent)
-    = f.button :submit
+    = link_to t('actions.cancel'), back_path(@parent)
+    = f.button :submit, value: t('actions.save')

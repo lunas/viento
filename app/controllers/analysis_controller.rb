@@ -52,6 +52,8 @@ class AnalysisController < ApplicationController
     end
     if criteria[:collection].present?
       return t('analysis.collection', collection: criteria[:collection])
+    else
+      return t('analysis.all_collections')
     end
   end
 

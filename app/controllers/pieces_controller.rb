@@ -11,7 +11,7 @@ class PiecesController < ApplicationController
     @pieces = Piece.filter(params[:search], collection_condition)
                    .order("#{sort_column} #{sort_direction}, #{second_order}" )
                    .paginate(:per_page => per_page, :page => params[:page])
-    @page_title = 'Teile'
+    @page_title = t('pieces.index.pieces')
 
     respond_to do |format|
       format.html
@@ -48,7 +48,7 @@ class PiecesController < ApplicationController
   # GET /pieces/new.json
   def new
     @piece = Piece.new
-    @page_title = 'Neues Teil'
+    @page_title = t('pieces.new.piece')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,14 +59,14 @@ class PiecesController < ApplicationController
   def copy
     @piece = Piece.find(params[:id]).dup # create a new copy
     #@piece.id = nil
-    @page_title = 'Neues Teil (kopiert)'
+    @page_title = t('pieces.copy.piece')
     render action: "new"
   end
 
   # GET /pieces/1/edit
   def edit
     @piece = Piece.find(params[:id])
-    @page_title = 'Teil bearbeiten'
+    @page_title = t('pieces.edit.piece')
   end
 
   # POST /pieces
@@ -78,14 +78,14 @@ class PiecesController < ApplicationController
       if @piece.save
         format.html do
           if params[:copy_new]
-            redirect_to copy_piece_path(@piece.id), notice: 'Teil gespeichert.'
+            redirect_to copy_piece_path(@piece.id), notice: t('pieces.create.created')
           else
-            redirect_to pieces_path, notice: 'Teil gespeichert.'
+            redirect_to pieces_path, notice: t('pieces.create.created')
           end
         end
         format.json { render json: @piece, status: :created, location: @piece }
       else
-        @page_title = 'Neues Teil'
+        @page_title = t('pieces.new.piece')
         format.html { render action: "new" }
         format.json { render json: @piece.errors, status: :unprocessable_entity }
       end
@@ -101,14 +101,12 @@ class PiecesController < ApplicationController
       if @piece.update_attributes(params[:piece])
         format.html do
           if params[:copy_new]
-            redirect_to copy_piece_path(@piece.id), notice: 'Teil gespeichert.'
-          else
-            redirect_to pieces_path, notice: 'Teil gespeichert.'
+            redirect_to copy_piece_path(@piece.id), notice: t('pieces.update.updated')
           end
         end
         format.json { head :no_content }
       else
-        @page_title = 'Teil bearbeiten'
+        @page_title = t('pieces.edit.piece')
         format.html { render action: "edit" }
         format.json { render json: @piece.errors, status: :unprocessable_entity }
       end

@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
                      .filter(params[:search], status_condition, role_condition)
                      .order(sort_column + ' ' + sort_direction)
                      .paginate(:per_page => per_page, :page => params[:page])
-    @page_title = 'Kundinnen'
+    @page_title = t('clients.index.clients')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,8 +57,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   # GET /clients/new.json
   def new
-    @page_title = 'Neue Kundin'
-
+    @page_title = t('actions.new_client')
     @client = Client.new
     @client.role = "Kundinnen"
     @client.status = "aktiv"
@@ -71,7 +70,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-    @page_title = 'Kundin bearbeiten'
+    @page_title = t('clients.edit.edit_client')
     @client = Client.find(params[:id])
   end
 
@@ -80,7 +79,7 @@ class ClientsController < ApplicationController
   def create
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path, notice: 'Kundin erstellt.' }
+        format.html { redirect_to clients_path, notice: t('clients.create.created') }
         format.json { render json: @client, status: :created, location: @client }
       else
         format.html { render action: "new" }
@@ -96,7 +95,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to clients_path, notice: 'Kundin gespeichert.' }
+        format.html { redirect_to clients_path, notice: t('clients.update.saved') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -112,7 +111,7 @@ class ClientsController < ApplicationController
     @client.destroy
 
     respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Kundin geloescht.' }
+      format.html { redirect_to clients_url, notice: t('clients.destroy.destroyed') }
       format.json { head :no_content }
     end
   end

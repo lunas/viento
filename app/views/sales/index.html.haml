@@ -2,7 +2,7 @@
   .well.well-small
     %ul.nav.nav-pills
       %li.pull-right
-        %label Pro Seite:
+        %label= t('per_page')
         = select_tag 'per_page_filter', options_for_select(per_page_options, per_page), class: 'span1'
 
   #sales
