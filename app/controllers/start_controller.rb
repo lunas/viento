@@ -1,6 +1,9 @@
 class StartController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def index
-    flash[:notice] = t :start
+    #@page_title = t('start.index.title')
+    @collections = Piece.revenue_by_collection
   end
 end

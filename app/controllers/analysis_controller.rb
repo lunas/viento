@@ -1,5 +1,7 @@
 class AnalysisController < ApplicationController
 
+  before_filter :authenticate_user!
+
   expose(:collection){ params[:analysis][:collection].present? ?
                        params[:analysis][:collection] : nil }
   expose(:date_from) { params[:analysis][:date_from].present? ?

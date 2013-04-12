@@ -85,6 +85,12 @@ class Piece < ActiveRecord::Base
     pieces
   end
 
+  def self.revenue_by_collection
+    select('collection, count(sales.id) as sales_count, sum(actual_price) as total_sales')
+    .joins(:sales)
+    .group(:collection)
+    .order('collection DESC')
+  end
 
   def count_stock
     self.count_produced - self.sales.size

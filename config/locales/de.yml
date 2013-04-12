@@ -41,6 +41,18 @@ de:
     login: "Anmelden"
     logout: "Abmelden"
     register: "Registrieren"
+  start:
+    index:
+      title: 'Übersicht'
+      clients: 'Kundinnen'
+      explain_clients: 'Adressliste der Kundinnen, Interessentinnen, Ehemalige etc.'
+      pieces: 'Teile'
+      explain_pieces: 'Teile mit Grösse, Farbe, Preis und produzierte und verkaufte Stückzahl pro Kollektion.'
+      analysis: 'Auswertung'
+      explain_analysis: 'Anzahl Verkäufe pro Kollektion, Farbe, Grösse, Material, und Zeitraum'
+      revenue_by_collection: 'Umsatz pro Kollektion'
+      sales_count: 'Anzahl verkaufter Teile'
+      revenue: 'Umsatz'
   analysis:
     index:
       title: "Auswertung"
