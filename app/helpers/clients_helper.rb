@@ -11,12 +11,19 @@ module ClientsHelper
   def count_pieces_phrase(client)
     c = client.reload.sales.size
     if c == 0
-      "Noch nichts gekauft."
+      t('clients.bought_nothing')
     elsif c == 1
-      "Bisher ein 1 Teil gekauft fuer #{client.sales_total}:"
+      t('clients.bought_1_html', amount: understate(client.sales_total) )
     else
-      "Bisher #{c} Teile gekauft fuer CHF #{client.sales_total}:"
+      t('clients.bought_more_html', num: c, amount: understate(client.sales_total) )
     end
   end
 
+  def understate(amount)
+    if amount > Rails.configuration.max_total_sales_to_show_raw
+      "<span class=\"understate\">#{amount / Rails.configuration.understate_factor}</span>".html_safe
+    else
+      amount
+    end
+  end
 end

@@ -63,5 +63,8 @@ module Blog
     # according to
     # https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar#troubleshooting
     config.assets.initialize_on_precompile = false
+
+    config.max_total_sales_to_show_raw = 2000
+    config.understate_factor = 4
   end
 end

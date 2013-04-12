@@ -74,6 +74,9 @@ de:
       name: "alle Teile"
       collection: "alle Kollektionen"
   clients:
+    bought_nothing: "Noch nichts gekauft."
+    bought_1_html: "Bisher ein 1 Teil gekauft fuer %{amount}:"
+    bought_more_html: "Bisher %{num} Teile gekauft fuer CHF %{amount}:"
     clients:
       total_found_html: "%{number} Kundinnen<br>gefunden"
       firstname: "Vorname"
