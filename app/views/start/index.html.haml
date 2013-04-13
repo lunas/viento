@@ -12,14 +12,18 @@
 #revenue_totals
   %h2= t('.revenue_by_collection')
 
-  %table
-    %th= t('collection')
-    %th= t('.sales_count')
-    %th= t('.revenue')
+  %table#revenue_table
+    %thead
+      %th= t('collection')
+      %th= t('.sales_count')
+      %th= t('.revenue')
 
-    - @collections.each do |collection|
-      %tr
-        %td= collection.collection
-        %td= collection.sales_count
-        %td= collection.total_sales
+    %tbody
+      - @collections.each do |collection|
+        %tr
+          %td= collection.collection
+          %td= collection.sales_count
+          %td= collection.total_sales
 
+#start_image
+  = image_tag 'sophie-seite.jpg'

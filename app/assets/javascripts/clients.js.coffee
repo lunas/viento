@@ -30,7 +30,7 @@ $(document).ready ->
     $('.edit_form').validate()
 
     # table sorter for sales on edit client form
-    $('.dataTable').dataTable(
+    $('.sales_table').dataTable(
       'iDisplayLength': 10
       "sPaginationType": "full_numbers"
       "sDom": "t<'row'<'span6'lp>>"
