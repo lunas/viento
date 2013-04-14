@@ -77,6 +77,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
+    @client = Client.new(params[:client])
     respond_to do |format|
       if @client.save
         format.html { redirect_to clients_path, notice: t('clients.create.created') }

@@ -41,6 +41,9 @@ de:
     login: "Anmelden"
     logout: "Abmelden"
     register: "Registrieren"
+    email: "Feedback"
+    sent: "Email verschickt"
+    failed: "Email konnte nicht verschickt werden"
   start:
     index:
       title: 'Übersicht'
@@ -181,3 +184,12 @@ de:
       updated: "Verkauf gespeichert: %{info}"
     destroy:
       destroyed: "Verkauf gelöscht: %{info}"
+
+  email:
+    title: "Feedback/Fehler Email"
+    user: "Absender"
+    referer: "Betrifft Seite"
+    message: "Nachricht"
+    send: "Senden"
+    sent: "Nachricht wurde verschickt"
+    failed: "Fehler beim Senden: %{error}"

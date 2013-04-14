@@ -1,4 +1,4 @@
-Blog::Application.routes.draw do
+Viento::Application.routes.draw do
 
   resources :sales do
     get 'filter', on: :collection
@@ -27,4 +27,7 @@ Blog::Application.routes.draw do
   match 'analysis/color' => 'analysis#by_color', as: :analysis_color
   match 'analysis/fabric' => 'analysis#by_fabric', as: :analysis_fabric
   match 'analysis/collection' => 'analysis#by_collection', as: :analysis_collection
+
+  resources :emails, :only => [:new, :create]
+
 end

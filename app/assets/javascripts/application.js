@@ -22,5 +22,6 @@
 //=require sales
 //=require dates
 //=require start
+//=require email
 //xx = xxrequire rails.validations
 //xx = xxrequire rails.validations.simple_form

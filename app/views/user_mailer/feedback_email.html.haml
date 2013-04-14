@@ -1,0 +1,11 @@
+%html{lang: 'de'}
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+  %body
+    %h1 Feedback zum Viento-Programm
+
+    %p Seite: #{@referer}
+    %p Von:   #{@username}
+    %p= @message
+
+    %p ciao

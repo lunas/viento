@@ -27,6 +27,8 @@
                 %strong= current_user.username
                 = link_to t('meta.profile'), edit_user_registration_path
                 |
+                = link_to t('meta.email'), new_email_path
+                |
                 \#{link_to t('meta.logout'), destroy_user_session_path, method: :delete}
               - else
                 = link_to t('meta.register'), new_user_registration_path

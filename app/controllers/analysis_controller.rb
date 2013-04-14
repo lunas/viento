@@ -2,11 +2,11 @@ class AnalysisController < ApplicationController
 
   before_filter :authenticate_user!
 
-  expose(:collection){ params[:analysis][:collection].present? ?
+  expose(:collection){ params[:analysis].try(:[], :collection).present? ?
                        params[:analysis][:collection] : nil }
-  expose(:date_from) { params[:analysis][:date_from].present? ?
+  expose(:date_from) { params[:analysis].try(:[], :date_from).present? ?
                        params[:analysis][:date_from] : Sale.minimum(:date).to_s }
-  expose(:date_to)   { params[:analysis][:date_to].present? ?
+  expose(:date_to)   { params[:analysis].try(:[], :date_to).present? ?
                        params[:analysis][:date_to] : Sale.maximum(:date).to_s }
 
   def index

@@ -1,0 +1,11 @@
+= simple_form_for :email, url: emails_path, :method => 'post',
+  html: {class:'form-horizontal', id: 'email'} do |f|
+  .row
+    .span6
+      = f.input :username, label: t('email.user'), required: false
+      = f.input :referer, label: t('email.referer'), required: false
+      = f.input :message, as: :text, label: t('email.message'),  input_html:{ cols: 30, rows: 7 }
+
+  .form-actions
+    = link_to t('actions.cancel'), @email.referer
+    = f.button :submit, value: t('email.send')
