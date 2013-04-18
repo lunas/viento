@@ -1,5 +1,14 @@
 Viento::Application.routes.draw do
 
+  resources :users
+
+  devise_for :users,
+             :path_prefix => 'auth',
+             path_names: {sign_in: "login", sign_out: "logout"},
+             controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
+  root to: 'start#index'
+
   resources :sales do
     get 'filter', on: :collection
   end
@@ -9,10 +18,6 @@ Viento::Application.routes.draw do
     get 'find', on: :collection
     resources :sales
   end
-
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
-                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  root to: 'start#index'
 
   resources :clients do
     get 'find', on: :collection

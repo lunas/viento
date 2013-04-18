@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable #, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :roles
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -46,9 +46,10 @@ class User < ActiveRecord::Base
     where("roles_mask & #{2**ROLES.index(role.to_s)} > 0" )
   end
 
-  ROLES = %w[boss worker]
+  ROLES = %w[boss worker admin]
 
   def roles=(roles)
+    roles.collect!{ |r| r.to_s }
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
@@ -56,8 +57,13 @@ class User < ActiveRecord::Base
     ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
   end
 
-  def role?(role)
-    roles.include? role.to_s
+  def role?(candidate_roles)
+    if candidate_roles.is_a? Array
+      candidate_roles.collect!{ |r| r.to_s }
+      ! (roles & candidate_roles).empty?
+    else
+      roles.include? role.to_s
+    end
   end
 
 end

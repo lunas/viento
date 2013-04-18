@@ -9,11 +9,9 @@ $(document).ready ->
   )
 
   $('#start_image').mouseover (event) ->
-    $('#start_image').slider(
+    $('#start_image').slider
       value: $('#start_image img').css('opacity') * 100
       slide: (event, ui) ->
         $('#start_image img').css('opacity', ui.value/100 )
-    )
   .mouseleave (event) ->
     $('#start_image').slider('destroy')
-

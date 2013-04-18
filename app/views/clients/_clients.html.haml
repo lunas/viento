@@ -29,7 +29,6 @@
       %td= client.latest_sale_date
       %td= client.status
       %td= client.role
-
       %td.delete
         - if client.sales_count == 0
           = link_to client, confirm: t('actions.confirm_delete'), :method => :delete do

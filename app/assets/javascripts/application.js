@@ -18,10 +18,10 @@
 //=require clients
 //=require jquery.validate
 //=require jquery.dataTables
+//=require jquery.tokeninput
 //=require pieces
 //=require sales
 //=require dates
 //=require start
 //=require email
-//xx = xxrequire rails.validations
-//xx = xxrequire rails.validations.simple_form
+//=require users

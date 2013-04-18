@@ -1,0 +1,23 @@
+.well.well-small
+  %ul.nav.nav-pills
+    %li= link_to t('actions.new_user'), new_user_path
+
+#users
+  .total_items
+    = t('.total_found_html', number: @users.size)
+  %table.table
+    %thead
+      %th= t('users.username')
+      %th= t('users.email')
+      %th= t('users.roles')
+      %th
+
+    %tbody
+    - @users.each do | user|
+      %tr{"data-user_id" => "#{user.id}"}
+        %td= user.username
+        %td= user.email
+        %td= user.roles.join(';')
+        %td.delete
+          =link_to user, confirm: t('actions.confirm_delete'), :method => :delete do
+            %i.icon-remove

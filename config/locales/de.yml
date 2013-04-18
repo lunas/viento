@@ -26,6 +26,7 @@ de:
     new_sale: "Neuer Verkauf"
     new_piece: "Neues Teil"
     new_client: "Neue Kundin"
+    new_user: "Neue BenutzerIn"
     confirm_delete: "Wirklich löschen?"
     edit_sale: "Verkauf bearbeiten"
   will_paginate:
@@ -42,8 +43,7 @@ de:
     logout: "Abmelden"
     register: "Registrieren"
     email: "Feedback"
-    sent: "Email verschickt"
-    failed: "Email konnte nicht verschickt werden"
+    admin: Admin
   start:
     index:
       title: 'Übersicht'
@@ -193,3 +193,15 @@ de:
     send: "Senden"
     sent: "Nachricht wurde verschickt"
     failed: "Fehler beim Senden: %{error}"
+
+  users:
+    index:
+      title: 'Benutzerinnen'
+    edit: 'Benutzerin bearbeiten'
+    new: 'Neue Benutzterin'
+    username: 'Benutztername'
+    email: 'Email'
+    role: 'Rollen'
+    total_found_html: "%{number} Benutzerinnen<br>gefunden"
+    password: 'Passwort'
+    password_confirm: 'Passwort wiederholen'

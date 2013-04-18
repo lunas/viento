@@ -27,6 +27,9 @@
                 %strong= current_user.username
                 = link_to t('meta.profile'), edit_user_registration_path
                 |
+                -if can? :manage, User
+                  = link_to t('meta.admin'), users_path
+                  |
                 = link_to t('meta.email'), new_email_path
                 |
                 \#{link_to t('meta.logout'), destroy_user_session_path, method: :delete}
