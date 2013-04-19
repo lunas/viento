@@ -1,26 +1,14 @@
-:javascript
-  var roles = "#{User::ROLES.join(',')}"
-  roles = roles.split(',').map(function(role, index) {
-    return {id: index, name: role}
-  });
-
 = simple_form_for @user, html: {class: 'form-horizontal user_form'}, validate: true  do |f|
   = f.error_notification
   .row
     .span6
       = f.input :username, label: t('users.username')
       = f.input :email, label: t('users.email')
-      = f.input :roles, label: t('users.role')
-      :javascript
-        var input_id = "#edit_user_#{@user.id} input#user_roles"
-        var prePopulate = "#{@user.roles.join(',')}"
-        prePopulate = prePopulate.split(',').map(function(role, index){
-          return {id: index, name: role}
-        })
-        $(input_id).tokenInput(roles, {
-          prePopulate: prePopulate,
-          theme: 'mac'
-        })
+      - if can? :manage, User
+        .control-group
+          = f.label :roles, label: t('users.role')
+          .controls
+            = f.collection_check_boxes(:roles, User::ROLES, :to_s, :capitalize, item_wrapper_class: 'checkbox_container')
       = f.input :password, label: t('users.password')
       = f.input :password_confirmation, label: t('users.password_confirm')
 
