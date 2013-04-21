@@ -1,0 +1,17 @@
+= simple_form_for(resource, :as => resource_name,
+  :url => registration_path(resource_name),
+  :html => { :method => :put, class: 'form-horizontal user_form' },
+  validate: true) do |f|
+
+  = f.error_notification
+  xx
+  = render 'users/form', form: f
+
+  .form-actions
+    = link_to t('actions.cancel'), request.referer
+    = f.button :submit, value: t('actions.save')
+
+  %h3= t('users.edit.cancel_account')
+
+  %p= link_to t('users.edit.cancel_my_account'), registration_path(resource_name), data: { confirm: t('actions.confirm_delete') }, method: :delete
+

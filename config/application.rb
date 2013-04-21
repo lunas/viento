@@ -68,5 +68,7 @@ module Viento
     config.understate_factor = 4
     config.feedback_receiver = "lukasnick@gmail.com"
     config.feedback_sender   = "otniev@gmail.com"
+
+    #paths.app.views << "app/views/devise"
   end
 end

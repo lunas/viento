@@ -14,7 +14,6 @@ $(document).ready ->
       "user[roles]":
         required: true
       "user[password]":
-        required: true
         minlength: 6
       "user[password_confirmation]":
         equalTo: "#user_password"
@@ -28,7 +27,6 @@ $(document).ready ->
       "user[roles]":
         required: "Bitte mind. eine Rolle auswaehlen"
       "user[password]":
-        required: "Bitte ein Passwort eingeben"
         minlength: "Bitte mindestens 6 Zeichen eingeben"
       "user[password_confirmation]":
         equalTo: "Bitte dasselbe Passwort wie oben eingeben"

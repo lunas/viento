@@ -1,17 +1,18 @@
-= simple_form_for @user, html: {class: 'form-horizontal user_form'}, validate: true  do |f|
-  = f.error_notification
-  .row
-    .span6
-      = f.input :username, label: t('users.username')
-      = f.input :email, label: t('users.email')
-      - if can? :manage, User
-        .control-group
-          = f.label :roles, label: t('users.role')
-          .controls
-            = f.collection_check_boxes(:roles, User::ROLES, :to_s, :capitalize, item_wrapper_class: 'checkbox_container')
-      = f.input :password, label: t('users.password')
-      = f.input :password_confirmation, label: t('users.password_confirm')
-
-  .form-actions
-    = link_to t('actions.cancel'), users_path
-    = f.button :submit, value: t('actions.save')
+.row
+  .span6
+    = form.input :username, label: t('users.username'), autofocus: true, required: true
+    = form.input :email, label: t('users.email'), required: true
+    - if can? :manage, User
+      .control-group
+        = form.label :roles, label: t('users.role')
+        .controls
+          = form.collection_check_boxes(:roles, User::ROLES, :to_s, :capitalize,
+            item_wrapper_class: 'checkbox_container')
+        - if @display_passwords
+          = form.input :password, label: t('users.edit.password'), autocomplete: "off", hint: t('users.edit.password_hint'), required: false
+          = form.input :password_confirmation, label: t('users.password_confirm'), required: false
+          = form.input :current_password, label: t('users.edit.current_password'), hint: t('users.edit.current_password_hint'), required: true
+        - else
+          %p
+            = t('users.edit.goto_profile')
+            = link_to(t('users.edit.profile'), edit_user_registration_path)

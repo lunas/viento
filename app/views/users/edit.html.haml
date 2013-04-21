@@ -1,1 +1,14 @@
-= render 'form'
+= simple_form_for(@user,
+  :html => { :method => :put, class: 'form-horizontal user_form' },
+  validate: true) do |f|
+
+  = render 'form', form: f
+
+  .form-actions
+    = link_to t('actions.cancel'), users_path
+    = f.button :submit, value: t('actions.save')
+
+  %h3= t('users.edit.cancel_account')
+
+  %p= link_to t('users.edit.cancel_account'), user_path(@user), data: { confirm: t('actions.confirm_delete') }, method: :delete
+
