@@ -5,12 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
   #  super
   #end
 
-  # POST /resource
-  def create
-    @page_title = t('actions.new_user')
-    super
-  end
-
   # GET /resource/edit
   def edit
     @page_title = t('users.edit.profile')

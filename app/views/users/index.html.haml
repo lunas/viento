@@ -1,6 +1,7 @@
 .well.well-small
   %ul.nav.nav-pills
-    %li= link_to t('actions.new_user'), new_user_registration_path
+    - if can? :manage, User
+      %li= link_to t('actions.new_user'), new_user_path
 
 #users
   .total_items
@@ -17,7 +18,7 @@
       %tr{"data-user_id" => "#{user.id}"}
         %td= user.username
         %td= user.email
-        %td= user.roles.join(';')
+        %td= user.roles.map(&:capitalize).join(', ')
         %td.delete
           =link_to user, confirm: t('actions.confirm_delete'), :method => :delete do
             %i.icon-remove

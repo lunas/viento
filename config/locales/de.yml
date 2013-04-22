@@ -205,7 +205,7 @@ de:
       current_password: 'Aktuelles Passwort'
       password: 'Neues Passwort'
       password_hint: 'leer lassen, falls Du es nicht ändern willst'
-      current_password_hint: 'wir brauchen Dein jetziges Passwort, um es zu ändern'
+      current_password_hint: 'für Passwortänderungen braucht es Dein jetziges Passwort'
       cancel_account: 'Konto löschen'
       cancel_my_account: 'Mein Viento-Konto auflösen'
       goto_profile: 'Wenn du dein Passwort ändern willst, gehe zu '

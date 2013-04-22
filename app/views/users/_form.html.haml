@@ -11,7 +11,7 @@
         - if @display_passwords
           = form.input :password, label: t('users.edit.password'), autocomplete: "off", hint: t('users.edit.password_hint'), required: false
           = form.input :password_confirmation, label: t('users.password_confirm'), required: false
-          = form.input :current_password, label: t('users.edit.current_password'), hint: t('users.edit.current_password_hint'), required: true
+          -# = form.input :current_password, label: t('users.edit.current_password'), hint: t('users.edit.current_password_hint'), required: true
         - else
           %p
             = t('users.edit.goto_profile')

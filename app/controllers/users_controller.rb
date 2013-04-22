@@ -7,10 +7,26 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # create another user (as opposed to self registration)
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to users_path, notice: t('users.update.updated')
+    else
+      @page_title = t("actions.new_user")
+      render action: 'new'
+    end
+  end
+
   def edit
     @user = User.find(params[:id])
     @page_title = t("users.edit.title")
     @display_passwords = (@user != current_user)
+  end
+
+  def new
+    @user = User.new
+    @page_title = t("actions.new_user")
   end
 
   def update
@@ -20,20 +36,13 @@ class UsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
       params[:user].delete(:current_password)
-      if @user.update_attributes(params[:user])
-        redirect_to users_path, notice: t('users.update.updated')
-      else
-        @page_title = t("users.edit.title")
-        render action: :edit
-      end
+    end
+
+    if @user.update_attributes(params[:user])
+      redirect_to users_path, notice: t('users.update.updated')
     else
-      if @user.update_with_password(params[:user])
-        RegistrationsController::sign_in :user, @user, bypass: true
-        redirect_to users_path, notice: t('users.update.updated')
-      else
-        @page_title = t("users.edit.title")
-        render action: :edit
-      end
+      @page_title = t("users.edit.title")
+      render action: :edit
     end
   end
 

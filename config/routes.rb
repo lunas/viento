@@ -3,7 +3,7 @@ Viento::Application.routes.draw do
   root to: 'start#index'
 
   devise_for :users,
-             # :path_prefix => 'auth',
+             :path_prefix => 'auth',
              path_names: {sign_in: "login", sign_out: "logout"},
              controllers: {
               registrations: 'registrations',
