@@ -48,7 +48,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user= User.find(params[:id])
-    @user.destroy
+    if @user.destroy
+      flash[:notice] = t('users.destroy.deleted')
+    else
+      flash[:error] = @user.errors[:base].join(', ')
+    end
 
     respond_to do |format|
       format.html { redirect_to users_url }

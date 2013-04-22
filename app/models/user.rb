@@ -8,6 +8,19 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :roles
 
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
+  validates :roles_mask, presence: true
+
+  before_destroy do |user|
+    if user.role? :admin
+      errors[:base] << I18n.t('users.errors.cant_delete_admin')
+      false
+    else
+      true
+    end
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -62,7 +75,7 @@ class User < ActiveRecord::Base
       candidate_roles.collect!{ |r| r.to_s }
       ! (roles & candidate_roles).empty?
     else
-      roles.include? role.to_s
+      roles.include? candidate_roles.to_s
     end
   end
 

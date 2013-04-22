@@ -212,6 +212,10 @@ de:
     update:
       updated: 'Benutzerin gespeichert'
     new: 'Neue Benutzerin'
+    destroy:
+      deleted: 'Benutzerin gelöscht'
+    errors:
+      cant_delete_admin: "Benutzerin mit Rolle 'Admin' kann nicht gelöscht werden"
     username: 'Benutzername'
     email: 'Email'
     role: 'Rollen'
