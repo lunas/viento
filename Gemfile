@@ -24,6 +24,9 @@ gem 'client_side_validations'
 # gem 'client_side_validations-simple_form'
 gem 'goldmine',  :git => 'https://github.com/lunas/goldmine.git'
 gem 'decent_exposure'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 # Gems used only for assets and not required
 # in production environments by default.

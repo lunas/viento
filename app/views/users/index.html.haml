@@ -2,6 +2,7 @@
   %ul.nav.nav-pills
     - if can? :manage, User
       %li= link_to t('actions.new_user'), new_user_path
+      %li= link_to t('actions.backup'), backup_path
 
 #users
   .total_items

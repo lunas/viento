@@ -30,6 +30,7 @@ de:
     delete_user: "Benutzerin löschen"
     confirm_delete: "Wirklich löschen?"
     edit_sale: "Verkauf bearbeiten"
+    backup: "Backup"
   will_paginate:
     next_label: "nächste"
     previous_label: "vorherige"
@@ -197,7 +198,7 @@ de:
 
   users:
     index:
-      title: 'Benutzerinnen'
+      title: 'Benutzerinnen/Einstellungen'
       total_found_html: "%{number} Benutzerinnen<br>gefunden"
     edit:
       title: 'Benutzerin bearbeiten'
@@ -221,6 +222,10 @@ de:
     role: 'Rollen'
     password: 'Passwort'
     password_confirm: 'Passwort wiederholen'
+
+  config:
+    backup:
+      scheduled: 'Backup wird gestartet'
 
 # active record translations
   date:
