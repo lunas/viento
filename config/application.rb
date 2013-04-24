@@ -69,6 +69,8 @@ module Viento
     config.feedback_receiver = "lukasnick@gmail.com"
     config.feedback_sender   = "otniev@gmail.com"
 
+    config.backup_folder = Rails.root.join('db_backup')
+
     #paths.app.views << "app/views/devise"
   end
 end

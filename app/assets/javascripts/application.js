@@ -25,3 +25,4 @@
 //=require start
 //=require email
 //=require users
+//=require analysis

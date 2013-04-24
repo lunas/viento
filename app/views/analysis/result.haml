@@ -1,11 +1,18 @@
-%table.analysis
-  - if @table.empty?
-    %p= t('.no_results')
-  - else
-    - @table.first.each do |header|
-      %th= header
-    - @table[1..-1].each_with_index do |row, row_index|
+- if @table.empty?
+  %p= t('.no_results')
+- else
+  %table.analysis
+    %thead
+      - @table.first.each do |header|
+        %th= header
+    %tbody
+      - @table[1..-2].each_with_index do |row, row_index|
+        %tr
+          %th= row[0]
+          - row[1..-1].each_with_index do |cell, col_index|
+            %td= cell_link(cell.to_s, row_index+1, col_index+1, @table, @analyzed_by)
+    %tfoot
       %tr
-        %th= row[0]
-        - row[1..-1].each_with_index do |cell, col_index|
-          %td= cell_link(cell.to_s, row_index+1, col_index+1, @table, @analyzed_by)
+        %th= @table[-1][0]
+        - @table[-1][1..-1].each_with_index do |cell, col_index|
+          %th= cell_link(cell.to_s, @table.size-1, col_index+1, @table, @analyzed_by)

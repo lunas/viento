@@ -62,14 +62,14 @@ class Sale < ActiveRecord::Base
   def client_name_and_city_matches_client
     return if @tmp_client_name_and_city.blank? # when created not by controller
     if @tmp_client_name_and_city != self.client.try(:name_and_city)
-      errors.add(:client_name_and_city, "Angabe zur Kundin war unklar; meintest du diese? (Es muss eine aus der Liste sein.)")
+      errors.add(:client_name_and_city, I18n.t('sales.errors.choose_client_from_list') )
     end
   end
 
   def piece_info_matches_piece
     return if @tmp_piece_info.blank? # when created not by controller
     if @tmp_piece_info != self.piece.try(:info)
-      errors.add(:piece_info, "Angabe zum Teil war unklar; meintest du dieses? (Es muss eins aus der Liste sein.")
+      errors.add(:piece_info, I18n.t('sales.errors.choose_piece_form_list') )
     end
   end
 

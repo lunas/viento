@@ -17,7 +17,7 @@ $(document).ready ->
 
   # $('.dropdown-toggle').dropdown()
 
-  $('#messages').fadeOut(6000)
+  $('#messages').fadeOut(12000)
 
   $('#clients tr td:not([class*=delete])').click (e)->
     url = 'clients/' + $(this).parent().attr('data-client_id') + '/edit'

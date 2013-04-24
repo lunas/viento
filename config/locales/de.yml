@@ -14,7 +14,7 @@ de:
   size: "Grösse"
   fabric: "Material"
   prize: "Preis"
-  date: "Datum"
+  date_label: "Datum"
   active: "aktiv"
   passive: "passiv"
   all: "alle"
@@ -176,6 +176,7 @@ de:
       piece: "Teil"
       date: "Datum"
       prize: "Preis"
+      choose_from_list: 'Eintrag aus der Liste wählen'
     sales:
       total_found_html: "%{number} Verkäufe<br>gefunden"
     index:
@@ -186,7 +187,9 @@ de:
       updated: "Verkauf gespeichert: %{info}"
     destroy:
       destroyed: "Verkauf gelöscht: %{info}"
-
+    errors:
+      choose_client_from_list: "Angabe zur Kundin war unklar; es muss eine aus der Liste sein."
+      choose_piece_form_list: "Angabe zum Teil war unklar; es muss eins aus der Liste sein."
   email:
     title: "Feedback/Fehler Email"
     user: "Absender"
@@ -225,7 +228,7 @@ de:
 
   config:
     backup:
-      scheduled: 'Backup wird gestartet'
+      scheduled: 'Backup wird gestartet. Die Backup-Datei wird in %{path} gespeichert.'
 
 # active record translations
   date:

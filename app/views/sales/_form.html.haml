@@ -2,9 +2,9 @@
   = f.error_notification
   .row
     .span6
-      = f.input :client_name_and_city, label: t('.client')
+      = f.input :client_name_and_city, label: t('.client'), hint: t('.choose_from_list')
       = f.input :client_id, as: :hidden
-      = f.input :piece_info, label: t('.piece')
+      = f.input :piece_info, label: t('.piece'), hint: t('.choose_from_list')
       = f.input :piece_id, as: :hidden
       = f.input :date, input_html: {value: @sale.date}, as: :datepicker, label: t('.date')
       = f.input :actual_price, input_html: {value: @sale.actual_price}, label: t('.prize')

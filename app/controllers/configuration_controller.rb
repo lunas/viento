@@ -4,7 +4,8 @@ class ConfigurationController < ApplicationController
 
   def backup
     Backup.perform_async
-    redirect_to users_path, notice: t('config.backup.scheduled')
+    redirect_to users_path, notice: t('config.backup.scheduled',
+                                      path: Rails.configuration.backup_folder)
   end
 
 end

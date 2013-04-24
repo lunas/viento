@@ -15,7 +15,7 @@
     %th= sale_sortable 'clients.last_name', t('client')
     %th= sale_sortable 'name', t('piece')
     %th= sale_sortable 'actual_price', t('prize')
-    %th= sale_sortable 'date', t('date')
+    %th= sale_sortable 'date', t('date_label')
 
   - @sales.each do |sale|
     %tr{"data-sale_id" => "#{sale.id}"}
