@@ -27,11 +27,18 @@ $(document).ready ->
     window.location = $(this).parent().attr('data-edit_url')
 
   if $('.edit_form').size() > 0
-    $('.edit_form').validate()
+    $('.edit_form').validate(
+      rules:
+        "client[last_name]":
+          required: true
+      messages:
+        "client[last_name]":
+          required: 'Bitte einen Nachnamen angeben'
+    )
 
     # table sorter for sales on edit client form
     $('.sales_table').dataTable(
-      'iDisplayLength': 10
+      'iDisplayLength': 20
       "sPaginationType": "full_numbers"
       "sDom": "t<'row'<'span6'lp>>"
       "aaSorting": [[ 6, "desc" ], [0, "asc"]]

@@ -19,8 +19,8 @@ $(document).ready ->
         equalTo: "#user_password"
     messages:
       "user[username]":
-        required: "Bitte Benuztername angeben"
-        minlength: "Benutztername muss mind. 2 Zeichen lang sein"
+        required: "Bitte Benutzernamen angeben"
+        minlength: "Benutzername muss mind. 2 Zeichen lang sein"
       "user[email]":
         required: "Bitte Email angeben"
         email: "Bitte gueltige Email angeben"
