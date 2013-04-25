@@ -24,12 +24,10 @@
       = f.input :last_name2, label: t('.lastname2')
       = f.input :street2, label: t('.street2')
 
-      .actions.pull-right
-        = link_to t('actions.cancel'), clients_path
-        = f.submit t('actions.save')
+      .well.well-small.actions
+        .actions.shift_right
+          = link_to t('actions.cancel'), clients_path
+          = f.submit t('actions.save')
 
-    - if !@client.new_record?
-      .span7
-        = render 'sales', client: @client
 
 

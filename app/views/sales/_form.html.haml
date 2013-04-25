@@ -9,6 +9,7 @@
       = f.input :date, input_html: {value: @sale.date}, as: :datepicker, label: t('.date')
       = f.input :actual_price, input_html: {value: @sale.actual_price}, label: t('.prize')
 
-  .form-actions
-    = link_to t('actions.cancel'), back_path(@parent)
-    = f.button :submit, value: t('actions.save')
+  .well.well-small.actions
+    .actions.shift_right
+      = link_to t('actions.cancel'), back_path(@parent)
+      = f.button :submit, value: t('actions.save'), class: 'btn-primary'

@@ -62,7 +62,8 @@ form
         border:  1px solid red
 
 //footer
-
+footer
+  clear: both
 
 a
   img
@@ -111,8 +112,19 @@ form
   .field, .actions
     margin: 12px 0
 
+  .actions
+    input
+      margin-left: 30px
+      margin-right: 30px
+
+  .shift_right
+    margin-left: 160px
+
   .error
     color: red
+
+  .well.actions
+    padding: 0
 
 .navbar
   text-transform: uppercase
@@ -196,3 +208,12 @@ form#zeitraum > div.control-group.datepicker:nth-of-type(2)
 .checkbox_container .collection_check_boxes
   display: inline
   vertical-align: -5px
+
+// pieces edit
+
+#copy_new_label
+  display: inline-block
+  width: 300px
+  padding-left: 40px
+  input
+    margin-left: -20px

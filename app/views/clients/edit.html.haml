@@ -1,15 +1,19 @@
-.row
-  .span5
+.span5
+  -if @client.sales.empty?
     .well.well-small
       %ul.nav.nav-pills
-        -if @client.sales.empty?
-          %li= link_to t('.delete'), @client, :confirm => t('.confirm_delete'), :method => :delete
-  .span7
-    .well.well-small
-      %ul.nav.nav-pills
-        -if @client.role? 'Kundinnen'
-          %li= link_to t('actions.new_sale'), new_client_sale_path(@client)
+        %li= link_to t('.delete'), @client, :confirm => t('.confirm_delete'), :method => :delete
 
-= render 'form'
+  = render 'form'
+
+.span7
+  -if @client.role? 'Kundinnen'
+    .well.well-small
+      %ul.nav.nav-pills
+        %li= link_to t('actions.new_sale'), new_client_sale_path(@client)
+
+  - if !@client.new_record?
+    = render 'sales', client: @client
+
 
 

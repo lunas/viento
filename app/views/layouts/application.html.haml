@@ -39,9 +39,8 @@
                 \#{link_to t('meta.login'), new_user_session_path} |
     .container#main_container
       - if @page_title.present?
-        %h1.main= @page_title
-      - if @page_subtitle.present?
-        %h2.main= @page_subtitle
+        .page-header
+          <h1>#{@page_title} <small>#{@page_subtitle}</small></h1>
       #messages
         - flash.each do |name, msg|
           = content_tag :div, msg, id: "flash_#{name}"

@@ -1,12 +1,15 @@
-.row
-  .span6
+.span6
+  -if @piece.sales.empty?
     .well.well-small
       %ul.nav.nav-pills
-        -if @piece.sales.empty?
-          %li= link_to t('.delete'), @piece, confirm: t('.confirm_delete'), :method => :delete
-  .span6
-    .well.well-small
-      %ul.nav.nav-pills
-        %li= link_to t('.new_sale'), new_piece_sale_path(@piece)
+        %li= link_to t('.delete'), @piece, confirm: t('.confirm_delete'), :method => :delete
 
-= render 'form'
+  = render 'form'
+
+.span6
+  .well.well-small
+    %ul.nav.nav-pills
+      %li= link_to t('.new_sale'), new_piece_sale_path(@piece)
+
+  - if !@piece.new_record?
+    = render 'sales', piece: @piece
