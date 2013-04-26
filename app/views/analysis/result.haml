@@ -1,7 +1,7 @@
 - if @table.empty?
   %p= t('.no_results')
 - else
-  %table.analysis
+  %table.analysis.table
     %thead
       - @table.first.each do |header|
         %th= header

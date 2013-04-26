@@ -106,14 +106,15 @@ $(document).ready ->
 
     # table sorter for sales on edit piece form
 
-    $('.dataTable').dataTable(
+    $('#piece_sales.dataTable').dataTable(
       'iDisplayLength': 10
-      "sPaginationType": "full_numbers"
+      "sPaginationType": "bootstrap"
       "sDom": "t<'row'<'span6'lp>>"
       #"bJQueryUI": true
       "aaSorting": [[ 3, "desc" ], [0, "asc"]]
-      #"sDom": '<"top">t<"bottom"lrp><"clear">'
       "aoColumnDefs": [{"bSortable": false, "aTargets": [4]}]
+      "asStripeClasses": []
+      "oLanguage": window.tableLanguageSettings
     )
     # change css classes dataTable will use for sorting:
 #    $.extend( $.fn.dataTableExt.oStdClasses, {

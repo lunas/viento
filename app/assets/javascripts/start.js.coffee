@@ -1,3 +1,4 @@
+
 $(document).ready ->
 
   # table sorter for sales on edit client form
@@ -6,6 +7,7 @@ $(document).ready ->
     'bPaginate': false
     'sDom': 't'
     "aaSorting": [[0, "desc"]]
+    "asStripeClasses": []
   )
 
   $('#start_image').mouseover (event) ->
@@ -15,3 +17,4 @@ $(document).ready ->
         $('#start_image img').css('opacity', ui.value/100 )
   .mouseleave (event) ->
     $('#start_image').slider('destroy')
+

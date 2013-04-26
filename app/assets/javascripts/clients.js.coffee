@@ -37,10 +37,12 @@ $(document).ready ->
     )
 
     # table sorter for sales on edit client form
-    $('.sales_table').dataTable(
-      'iDisplayLength': 20
-      "sPaginationType": "full_numbers"
-      "sDom": "t<'row'<'span6'lp>>"
+    $('#client_sales.sales_table').dataTable(
+      'iDisplayLength': 15
+      "sPaginationType": "bootstrap"
+      "sDom": "t<'row'<'span7'lp>>"
       "aaSorting": [[ 6, "desc" ], [0, "asc"]]
       "aoColumnDefs": [{"bSortable": false, "aTargets": [7]}]
+      "asStripeClasses": []
+      "oLanguage": window.tableLanguageSettings
     )

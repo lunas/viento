@@ -61,6 +61,9 @@ form
         width: 100px !important
         border:  1px solid red
 
+.well-small
+  padding: 0px !important
+
 //footer
 footer
   clear: both
@@ -187,6 +190,10 @@ form#zeitraum > div.control-group.datepicker:nth-of-type(2)
   width: 100%
   margin-left: 150px
 
+#revenue_table
+  margin: 1em 0
+  clear: both
+
 #start_image
   position: absolute
   top: 0
@@ -195,6 +202,7 @@ form#zeitraum > div.control-group.datepicker:nth-of-type(2)
   img
     width: 500px
     opacity: 0.2
+
 
 .checkbox_container
   display: inline-block
@@ -213,7 +221,39 @@ form#zeitraum > div.control-group.datepicker:nth-of-type(2)
 
 #copy_new_label
   display: inline-block
+  width: 250px
+  position: relative
+  top: 12px
+
+#copy_new
+  margin-right: 0
+
+.piece_form .well-small.actions
+  margin: 0 0 12px 0
+
+// dataTables:
+
+div.dataTables_length label
   width: 300px
-  padding-left: 40px
+  float: left
+  text-align: left
+  margin-bottom: 0
+
+div.dataTables_length select
+  width: 75px
+  display: inline
+  margin: 0 5px 0 5px
+
+div.dataTables_filter label
+  float: right
+  width: 460px
   input
-    margin-left: -20px
+    display: inline
+    margin-left: 10px
+
+div.dataTables_info
+  padding-top: 8px
+
+div.dataTables_paginate
+  float: right
+  margin: 0

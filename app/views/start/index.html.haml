@@ -12,12 +12,11 @@
 #revenue_totals
   %h2= t('.revenue_by_collection')
 
-  %table#revenue_table
+  %table#revenue_table.table
     %thead
       %th= t('collection')
       %th= t('.sales_count')
       %th= t('.revenue')
-
     %tbody
       - @collections.each do |collection|
         %tr
