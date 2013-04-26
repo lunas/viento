@@ -1,6 +1,6 @@
 
 = form_tag clients_path, :method => 'get', id: 'clients_search', :class => 'form-search' do
-  .well.well-small
+  .well.well-small.toolbar
     %ul.nav.nav-pills
       %li= link_to t('.new_client'), new_client_path
       %li= link_to t('.export'), '/clients/export.xls'
