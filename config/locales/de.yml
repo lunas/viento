@@ -140,7 +140,7 @@ de:
       costs: "Produktionskosten"
       copy_new: "nach dem Speichern neues Teil mit gleichen Angaben anzeigen"
     pieces:
-      total_found_html: "%{number} Kundinnen<br>gefunden"
+      total_found_html: "%{number} Teile<br>gefunden"
       costs: "Kosten"
       produced: "Produziert"
       sold: "Verkauft"
