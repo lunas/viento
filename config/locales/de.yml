@@ -95,7 +95,7 @@ de:
     bought_1_html: "Bisher ein 1 Teil gekauft fuer %{amount}:"
     bought_more_html: "Bisher %{num} Teile gekauft fuer CHF %{amount}:"
     clients:
-      total_found_html: "%{number} Kundinnen<br>gefunden"
+      total_found_html: "%{number} Kundinnen gefunden"
       firstname: "Vorname"
       lastname: "Nachname"
       city: "Ort"
@@ -140,7 +140,7 @@ de:
       costs: "Produktionskosten"
       copy_new: "nach dem Speichern neues Teil mit gleichen Angaben anzeigen"
     pieces:
-      total_found_html: "%{number} Teile<br>gefunden"
+      total_found_html: "%{number} Teile gefunden"
       costs: "Kosten"
       produced: "Produziert"
       sold: "Verkauft"
@@ -178,7 +178,7 @@ de:
       prize: "Preis"
       choose_from_list: 'Eintrag aus der Liste wählen'
     sales:
-      total_found_html: "%{number} Verkäufe<br>gefunden"
+      total_found_html: "%{number} Verkäufe gefunden"
     index:
       sales: "Verkäufe"
     create:
@@ -202,7 +202,7 @@ de:
   users:
     index:
       title: 'Benutzerinnen/Einstellungen'
-      total_found_html: "%{number} Benutzerinnen<br>gefunden"
+      total_found_html: "%{number} Benutzerinnen gefunden"
     edit:
       title: 'Benutzerin bearbeiten'
       profile: 'Profil bearbeiten'

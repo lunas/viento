@@ -34,6 +34,9 @@ Viento::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # prevent loading files from /public/assets
+  config.serve_static_assets = false
+
   # Do/don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp

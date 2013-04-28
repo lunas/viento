@@ -102,6 +102,10 @@ $(document).ready ->
 
     $('#piece_collection').rules("add", {
       kollektion: true
+      required: true
+      messages: {
+        required: "...darf nicht leer sein."
+      }
     })
 
     # table sorter for sales on edit piece form
