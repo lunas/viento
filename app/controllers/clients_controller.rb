@@ -125,12 +125,12 @@ class ClientsController < ApplicationController
   end
 
   def status_condition(status = params[:status])
-    status ||= "aktiv"
+    status ||= Rails.configuration.default_status
     %w[aktiv passiv alle].include?(status) ? status : nil
   end
 
   def role_condition(role = params[:role])
-    role ||= "Kundinnen"
+    role ||= Rails.configuration.default_role
     (Client::ROLES + ['alle']).include?(role) ? role : nil
   end
 

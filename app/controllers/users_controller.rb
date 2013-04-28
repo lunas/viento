@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @page_title = t('users.index.title')
     @users = User.all
   end
 
