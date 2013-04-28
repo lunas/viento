@@ -17,6 +17,7 @@
     %th= piece_sortable 'count_produced', t('.produced')
     %th= piece_sortable 'sold', t('.sold')
     %th= piece_sortable 'stock', t('.stock')
+    %th
 
   - @pieces.each do |piece|
     %tr{"data-piece_id" => "#{piece.id}"}

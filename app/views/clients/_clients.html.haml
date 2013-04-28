@@ -17,6 +17,7 @@
     %th= sortable 'latest_sale_date', t('.latest_sale_date')
     %th= sortable 'status', t('status')
     %th= sortable 'roles_mask', t('role')
+    %th
 
   - @clients.each do |client|
     %tr{"data-client_id" => "#{client.id}"}

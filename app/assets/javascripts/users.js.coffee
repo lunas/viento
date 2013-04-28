@@ -1,4 +1,11 @@
 $(document).ready ->
+
+  $('#settings_tabs .nav-tabs a').click (e)->
+    e.preventDefault()
+    $(this).tab('show')
+
+  $('#settings_tabs .nav-tabs a:first').tab('show')
+
   $('#users tr td:not([class*=delete])').click (e)->
     url = 'users/' + $(this).parent().attr('data-user_id') + '/edit'
     window.location = url

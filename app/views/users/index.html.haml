@@ -1,25 +1,11 @@
-.well.well-small
-  %ul.nav.nav-pills
-    - if can? :manage, User
-      %li= link_to t('actions.new_user'), new_user_path
-      %li= link_to t('actions.backup'), backup_path
+#settings_tabs
+  %ul.nav.nav-tabs
+    %li= link_to t('.user_management'), '#user_management', 'data-toggle' => "tab"
+    %li= link_to t('.settings'), '#settings', 'data-toggle' => "tab"
 
-#users
-  .total_items
-    = t('.total_found_html', number: @users.size)
-  %table.table
-    %thead
-      %th= t('users.username')
-      %th= t('users.email')
-      %th= t('users.roles')
-      %th
+  .tab-content
+    #user_management.tab-pane.active
+      = render :partial => 'users'
 
-    %tbody
-    - @users.each do | user|
-      %tr{"data-user_id" => "#{user.id}"}
-        %td= user.username
-        %td= user.email
-        %td= user.roles.map(&:capitalize).join(', ')
-        %td.delete
-          =link_to user, confirm: t('actions.confirm_delete'), :method => :delete do
-            %i.icon-remove
+    #settings.tab-pane.active
+      settings

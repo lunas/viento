@@ -202,6 +202,8 @@ de:
   users:
     index:
       title: 'Benutzerinnen/Einstellungen'
+      user_management: 'Benutzerinnen'
+      settings: 'Einstellungen'
       total_found_html: "%{number} Benutzerinnen gefunden"
     edit:
       title: 'Benutzerin bearbeiten'
