@@ -175,6 +175,7 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails-settings (1.0.0)
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
@@ -304,6 +305,7 @@ DEPENDENCIES
   mysql2
   omniauth-twitter
   rails (= 3.2.11)
+  rails-settings
   rake (= 0.8.7)
   rspec-expectations
   rspec-rails

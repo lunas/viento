@@ -37,8 +37,9 @@ Viento::Application.routes.draw do
   match 'analysis/fabric' => 'analysis#by_fabric', as: :analysis_fabric
   match 'analysis/collection' => 'analysis#by_collection', as: :analysis_collection
 
-  # configuration routes
-  match 'backup' => 'configuration#backup'
+
+  resource :settings, only: [:edit, :update]
+  match 'backup' => 'settings#backup'
 
   resources :emails, :only => [:new, :create]
 

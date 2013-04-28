@@ -8,4 +8,8 @@
       = render :partial => 'users'
 
     #settings.tab-pane.active
-      settings
+      = simple_form_for :settings, url: settings_path, :method => 'put',
+        html: {class:'form-horizontal', id: 'settings'} do |f|
+        .row
+          .span6
+

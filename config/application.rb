@@ -69,12 +69,6 @@ module Viento
 
     config.backup_folder = Rails.root.join('db_backup')
 
-    config.max_total_sales_to_show_raw = 2000
-    config.understate_factor = 4
-    config.per_page = 15
-    config.default_status = 'aktiv'
-    config.default_role   = 'Kundinnen'
-
     #paths.app.views << "app/views/devise"
   end
 end

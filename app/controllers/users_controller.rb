@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    #@settings = Settings.new
   end
 
   # create another user (as opposed to self registration)

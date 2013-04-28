@@ -6,10 +6,10 @@
       %li= link_to t('.export'), '/clients/export.xls'
       %li= text_field_tag :search, params[:search], placeholder: t('.search'), :class => 'search-queryxx'
       %li.divider-vertical &nbsp;&nbsp;
-      = render 'filter_dropdown', field: 'status', title: t('status'), default: Rails.configuration.default_status, css: ''
-      = render 'filter_dropdown', field: 'role', title: t('role'), default: Rails.configuration.default_role, css: ''
+      = render 'filter_dropdown', field: 'status', title: t('status'), default: Settings.instance.default_status, css: ''
+      = render 'filter_dropdown', field: 'role', title: t('role'), default: Settings.instance.default_role, css: ''
       %li.divider-vertical &nbsp;&nbsp;
-      = render 'filter_dropdown', field: 'per_page', title: t('per_page'), default: Rails.configuration.per_page.to_s, css: 'pull-right'
+      = render 'filter_dropdown', field: 'per_page', title: t('per_page'), default: Settings.instance.per_page.to_s, css: 'pull-right'
 
   #clients
     = render :partial => 'clients'

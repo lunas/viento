@@ -28,6 +28,8 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 
+gem 'rails-settings'
+
 gem 'whenever', :require => false
 
 # Gems used only for assets and not required

@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  helper_method :sort_column, :sort_direction, :status_condition, :role_condition
+  helper_method :sort_column, :sort_direction, :status_condition, :role_condition, :per_page
 
   # GET /clients
   # GET /clients.json
@@ -125,12 +125,12 @@ class ClientsController < ApplicationController
   end
 
   def status_condition(status = params[:status])
-    status ||= Rails.configuration.default_status
+    status ||= Settings.instance.default_status
     %w[aktiv passiv alle].include?(status) ? status : nil
   end
 
   def role_condition(role = params[:role])
-    role ||= Rails.configuration.default_role
+    role ||= Settings.instance.default_role
     (Client::ROLES + ['alle']).include?(role) ? role : nil
   end
 

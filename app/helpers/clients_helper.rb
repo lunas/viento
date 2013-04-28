@@ -20,8 +20,8 @@ module ClientsHelper
   end
 
   def understate(amount)
-    if amount > Rails.configuration.max_total_sales_to_show_raw
-      "<span class=\"understate\">#{amount / Rails.configuration.understate_factor}</span>".html_safe
+    if amount > Settings.instance.understate_threshold
+      "<span class=\"understate\">#{amount / Settings.instance.understate_factor}</span>".html_safe
     else
       amount
     end

@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def filter_menu_item(column, value)
-    tmp = params.merge(status: status_condition, role: role_condition)
+    tmp = params.merge(status: status_condition, role: role_condition, per_page: per_page)
     link_to value, tmp.merge( "#{column}" => value)
   end
 
