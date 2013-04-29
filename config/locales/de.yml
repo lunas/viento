@@ -228,10 +228,22 @@ de:
     password: 'Passwort'
     password_confirm: 'Passwort wiederholen'
 
-  config:
+  settings:
     backup:
       scheduled: 'Backup wird gestartet. Die Backup-Datei wird in %{path} gespeichert.'
-
+    understate_threshold: "'Understatement'-Schwelle"
+    understate_threshold_hint: "'Total gekauft für'-Summen über dieser Schwelle werden verkleinert dargestellt"
+    understate_factor: "'Understatement'-Faktor"
+    understate_factor_hint: "Verkleinert dargestellte Total-Summen werden durch diesen Faktor geteilt"
+    per_page: 'Standard Zeilen pro Seite'
+    per_page_hint: 'Standard Anzahl Zeilen in Kundinnen/Teile-Tabellen'
+    default_status: 'Standard-Status'
+    default_status_hint: 'Status, der in der Kundinnenliste voreingestellt ist'
+    default_role: 'Standard-Rolle'
+    default_role_hint: 'Rolle, die in der Kundinnenliste voreingestellt ist'
+    example:
+      test_value: "Kundin hat total gekauft für"
+      test_result: 'wird dargestellt als...'
 # active record translations
   date:
     abbr_day_names:

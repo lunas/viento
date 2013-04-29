@@ -8,5 +8,5 @@
 
   .well.well-small.actions
     .actions.shift_right
-      = link_to t('actions.cancel'), @email.referer
+      = link_to t('actions.cancel'), request.referer
       = f.button :submit, value: t('email.send'), class: 'btn-primary'

@@ -69,3 +69,11 @@ $(document).ready ->
       "user[password_confirmation]":
         equalTo: "Bitte dasselbe Passwort wie oben eingeben"
   )
+
+  $('#understate_example #example').change (e)->
+    test_value = $(this).val()
+    if test_value > $('#settings_understate_threshold').val()
+      test_result = test_value/4
+    else
+      test_result = test_value
+    $('#understate_example #example_result').val(test_result)
