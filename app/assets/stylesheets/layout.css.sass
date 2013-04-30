@@ -120,7 +120,7 @@ form
     margin: 12px 0
 
   .actions
-    input
+    input, button[type=submit]
       margin-left: 30px
       margin-right: 30px
 
@@ -281,12 +281,23 @@ div.dataTables_paginate
   #understate_example
     label
       display: inline-block
-      width: 200px
+      width: 180px
       text-align: right
     input
       display: inline-block
       margin: 10px
-      width: 50px
+      width: 100px
+    span.understate
+      display: inline-block
+      width: 60px
+    #explanation
+      margin-left: 200px
+    #explanation.active
+      color: rgb(40, 204, 40)
+      font-weight: bold
+    #explanation.passive
+      color: rgb(150, 150, 150)
+      font-weight: normal
 
 /* copied from BS documentation */
 .bs-docs-example

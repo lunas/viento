@@ -244,6 +244,7 @@ de:
     example:
       test_value: "Kundin hat total gekauft für"
       test_result: 'wird dargestellt als...'
+      test: 'Test'
 # active record translations
   date:
     abbr_day_names:

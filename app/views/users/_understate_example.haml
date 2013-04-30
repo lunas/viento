@@ -1,0 +1,16 @@
+#understate_example.bs-docs-example
+  %label{for: 'example'}= t('settings.example.test_value')
+  .input-append
+    = text_field_tag :example, nil, placeholder: "Bsp-Summe?", class: 'span1'
+    %button{class: "btn", type: "button"}= t('settings.example.test')
+
+  #explanation
+  %label{for: 'example_result'}= t('settings.example.test_result')
+  = text_field_tag :example_result, nil, :disabled => true
+  %hr
+  %dl{class: 'dl-horizontal'}
+    - @sales_totals.each do |client|
+      %dt= client[:name]
+      %dd.understate
+        = understate client[:total]
+        %span.real= "(#{client[:total]})"

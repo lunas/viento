@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @settings = Settings.instance
+    @sales_totals = Client.greatest_sales_sums 5
   end
 
   # create another user (as opposed to self registration)

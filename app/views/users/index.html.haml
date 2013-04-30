@@ -8,29 +8,4 @@
       = render :partial => 'users'
 
     #settings.tab-pane.active
-      = simple_form_for :settings, url: settings_path, :method => 'put',
-        html: {class:'form-horizontal', id: 'edit_settings'} do |f|
-        .row
-          .span6
-            #understate_example.bs-docs-example
-              %label{for: 'example'}= t('settings.example.test_value')
-              = text_field_tag :example
-              #evaluation
-              %label{for: 'example_result'}= t('settings.example.test_result')
-              = text_field_tag :example_result
-
-            = f.input :understate_threshold, label: t('settings.understate_threshold'),
-              hint: t('settings.understate_threshold_hint'),  input_html: {class: 'input-mini'}
-            = f.input :understate_factor, label: t('settings.understate_factor'),
-              hint: t('settings.understate_factor_hint'),  input_html: {class: 'input-mini'}
-            = f.input :per_page, label: t('settings.per_page'), collection: [5, 10, 15, 20, 25, 50, 100, 200, 1000, 9999],
-              hint: t('settings.per_page_hint'), input_html: {class: 'input-mini'}, required: false
-            = f.input :default_status, label: t('settings.default_status'), collection: Client::STATES + ['alle'],
-              hint: t('settings.default_status_hint'), required: false
-            = f.input :default_role, label: t('settings.default_role'), collection: Client::ROLES + ['alle'],
-              hint: t('settings.default_role_hint'), required: false
-
-        .well.well-small.actions
-          .actions.shift_right
-            = link_to t('actions.cancel'), request.referer
-            = f.button :submit, value: t('actions.save'), class: 'btn-primary'
+      = render :partial => 'settings'

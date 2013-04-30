@@ -13,4 +13,12 @@ module ApplicationHelper
     return controller_name.to_sym == menu_item ? 'active' : ''
   end
 
+  def understate(amount)
+    if amount > Settings.instance.understate_threshold
+      "<span class=\"understate\">#{amount / Settings.instance.understate_factor}</span>".html_safe
+    else
+      amount
+    end
+  end
+
 end

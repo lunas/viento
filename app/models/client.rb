@@ -44,6 +44,15 @@ class Client < ActiveRecord::Base
     end
   end
 
+  def self.greatest_sales_sums(limit)
+    with_sales_data.order('sales_total DESC')
+                   .limit(limit)
+                   .inject([]) do |memo, client|
+        memo << {name: client.name, total: client.sales_total}
+        memo
+    end
+  end
+
   def address
     "#{street} #{street_number}".strip
   end

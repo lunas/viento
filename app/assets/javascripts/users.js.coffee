@@ -70,10 +70,60 @@ $(document).ready ->
         equalTo: "Bitte dasselbe Passwort wie oben eingeben"
   )
 
-  $('#understate_example #example').change (e)->
-    test_value = $(this).val()
-    if test_value > $('#settings_understate_threshold').val()
-      test_result = test_value/4
-    else
-      test_result = test_value
-    $('#understate_example #example_result').val(test_result)
+
+  # settings form ////////////
+
+  $('#edit_settings').validate(
+    rules:
+      "settings[understate_threshold]":
+        required: true
+        range: [0, 100000]
+      "settings[understate_factor]":
+        required: true
+        range: [1, 20]
+    messages:
+      "settings[understate_threshold]":
+        required: "Bitte einen Schwellenwert angeben"
+        range: "Der Wert muss zwischen 0 und 100000 liegen"
+      "settings[understate_factor]":
+        required: "Bitte einen Teilungsfaktor angegben"
+        range: "Der Faktor muss zwischen 1 und 20 liegen"
+  )
+
+  update = ->
+    return unless $('#edit_settings').valid()
+    factor = $('#settings_understate_factor').val()
+    return unless parseInt(factor) > 0
+    threshold = $('#settings_understate_threshold').val()
+    return unless parseInt(threshold) > 0
+    test_value = parseInt( $('#understate_example #example').val() )
+    if test_value > 0
+      if test_value > threshold
+        result = test_value/factor
+        $('#explanation').text('> ' + threshold).attr('class', 'active')
+      else
+        result = test_value
+        $('#explanation').text('< ' + threshold).attr('class', 'passive')
+      $('#understate_example #example_result').val(result)
+
+    $('dd').each ->
+      understatement = $(this).find('span:first')
+      real_value = parseInt( understatement.next().text().replace(/[()]/g,"") )
+      if real_value > threshold
+        result = Math.round( real_value/factor )
+      else
+        result = real_value
+      understatement.text(result)
+
+  $('#settings_understate_threshold, #settings_understate_factor, #understate_example #example')
+    .change (e)->
+      update()
+    .keypress (e)->
+      k = e.keyCode || e.which
+      e.preventDefault() if k == 13
+
+  $('#understate_example button').click (e)->
+    $('#example').change()
+
+  #$('button[type=submit]').click (e)->
+  #  $('.edit_settings').validate()
