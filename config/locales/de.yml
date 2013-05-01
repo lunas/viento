@@ -241,6 +241,8 @@ de:
     default_status_hint: 'Status, der in der Kundinnenliste voreingestellt ist'
     default_role: 'Standard-Rolle'
     default_role_hint: 'Rolle, die in der Kundinnenliste voreingestellt ist'
+    saved: 'Einstellungen gespeichert'
+    update_error: ' ist ungültig'
     example:
       test_value: "Kundin hat total gekauft für"
       test_result: 'wird dargestellt als...'
