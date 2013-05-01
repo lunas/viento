@@ -18,7 +18,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "/Users/lukasnick/workspace/viento2/cron.log"
-every 1.day, at: '18:07' do
+set :output, "/Users/lukasnick/workspaces/viento2/log/cron.log"
+every 1.day, at: '19:51' do
   rake "db:backup"
 end
