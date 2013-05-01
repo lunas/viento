@@ -4,7 +4,12 @@ $(document).ready ->
     e.preventDefault()
     $(this).tab('show')
 
-  $('#settings_tabs .nav-tabs a:first').tab('show')
+  #show tab based on url anchor
+  if (window.location.hash.indexOf('settings') != -1)
+    $('#settings_tabs .nav-tabs a:last').tab('show')
+  else
+    $('#settings_tabs .nav-tabs a:first').tab('show')
+
 
   $('#users tr td:not([class*=delete])').click (e)->
     url = 'users/' + $(this).parent().attr('data-user_id') + '/edit'
@@ -125,5 +130,4 @@ $(document).ready ->
   $('#understate_example button').click (e)->
     $('#example').change()
 
-  #$('button[type=submit]').click (e)->
-  #  $('.edit_settings').validate()
+

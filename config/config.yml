@@ -1,5 +1,6 @@
+---
 understate_threshold: 2000
-understate_factor: 4
-per_page: 15
+understate_factor: 10
+per_page: 10
 default_status: aktiv
 default_role: Kundinnen
