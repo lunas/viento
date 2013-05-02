@@ -150,9 +150,28 @@ class Piece < ActiveRecord::Base
   private
 
   def self.table_by(pivot_column, pivot_column_name)
-    Piece.all.pivot(pivot_column_name) {|p| p.send(pivot_column) }.pivot("Name") {|p| p.name }.to_2d("Anzahl") do |pieces|
-      pieces.inject(0) { |result, piece| result += piece.sales_count.to_i; result }
-    end
+
+    cell_block = ->(pieces) {
+      pieces.inject([0,0]) do |result, piece|
+        result[0] += piece.sales_count.to_i
+        result[1] += piece.count_produced.to_i
+        result
+      end
+    }
+    total_block = ->(items) {
+      items.inject([0,0]) do |result, item|
+        unless item.nil?
+          result[0] += item[0]
+          result[1] += item[1]
+        end
+        result
+      end
+    }
+
+    Piece.all
+      .pivot(pivot_column_name) {|p| p.send(pivot_column) }  # group by pivot_column, e.g. 'color'
+      .pivot("Name") {|p| p.name }                           # group each color by piece name
+      .to_2d("Anzahl", {cell: cell_block, row_total: total_block, col_total: total_block} )
   end
 
 end
