@@ -10,9 +10,9 @@
         %tr
           %th= row[0]
           - row[1..-1].each_with_index do |cell, col_index|
-            %td= cell_link(cell.to_s, row_index+1, col_index+1, @table, @analyzed_by)
+            %td= cell_link(cell, row_index+1, col_index+1, @table, @analyzed_by)
     %tfoot
       %tr
         %th= @table[-1][0]
         - @table[-1][1..-1].each_with_index do |cell, col_index|
-          %th= cell_link(cell.to_s, @table.size-1, col_index+1, @table, @analyzed_by)
+          %th= cell_link(cell, @table.size-1, col_index+1, @table, @analyzed_by)

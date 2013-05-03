@@ -1,10 +1,13 @@
 module AnalysisHelper
 
-  def cell_link(cell_text, row_index, col_index, table, analyzed_by)
-    if cell_text.to_i > 0
-      link_to cell_text, filter_sales_path(search_params_hash(table, row_index, col_index, analyzed_by))
+  def cell_link(cell, row_index, col_index, table, analyzed_by)
+    if cell.nil?
+      cell
+    elsif cell.first == 0
+      "0/#{cell.second}"
     else
-      cell_text
+      l = link_to cell.first.to_s, filter_sales_path(search_params_hash(table, row_index, col_index, analyzed_by))
+      l + "/#{cell.second}"
     end
   end
 

@@ -52,7 +52,7 @@ class Piece < ActiveRecord::Base
     #Piece.select("pieces.id, name, collection, max(date) as last_sale, min(date) as first_sale, count(pieces.id) as sales_count")
     #.group("pieces.id").joins(:sales).having("min(date) >= ? and max(date) <= ?", from, to)
 
-    Piece.select("pieces.id, name, collection, count(pieces.id) as sales_count")
+    Piece.select("pieces.id, name, collection, count(pieces.id) as sales_count, sum(pieces.count_produced)/count(pieces.id) as count_produced")
       .joins(:sales)
       .where("sales.date" => (from..to) )
       .group("pieces.id")
