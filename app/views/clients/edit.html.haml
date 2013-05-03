@@ -8,9 +8,8 @@
 
 .span7
   -if @client.role? 'Kundinnen'
-    .well.well-small
-      %ul.nav.nav-pills
-        %li= link_to t('actions.new_sale'), new_client_sale_path(@client)
+    %ul.nav.nav-pills
+      %li= link_to t('actions.new_sale'), new_client_sale_path(@client), class: 'btn btn-small'
 
   - if !@client.new_record?
     = render 'sales', client: @client

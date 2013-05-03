@@ -1,15 +1,15 @@
 
 = form_tag clients_path, :method => 'get', id: 'clients_search', :class => 'form-search' do
-  .well.well-small.toolbar
-    %ul.nav.nav-pills
-      %li= link_to t('.new_client'), new_client_path
-      %li= link_to t('.export'), '/clients/export.xls'
-      %li= text_field_tag :search, params[:search], placeholder: t('.search'), :class => 'search-queryxx'
-      %li.divider-vertical &nbsp;&nbsp;
-      = render 'filter_dropdown', field: 'status', title: t('status'), default: Settings.instance.default_status, css: ''
-      = render 'filter_dropdown', field: 'role', title: t('role'), default: Settings.instance.default_role, css: ''
-      %li.divider-vertical &nbsp;&nbsp;
-      = render 'filter_dropdown', field: 'per_page', title: t('per_page'), default: Settings.instance.per_page.to_s, css: 'pull-right'
+
+  %ul.nav.nav-pills
+    %li= link_to t('.new_client'), new_client_path, class: 'btn btn-small'
+    %li= link_to t('.export'), '/clients/export.xls', class: 'btn btn-small'
+    %li= text_field_tag :search, params[:search], placeholder: t('.search'), :class => 'search-query'
+    %li.divider-vertical &nbsp;&nbsp;
+    = render 'filter_dropdown', field: 'status', title: t('status'), default: Settings.instance.default_status, css: ''
+    = render 'filter_dropdown', field: 'role', title: t('role'), default: Settings.instance.default_role, css: ''
+    %li.divider-vertical &nbsp;&nbsp;
+    = render 'filter_dropdown', field: 'per_page', title: t('per_page'), default: Settings.instance.per_page.to_s, css: 'pull-right'
 
   #clients
     = render :partial => 'clients'

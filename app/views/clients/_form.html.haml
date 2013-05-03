@@ -13,7 +13,7 @@
         = f.input :street_number, label: false, wrapper_html: {class: 'span1'}, input_html: {class: 'input-mini'}
       .form-inputs.row
         = f.input :zip, label: t('.zip_city'), wrapper_html: {class: 'span1'}, input_html: {class: 'input-mini'}
-        = f.input :city, label: false, wrapper_html: {class: 'span3'}
+        = f.input :city, label: false, wrapper_html: {class: 'span3'}, input_html: {class: 'input-medium'}
       = f.input :email, input_html: {class: 'email'}
       = f.input :phone_home, label: t('.phone_home')
       = f.input :phone_work, label: t('.phone_work')
@@ -24,10 +24,9 @@
       = f.input :last_name2, label: t('.lastname2')
       = f.input :street2, label: t('.street2')
 
-      .well.well-small.actions
-        .actions.shift_right
-          = link_to t('actions.cancel'), clients_path
-          = f.submit t('actions.save')
+      .form-actions
+        = link_to t('actions.cancel'), clients_path
+        = f.submit t('actions.save'), class: 'btn btn-primary'
 
 
 

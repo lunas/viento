@@ -7,8 +7,8 @@
 .understate
   font-style: italic
 
-ul.nav.nav-pills
-  margin-bottom: 0px
+//ul.nav.nav-pills
+  //margin-bottom: 0px
 
 html
   font-size: 100%
@@ -50,7 +50,6 @@ table#sales-overview
 
 .total_items
   position: relative
-  top: -20px
   text-align: right
   font-size: 0.9em
   color: #999
@@ -59,12 +58,30 @@ table#sales-overview
   padding: 10px 0 5px 0 !important
 
 // overwriting bootstrap styles:
-form
-  .form-horizontal
-    label
-      .control-label
-        width: 100px !important
-        border:  1px solid red
+
+body.viento
+  .page-header
+    padding-bottom: 0
+    margin: 0
+  .nav-pills .search-query
+    margin-top: 4px
+  label
+    font-size: 1em
+
+  form
+    input
+      font-size: 1em
+    .form-horizontal
+      label
+        .control-label
+          width: 100px !important
+          border:  1px solid red
+    .form-actions
+      padding: 19px 20px 20px 180px
+      margin-top: 40px
+      margin-bottom: 20px
+      background-color: white
+      border-top: 1px solid #e5e5e5
 
 .well-small
   padding: 9px  !important
