@@ -1,5 +1,5 @@
 $(document).ready ->
-  $('#pieces th a').live('click', ()->
+  $('#pieces th a').on('click', ()->
     $.getScript(this.href)
     return false
   )

@@ -1,5 +1,5 @@
 $(document).ready ->
-  $('#clients th a, .pagination a, .dropdown-menu a').live('click', ()->
+  $('#clients th a, .pagination a, .dropdown-menu a').on('click', ()->
     $.getScript(this.href)
     return false
   )

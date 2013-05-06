@@ -4,7 +4,7 @@
 
 jQuery ->
   # Sale index
-  $('#sales th a').live('click', ()->
+  $('#sales th a').on('click', ()->
     $.getScript(this.href)
     return false
   )
