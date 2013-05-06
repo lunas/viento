@@ -40,13 +40,16 @@ table#sales-overview
 #main_nav, #main_container
   min-width: 1200px
 
+  .nav.pull-right
+    padding-top: 2px
+
 #main
   min-height: 500px
   position: relative
   margin-top: 20px
 
-#messages > div, error_explanation
-  top: 0px
+#flash_messages
+  margin-top: 10px
 
 .total_items
   position: relative
@@ -83,6 +86,13 @@ body.viento
       background-color: white
       border-top: 1px solid #e5e5e5
 
+      .btn-primary
+        margin-left: 20px
+        margin-right: 20px
+
+    .form-actions.no-right-shift
+      padding: 19px 0 0 10px
+
 .well-small
   padding: 9px  !important
 
@@ -95,14 +105,14 @@ a
     border: none
   color: #0000FF
 
-#flash_notice, #flash_error, #flash_alert
+#xxxflash_notice, #xxxflash_error, #xxxflash_alert
   padding: 5px 8px
   margin: 10px 0
   width: 320px
   position: relative
   top: -20px
 
-#flash_notice
+#xxxflash_notice
   border: solid 1px green
 
 #flash_error, #flash_alert
@@ -295,6 +305,9 @@ div.dataTables_paginate
     width: 240px
   .controls, .shift_right
     margin-left: 260px
+
+  .form-actions
+    padding: 19px 20px 20px 260px
 
   #understate_example
     label

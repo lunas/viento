@@ -24,8 +24,6 @@ $(document).ready ->
     return false
   )
 
-  $('#messages').fadeOut(6000)
-
   $('.edit_form').validate() if $('.edit_form').length != 0
 
   $('#pieces tr td:not([class*=delete])').click (e)->

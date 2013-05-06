@@ -4,8 +4,8 @@ class SettingsController < ApplicationController
 
   def backup
     Backup.perform_async
-    redirect_to users_path, notice: t('settings.backup.scheduled',
-                                      path: Rails.configuration.backup_folder)
+    flash[:no_fade] = t('settings.backup.scheduled', path: Rails.configuration.backup_folder)
+    redirect_to users_path
   end
 
   def show
@@ -22,8 +22,12 @@ class SettingsController < ApplicationController
     check_range_and_set(:default_status, Client::STATES)
     check_range_and_set(:default_role, Client::ROLES)
 
-    notice =  @errors.empty? ? t('settings.saved') : @errors.join('. ')
-    redirect_to users_path(anchor: 'settings'), notice: notice
+    if @errors.empty?
+      flash[:success] = t('settings.saved')
+    else
+      flash[:error] = @errors.join('. ')
+    end
+    redirect_to users_path(anchor: 'settings')
   end
 
   protected

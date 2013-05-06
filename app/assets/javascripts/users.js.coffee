@@ -119,6 +119,7 @@ $(document).ready ->
       else
         result = real_value
       understatement.text(result)
+                    .effect('highlight', 3000)
 
   $('#settings_understate_threshold, #settings_understate_factor, #understate_example #example')
     .change (e)->

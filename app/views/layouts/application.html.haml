@@ -41,9 +41,12 @@
       - if @page_title.present?
         .page-header
           <h1>#{@page_title} <small>#{@page_subtitle}</small></h1>
-      #messages
+      #flash_messages
         - flash.each do |name, msg|
-          = content_tag :div, msg, id: "flash_#{name}"
+          %div{class: flash_class(name)}
+            = link_to('x', '#', "data-dismiss" => "alert", class:"close")
+            = msg
+
       #main
         = yield
       %footer

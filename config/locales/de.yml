@@ -165,10 +165,10 @@ de:
     copy:
       piece: "Neues Teil (kopiert)"
     create:
-      created: "Teil erstellt"
+      created: "Erstellt: %{info}"
     update:
       piece: "Teil bearbeiten"
-      updated: "Teil gespeichert"
+      updated: "Gespeichert: %{info}"
 
   sales:
     form:

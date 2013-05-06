@@ -15,7 +15,6 @@
       = f.input :default_role, label: t('settings.default_role'), collection: Client::ROLES + ['alle'],
         hint: t('settings.default_role_hint'), required: false
 
-  .well.well-small.actions
-    .actions.shift_right
-      = link_to t('actions.cancel'), request.referer
-      %button{type: :submit , class: 'btn btn-primary'}= t('actions.save')
+  .form-actions
+    = link_to t('actions.cancel'), request.referer
+    %button{type: :submit , class: 'btn btn-primary'}= t('actions.save')

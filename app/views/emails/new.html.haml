@@ -6,7 +6,6 @@
       = f.input :referer, label: t('email.referer'), required: false
       = f.input :message, as: :text, label: t('email.message'),  input_html:{ cols: 30, rows: 7 }
 
-  .well.well-small.actions
-    .actions.shift_right
-      = link_to t('actions.cancel'), request.referer
-      = f.button :submit, value: t('email.send'), class: 'btn-primary'
+  .actions.shift_right
+    = link_to t('actions.cancel'), request.referer
+    = f.button :submit, value: t('email.send'), class: 'btn-primary'

@@ -21,4 +21,14 @@ module ApplicationHelper
     end
   end
 
+  def flash_class(message)
+    case message
+      when :notice then "alert alert-info fadeout"
+      when :no_fade then "alert alert-info"
+      when :success then "alert alert-success fadeout"
+      when :error then "alert alert-error"
+      when :alert then "alert alert-error"
+    end
+  end
+
 end

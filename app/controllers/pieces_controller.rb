@@ -78,9 +78,9 @@ class PiecesController < ApplicationController
       if @piece.save
         format.html do
           if params[:copy_new]
-            redirect_to copy_piece_path(@piece.id), notice: t('pieces.create.created')
+            redirect_to copy_piece_path(@piece.id), notice: t('pieces.create.created', info: @piece.info)
           else
-            redirect_to pieces_path, notice: t('pieces.create.created')
+            redirect_to pieces_path, notice: t('pieces.create.created', info: @piece.info)
           end
         end
         format.json { render json: @piece, status: :created, location: @piece }
@@ -101,7 +101,9 @@ class PiecesController < ApplicationController
       if @piece.update_attributes(params[:piece])
         format.html do
           if params[:copy_new]
-            redirect_to copy_piece_path(@piece.id), notice: t('pieces.update.updated')
+            redirect_to copy_piece_path(@piece.id), notice: t('pieces.update.updated', info: @piece.info)
+          else
+            redirect_to pieces_path, notice: t('pieces.update.updated', info: @piece.info)
           end
         end
         format.json { head :no_content }

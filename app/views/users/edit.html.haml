@@ -4,10 +4,9 @@
 
   = render 'form', form: f
 
-  .well.well-small.actions
-    .actions.shift_right
-      = link_to t('actions.cancel'), users_path
-      = f.button :submit, value: t('actions.save'), class: 'btn-primary'
-      = link_to t('users.edit.cancel_account'), user_path(@user),
-        data: { confirm: t('actions.confirm_delete') }, method: :delete,
-        class: ['btn', 'btn-danger']
+  .form-actions
+    = link_to t('actions.cancel'), users_path
+    = f.button :submit, value: t('actions.save'), class: 'btn-primary'
+    = link_to t('users.edit.cancel_account'), user_path(@user),
+      data: { confirm: t('actions.confirm_delete') }, method: :delete,
+      class: ['btn', 'btn-danger']
