@@ -11,8 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-ui-1.9.0.custom
 //= require jquery_ujs
+//= require jquery-ui
 //xx = xxrequire_tree . << loads in wrong order; so load manually:
 //=require bootstrap-all
 //=require clients
