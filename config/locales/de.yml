@@ -247,6 +247,12 @@ de:
       test_value: "Kundin hat total gekauft für"
       test_result: 'wird dargestellt als...'
       test: 'Test'
+
+  signin:
+    title: 'Anmelden'
+    remember_me: 'Angemeldet bleiben in diesem Browser'
+    signin: 'Anmelden'
+
 # active record translations
   date:
     abbr_day_names:
