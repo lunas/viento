@@ -84,7 +84,7 @@ gem 'dotenv', :groups => [:development, :test]
 gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
