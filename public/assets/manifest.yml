@@ -57,6 +57,14 @@ data_tables/ui-icons_cd0a0a_256x240.png: data_tables/ui-icons_cd0a0a_256x240-c0c
 data_tables/ui-icons_cd0a0a_256x240/index.png: data_tables/ui-icons_cd0a0a_256x240-c0c1ec6a8bcf48fec40303e975a4dfa6.png
 desc.gif: desc-6c575c97b632f44af6a5cdf8d677d0cf.gif
 desc/index.gif: desc-6c575c97b632f44af6a5cdf8d677d0cf.gif
+favicon.ico: favicon-e050e03c3739fbc86be1c3cc93a48f6c.ico
+favicon/index.ico: favicon-e050e03c3739fbc86be1c3cc93a48f6c.ico
+favicon.png: favicon-e050e03c3739fbc86be1c3cc93a48f6c.png
+favicon/index.png: favicon-e050e03c3739fbc86be1c3cc93a48f6c.png
+icon_bow.png: icon_bow-a3b73b984a48ed030259625292c11836.png
+icon_bow/index.png: icon_bow-a3b73b984a48ed030259625292c11836.png
+icon_wob.png: icon_wob-dae26f6122a60dd21ed05b5fc062222f.png
+icon_wob/index.png: icon_wob-dae26f6122a60dd21ed05b5fc062222f.png
 icons/first.png: icons/first-aa5f3f4024512b33acf405e75edbeb34.png
 icons/first/index.png: icons/first-aa5f3f4024512b33acf405e75edbeb34.png
 icons/last.png: icons/last-3217e19256e737cd7df3cc16ab5cf045.png
