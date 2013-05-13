@@ -1,7 +1,10 @@
 $(document).ready ->
+
+  loading = false
+
   $('#clients th a, .pagination a, .dropdown-menu a').on('click', ()->
     $.getScript(this.href)
-    return false
+    false
   )
 
   # search form
@@ -12,7 +15,7 @@ $(document).ready ->
     num_chars = $('#search').val().length
     if esc or num_chars == 0 or num_chars > 1
       $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
-    return false
+    false
   )
 
   $('.dropdown-toggle').dropdown()

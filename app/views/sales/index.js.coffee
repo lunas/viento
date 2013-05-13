@@ -8,3 +8,7 @@ $('#sales tr td:not([class*=delete])').click (e)->
 
 $('#messages').hide()
 
+$('#sales th a').on('click', ()->
+  $.getScript(this.href)
+  return false
+)

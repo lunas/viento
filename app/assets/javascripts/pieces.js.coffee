@@ -1,7 +1,7 @@
 $(document).ready ->
   $('#pieces th a').on('click', ()->
     $.getScript(this.href)
-    return false
+    false
   )
   $('#pieces_search #collection_filter').on('change', ()->
     $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')

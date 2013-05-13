@@ -7,33 +7,34 @@
 .total_items
   = t('.total_found_html', number: @clients.total_entries)
 %table.table
-  %tr
-    %th= sortable 'first_name', t('.firstname')
-    %th= sortable 'last_name', t('.lastname')
-    %th= sortable 'city', t('.city')
-    %th= sortable 'street', t('.street')
-    %th= sortable 'sales_total', t('.sales_total')
-    %th= sortable 'sales_count', t('.sales_count')
-    %th= sortable 'latest_sale_date', t('.latest_sale_date')
-    %th= sortable 'status', t('status')
-    %th= sortable 'roles_mask', t('role')
-    %th
-
-  - @clients.each do |client|
-    %tr{"data-client_id" => "#{client.id}"}
-      %td= client.first_name
-      %td= client.last_name
-      %td= client.city
-      %td= client.address
-      %td= understate client.sales_total
-      %td= client.sales_count
-      %td= client.latest_sale_date
-      %td= client.status
-      %td= client.role
-      %td.delete
-        - if client.sales_count == 0
-          = link_to client, confirm: t('actions.confirm_delete'), :method => :delete do
-            %i.icon-remove
+  %thead
+    %tr
+      %th= sortable 'first_name', t('.firstname')
+      %th= sortable 'last_name', t('.lastname')
+      %th= sortable 'city', t('.city')
+      %th= sortable 'street', t('.street')
+      %th= sortable 'sales_total', t('.sales_total')
+      %th= sortable 'sales_count', t('.sales_count')
+      %th= sortable 'latest_sale_date', t('.latest_sale_date')
+      %th= sortable 'status', t('status')
+      %th= sortable 'roles_mask', t('role')
+      %th
+  %tbody
+    - @clients.each do |client|
+      %tr{"data-client_id" => "#{client.id}"}
+        %td= client.first_name
+        %td= client.last_name
+        %td= client.city
+        %td= client.address
+        %td= understate client.sales_total
+        %td= client.sales_count
+        %td= client.latest_sale_date
+        %td= client.status
+        %td= client.role
+        %td.delete
+          - if client.sales_count == 0
+            = link_to client, confirm: t('actions.confirm_delete'), :method => :delete do
+              %i.icon-remove
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @clients,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'
