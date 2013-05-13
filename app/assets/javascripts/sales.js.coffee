@@ -4,12 +4,12 @@
 
 jQuery ->
   # Sale index
-  $('#sales th a').on('click', ()->
+  $('#sales th, .pagination').on('click', 'a', ()->
     $.getScript(this.href)
     return false
   )
 
-  $('#sales_search #per_page_filter').on('change', ()->
+  $('#sales_search').on('change', '#per_page_filter', ()->
     $('#per_page').val( $('#sales_search #per_page_filter').val() )
     $.get( $('#sales_search').attr('action'), $('#sales_search').serialize(), null, 'script')
     return false

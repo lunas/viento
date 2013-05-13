@@ -21,7 +21,7 @@ $('#clients tr td:not([class*=delete])').click (e)->
   url = 'clients/' + $(this).parent().attr('data-client_id') + '/edit'
   window.location = url
 
-$('#clients th a, .pagination a, .dropdown-menu a').on('click', ()->
+$('#clients th, .pagination').on('click', 'a', ()->
   $.getScript(this.href)
   false
 )

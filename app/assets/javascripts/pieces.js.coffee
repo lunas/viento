@@ -1,20 +1,20 @@
 $(document).ready ->
-  $('#pieces th a').on('click', ()->
+  $('#pieces th, .pagination').on('click', 'a', ()->
     $.getScript(this.href)
     false
   )
-  $('#pieces_search #collection_filter').on('change', ()->
+  $('#pieces_search').on('change', '#collection_filter', ()->
     $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
     return false
   )
-  $('#pieces_search #per_page_filter').on('change', ()->
+  $('#pieces_search').on('change', '#per_page_filter', ()->
     $('#per_page').val( $('#pieces_search #per_page_filter').val() )
     $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
     return false
   )
 
   # search form
-  $('#pieces_search input').keyup( (e)->
+  $('#pieces_search').keyup('input', (e)->
     if (e.keyCode == 27)
       $('#search').val('')
       esc = true

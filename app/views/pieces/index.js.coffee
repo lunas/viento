@@ -11,7 +11,7 @@ $('#pieces tr td:not([class*=delete])').click (e)->
 
 $('#messages').hide()
 
-$('#pieces th a').on('click', ()->
+$('#pieces th, .pagination').on('click', 'a', ()->
   $.getScript(this.href)
   false
 )
