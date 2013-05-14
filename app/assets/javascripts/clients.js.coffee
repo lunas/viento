@@ -5,25 +5,31 @@ $(document).ready ->
     false
   )
 
-#  key_up_time_stamp = null
-#  min_time_between_keys = 100
-#  enough_time_passed = ->
-#    return true unless key_up_time_stamp?
-#
-#
-#  now = ->
-#    new Date().getTime()
 
-  # search form
+# search form
+
+  searcher =
+    delay: 100
+    term: null
+    searchTimeout: ( event )->
+      clearTimeout( @searching );
+      that = this
+      this.searching = setTimeout( ->
+        # only search if the value has changed
+        input_val = $('#search').val()
+        if that.term != input_val
+          that.term = input_val
+          that.search()
+      , @delay )
+    search: ->
+      $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
+
   $('#clients_search').keyup('input', (e)->
     if (e.keyCode == 27)  # ESC
       $('#search').val('')
-      esc = true
-
-    num_chars = $('#search').val().length
-    if esc or num_chars == 0 or num_chars > 1
-      $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
-    false
+      searcher.search()
+    else
+      searcher.searchTimeout()
   )
 
   $('.dropdown-toggle').dropdown()
