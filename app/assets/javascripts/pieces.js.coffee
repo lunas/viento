@@ -15,13 +15,12 @@ $(document).ready ->
 
   # search form
   $('#pieces_search').keyup('input', (e)->
-    if (e.keyCode == 27)
+    searcher.form_selector = '#pieces_search'
+    if (e.keyCode == 27)  # ESC
       $('#search').val('')
-      esc = true
-    num_chars = $('#search').val().length
-    if esc or num_chars == 0 or num_chars > 1
-      $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
-    return false
+      searcher.search()      # global searcher obj, defined in clients.js
+    else
+      searcher.searchTimeout()
   )
 
   $('.edit_form').validate() if $('.edit_form').length != 0

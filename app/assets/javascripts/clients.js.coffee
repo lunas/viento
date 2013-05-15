@@ -8,9 +8,10 @@ $(document).ready ->
 
 # search form
 
-  searcher =
+  window.searcher =   # make it global by attaching it to window
     delay: 300
     term: null
+    form_selector: ''
     searchTimeout: ( event )->
       clearTimeout( @searching );
       that = this
@@ -18,17 +19,15 @@ $(document).ready ->
         # only search if the value has changed
         input_val = $('#search').val()
         if that.term != input_val
-          console.log("searcher.term: #{that.term}, input: #{input_val}")
           that.term = input_val
           that.search()
-        else
-          console.log("same: #{that.term}")
       , @delay )
     search: ->
-      $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
+      $.get( $(@form_selector).attr('action'), $(@form_selector).serialize(), null, 'script')
       @term = ''
 
   $('#clients_search').keyup('input', (e)->
+    searcher.form_selector = '#clients_search'
     if (e.keyCode == 27)  # ESC
       $('#search').val('')
       searcher.search()
