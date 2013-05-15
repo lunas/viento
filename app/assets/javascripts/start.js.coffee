@@ -18,3 +18,12 @@ $(document).ready ->
   .mouseleave (event) ->
     $('#start_image').slider('destroy')
 
+
+  # general functions
+
+  $(document).ajaxStart(->
+    $('#ajax-loader').show()
+  )
+  .ajaxStop(->
+    $('#ajax-loader').hide()
+  )

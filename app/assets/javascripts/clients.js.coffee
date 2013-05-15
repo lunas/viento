@@ -23,7 +23,11 @@ $(document).ready ->
           that.search()
       , @delay )
     search: ->
+      #$('#ajax-loader').show()
       $.get( $(@form_selector).attr('action'), $(@form_selector).serialize(), null, 'script')
+       #.always( ->
+       #  $('#ajax-loader').hide()
+       #)
       @term = ''
 
   $('#clients_search').keyup('input', (e)->
