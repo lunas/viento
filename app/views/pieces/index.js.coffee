@@ -16,4 +16,9 @@ $('#pieces th, .pagination').on('click', 'a', ()->
   false
 )
 
+$('#collection_filter').val( $('input#collection').val() )
+$('#per_page_filter').val( $('input#per_page').val() )
 
+$('tr').hover( ->
+  $(this).find('td').toggleClass('active-row')
+)

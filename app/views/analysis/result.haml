@@ -8,7 +8,7 @@
     %tbody
       - @table[1..-2].each_with_index do |row, row_index|
         %tr
-          %th= row[0]
+          %th= link_to row[0], pieces_path(collection_filter: 'alle', search: row[0])
           - row[1..-1].each_with_index do |cell, col_index|
             %td= cell_link(cell, row_index+1, col_index+1, @table, @analyzed_by)
     %tfoot

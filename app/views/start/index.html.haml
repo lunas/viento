@@ -1,28 +1,20 @@
-#overview
-  .line
-    .caption= link_to t('.clients'), clients_path
-    .explain= t('.explain_clients')
-  .line
-    .caption= link_to t('.pieces'), pieces_path
-    .explain= t('.explain_pieces')
-  .line
-    .caption= link_to t('.analysis'), analysis_menu_path
-    .explain= t('.explain_analysis')
-
 #revenue_totals
-  %h2= t('.revenue_by_collection')
 
   %table#revenue_table.table
     %thead
       %th= t('collection')
+      %th= t('.produced_count')
       %th= t('.sales_count')
+      %th= t('.percent_sold')
       %th= t('.revenue')
     %tbody
       - @collections.each do |collection|
-        %tr
+        %tr{"data-collection" => "#{collection.collection}"}
           %td= collection.collection
-          %td= collection.sales_count
-          %td= collection.total_sales
+          %td= collection.total_produced.to_i
+          %td= collection.total_sold.to_i
+          %td= collection.percent_sold.to_i
+          %td= collection.total_revenue.to_i
 
 #start_image
   = image_tag 'sophie-seite.jpg'

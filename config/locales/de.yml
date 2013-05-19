@@ -57,6 +57,8 @@ de:
       explain_analysis: 'Anzahl Verkäufe pro Kollektion, Farbe, Grösse, Material, und Zeitraum'
       revenue_by_collection: 'Umsatz pro Kollektion'
       sales_count: 'Verkaufte Teile'
+      produced_count: 'Produzierte Teile'
+      percent_sold: '%verkaufter Teile'
       revenue: 'Umsatz'
   analysis:
     index:

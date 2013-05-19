@@ -28,7 +28,7 @@ class Piece < ActiveRecord::Base
                          :message => "darf nicht leer sein und muss zwischen 0 und 10000 liegen."
 
   def self.collections
-    Piece.order("collection").pluck(:collection).uniq
+    Piece.order("collection DESC").pluck(:collection).uniq
   end
   def self.names
     Piece.order("name").pluck(:name).uniq
@@ -41,7 +41,7 @@ class Piece < ActiveRecord::Base
   end
 
   def self.latest_collection
-    order('collection desc').limit(1).pluck(:collection).first
+    order('collection DESC').limit(1).pluck(:collection).first
   end
 
   def self.with_collection(collection)
@@ -86,10 +86,18 @@ class Piece < ActiveRecord::Base
   end
 
   def self.revenue_by_collection
-    select('collection, count(sales.id) as sales_count, sum(actual_price) as total_sales')
-    .joins(:sales)
-    .group(:collection)
-    .order('collection DESC')
+    sql = 'SELECT p.collection, sum(p.count_produced) as total_produced,
+           sum(s.sales_count) as total_sold,
+           sum(s.revenue) as total_revenue,
+           ROUND(sum(s.sales_count)/sum(p.count_produced) * 100, 0) as percent_sold
+           from pieces as p LEFT JOIN (
+             SELECT piece_id, count(id) as sales_count, sum(actual_price) as revenue
+             FROM sales
+             GROUP by piece_id
+           ) as s on p.id = s.piece_id
+           GROUP by collection
+           ORDER by collection DESC;'
+    find_by_sql(sql);
   end
 
   def count_stock

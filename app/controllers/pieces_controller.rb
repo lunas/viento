@@ -33,6 +33,10 @@ class PiecesController < ApplicationController
     end
   end
 
+  def collection
+
+  end
+
   # GET /pieces/1
   # GET /pieces/1.json
   def show

@@ -179,9 +179,15 @@ th
   .desc
     background-image: url(icons/sort_down.png)
 
-#clients tr[data-client_id], #pieces tr[data-piece_id], #client_sales tr[data-edit_url], #piece_sales tr[data-edit_url], #users tr[data-user_id]
+#clients tr[data-client_id], #pieces tr[data-piece_id], #client_sales tr[data-edit_url], #piece_sales tr[data-edit_url], #users tr[data-user_id], #sales tr[data-sale_id], #revenue_table tr[data-collection]
   cursor: pointer
 
+  td.active-row
+    //background-color: lightgrey
+    // needs latest Compass, add '@import "compass"' to your scss
+    background-color: rgb(255,255,255) // Old browsers
+    @include filter-gradient(#ffffff, #ededed, vertical) // IE6-9
+    @include background-image(linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%))
 
 div.analysis_form
   padding: 10px
@@ -219,13 +225,13 @@ form#zeitraum > div.control-group.datepicker:nth-of-type(2)
 
 #revenue_table_wrapper
   position: relative
-  top: -80px
   width: 100%
-  margin-left: 150px
 
 #revenue_table
-  margin: 1em 0
+  margin: 3em 0
   clear: both
+  th
+    white-space: nowrap
 
 #start_image
   position: absolute

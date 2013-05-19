@@ -10,6 +10,10 @@ $(document).ready ->
     "asStripeClasses": []
   )
 
+  $('#revenue_table tr').click (e)->
+    url = 'pieces?collection_filter=' + $(this).attr('data-collection')
+    window.location = url
+
   $('#start_image').mouseover (event) ->
     $('#start_image').slider
       value: $('#start_image img').css('opacity') * 100
@@ -26,4 +30,8 @@ $(document).ready ->
   )
   .ajaxStop(->
     $('#ajax-loader').hide()
+  )
+
+  $('tr').hover( ->
+    $(this).find('td').toggleClass('active-row')
   )

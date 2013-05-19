@@ -25,3 +25,7 @@ $('#clients th, .pagination').on('click', 'a', ()->
   $.getScript(this.href)
   false
 )
+
+$('tr').hover( ->
+  $(this).find('td').toggleClass('active-row')
+)

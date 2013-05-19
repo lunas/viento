@@ -10,7 +10,7 @@
 
 .total_items= t('.total_found_html', number: @sales.total_entries)
 
-%table.table
+%table.table#sales
   %tr
     %th= sale_sortable 'clients.last_name', t('client')
     %th= sale_sortable 'name', t('piece')
