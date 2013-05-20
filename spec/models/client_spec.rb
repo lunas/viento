@@ -65,4 +65,36 @@ describe Client do
     end
   end
 
+  describe "phones" do
+    context "all phone fields empty" do
+      before do
+        @client = FactoryGirl.create(:client, phone_home: nil, phone_work: nil, phone_mobile: nil)
+      end
+      it "returns an empty hash" do
+        @client.phones.should == {}
+      end
+    end
+    context "only one phone field set" do
+      before do
+        @client = FactoryGirl.create(:client, phone_home: nil, phone_work: '079 345 6776', phone_mobile: nil)
+      end
+      it "returns a hash with one entry" do
+        @client.phones.should == {work: '079 345 6776'}
+      end
+    end
+    context "all phone fields set" do
+      before do
+        @client = FactoryGirl.create(:client)
+      end
+      it "returns a hash with three fields" do
+        phones = @client.phones
+        phones[:home].should_not be_nil
+        phones[:work].should_not be_nil
+        phones[:mobile].should_not be_nil
+        phones.keys.size.should == 3
+      end
+    end
+
+  end
+
 end

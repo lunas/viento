@@ -56,14 +56,12 @@ end
 
 group :test do
   gem 'spork'
-  gem 'cucumber-rails'
 #  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'database_cleaner'
   gem 'timecop'
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'email_spec'
-  gem 'viewcumber'
   gem 'mocha'
   gem 'rspec-expectations'
   gem 'rspec-rails'

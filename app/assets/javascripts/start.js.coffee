@@ -22,6 +22,9 @@ $(document).ready ->
   .mouseleave (event) ->
     $('#start_image').slider('destroy')
 
+  $('#start_image span').click (e)->
+    $('#revenue_table .revenue').toggle()
+    #$('#revenue_table tr td:last-child, #revenue_table tr th:last-child').toggle()
 
   # general functions
 
@@ -35,3 +38,4 @@ $(document).ready ->
   $('tr').hover( ->
     $(this).find('td').toggleClass('active-row')
   )
+

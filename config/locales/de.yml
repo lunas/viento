@@ -35,7 +35,7 @@ de:
     next_label: "nächste"
     previous_label: "vorherige"
   main_menu:
-    clients: "Kundinnen"
+    clients: "Personen"
     pieces: "Teile"
     new_sale: "Neuer Verkauf"
     analysis: "Auswertung"
@@ -101,6 +101,11 @@ de:
       firstname: "Vorname"
       lastname: "Nachname"
       city: "Ort"
+      phone: "Telefon"
+      email: "Email"
+      mailing: "Versand"
+      mailing_yes: 'ja'
+      mailing_no: 'nein'
       street: "Strasse/Nr"
       sales_total: "Total gekauft für"
       sales_count: "Total gekaufte Teile"
@@ -114,26 +119,31 @@ de:
       phone_home: "Tel privat"
       phone_work: "Tel Arbeit"
       phone_mobile: "Tel mobile"
+      mailing: "Versand"
       notes: "Notizen"
       profession: "Beruf"
       firstname2: "Vorname 2"
       lastname2: "Nachname 2"
       street2: "Strasse & Nr 2"
     edit:
-      edit_client: "Kundin bearbeiten"
-      delete: "Kundin löschen"
-      confirm_delete: "Kundin wirklich endgültig löschen?"
+      edit_client: "Person bearbeiten"
+      delete: "Person löschen"
+      confirm_delete: "Person wirklich endgültig löschen?"
     index:
-      clients: "Kundinnen"
-      new_client: "Neue Kundin"
+      clients: "Personen"
+      new_client: "Neue Person"
       export: "Exportieren"
       search: "Suche nach Vorname/Nachname/Ort"
     create:
-      created: "Kundin erstellt"
+      created: "Person erstellt"
     update:
-      saved: "Kundin gespeichert"
+      saved: "Person gespeichert"
     destroy:
-      destroyed: "Kundin gelöscht"
+      destroyed: "Person gelöscht"
+    phones:
+      home: "privat"
+      work: "Job"
+      mobile: "Natel"
 
   pieces:
     name: "Name"

@@ -7,6 +7,7 @@
       = f.input :first_name, label: t('.firstname')
       = f.input :last_name, label: t('.lastname'), input_html: {class: 'required'}
       = f.input :status, collection: Client::STATES, as: :radio_buttons, item_wrapper_class: 'inline'
+      = f.input :mailing, label: t('.mailing')
       = f.input :role, label: t('role'), collection: Client::ROLES
       .form-inputs.row
         = f.input :street, label: t('.street'), wrapper_html: {class: 'span2'}

@@ -83,6 +83,14 @@ class Client < ActiveRecord::Base
     self.sales.first.try(:date) # works since sales are ordered by date DESC
   end
 
+  def phones
+    ph = {}
+    ph[:home]   = phone_home   if phone_home.present?
+    ph[:work]   = phone_work   if phone_work.present?
+    ph[:mobile] = phone_mobile if phone_mobile.present?
+    ph
+  end
+
 
   ## Roles
 
