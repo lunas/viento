@@ -29,3 +29,6 @@ $('#clients th, .pagination').on('click', 'a', ()->
 $('tr').hover( ->
   $(this).find('td').toggleClass('active-row')
 )
+
+$('#clients .table .phone').hover (e)->
+  $(this).find('.others').toggle()

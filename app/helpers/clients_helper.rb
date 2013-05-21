@@ -23,11 +23,12 @@ module ClientsHelper
     phones = client.phones
     return '' if phones.empty?
     return phones.first[1] if phones.size==1
-    html = '<div class="btn-group"><a href="#" class="btn dropdown-toggle btn-mini" data-toggle="dropdown">' + phones.keys.first.to_s + ': ' + phones.values.first + '<span class="caret"></span></a><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">'
-    phones.each do |key, phone|
-      html += "<li><span class=\"key\">#{t('clients.phones.' + key.to_s)}: </span><span class=\"phone\">#{phone}</span></li>"
+    html  = '<a href="#" class="first"><span class="key">' + t("clients.phones.#{phones.keys.first.to_s}") + ':</span>' + phones.values.first + '</a>'
+    html += '<ul class="others">'
+    phones.keys[1..-1].each do |key|
+      html += "<li><span class=\"key\">#{t('clients.phones.' + key.to_s)}: </span><span class=\"phone\">#{phones[key]}</span></li>"
     end
-    html += '</ul></div>'
+    html += '</ul>'
     html.html_safe
   end
 

@@ -24,7 +24,7 @@
       %tr{"data-client_id" => "#{client.id}"}
         %td= client.first_name
         %td= client.last_name
-        %td= phone_list client
+        %td.phone= phone_list client
         %td= client.email
         %td= understate client.sales_total
         %td= client.sales_count

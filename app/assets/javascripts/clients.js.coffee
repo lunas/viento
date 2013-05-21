@@ -50,6 +50,11 @@ $(document).ready ->
   $('#client_sales tr td:not([class*=delete])').click (e)->
     window.location = $(this).parent().attr('data-edit_url')
 
+  $('#clients .table .phone').hover (e)->
+    $(this).find('.others').toggle()
+
+  # client edit
+
   if $('.edit_form').size() > 0
     $('.edit_form').validate(
       rules:

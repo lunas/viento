@@ -141,9 +141,9 @@ de:
     destroy:
       destroyed: "Person gelöscht"
     phones:
-      home: "privat"
+      home: "pr"
       work: "Job"
-      mobile: "Natel"
+      mobile: "Nat"
 
   pieces:
     name: "Name"
