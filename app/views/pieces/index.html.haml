@@ -4,7 +4,11 @@
       %label= t('collection')
       = select_tag 'collection_filter', options_for_select((Piece.collections << 'alle').map{|c| [c, c]}, Piece.latest_collection), class: 'span2'
     %li.divider-vertical.span1 &nbsp;
-    %li= text_field_tag :search, params[:search], placeholder: t('.search'), :class => 'search-query'
+    %li
+      .input-append
+        = text_field_tag :search, params[:search], placeholder: t('.search'), :class => 'search-query'
+        %span.add-on
+          %a(href="#" data-toggle="tooltip" data-placement="bottom" title="#{t('.search_delete')}") x
     %li.divider-vertical.span1 &nbsp;
     %li= link_to t('actions.new_piece'), new_piece_path, class: 'btn btn-small'
     %li.pull-right

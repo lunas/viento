@@ -173,6 +173,7 @@ de:
     index:
       pieces: "Teile"
       search: "Suche nach Name/Material/Farbe"
+      search_delete: 'alle anzeigen'
     new:
       piece: "Neues Teil"
     copy:
