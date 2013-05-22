@@ -32,6 +32,7 @@ module ApplicationHelper
   end
 
   def collection_filter(selected = Piece.latest_collection)
+    selected = 'alle' if selected == ''
     collections = (Piece.collections << 'alle').map{|c| [c, c]}
     select_tag 'collection_filter',
                options_for_select(collections, selected),

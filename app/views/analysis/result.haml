@@ -1,10 +1,11 @@
 - if @table.empty?
   %p= t('.no_results')
 - else
-  #result_collection_filter
-    = hidden_field_tag :criterion, request[:action]
-    %label= t('.collection')
-    = collection_filter params[:analysis].present? ? params[:analysis][:collection] : params[:collection]
+  - unless request[:action]=='by_collection'
+    #result_collection_filter
+      = hidden_field_tag :criterion, request[:action]
+      %label= t('.collection')
+      = collection_filter params[:analysis].present? ? params[:analysis][:collection] : params[:collection]
   %table.analysis.table
     %thead
       - @table.first.each do |header|
