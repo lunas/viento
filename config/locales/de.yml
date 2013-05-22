@@ -5,7 +5,7 @@ de:
   start: "Shalom"
   viento: "Viento"
   ok: "Ok"
-  status: "Status"
+  status: "Versand"
   role: "Rolle"
   client: "Kundin"
   piece: "Teil"
@@ -15,8 +15,8 @@ de:
   fabric: "Material"
   prize: "Preis"
   date_label: "Datum"
-  active: "aktiv"
-  passive: "passiv"
+  active: "ja"
+  passive: "nein"
   all: "alle"
   per_page: "Pro Seite"
   actions:
@@ -72,6 +72,7 @@ de:
       all_collections: "Alle Kollektionen"
     result:
       no_results: "Keine Verkäufe für diesen Zeitraum gefunden."
+      collection: 'Kollektionen'
     sold_between: "verkauft zwischen %{from} und %{to}"
     collection: "Kollektion %{collection}"
     all_collections: "alle Kollektionen"
@@ -119,7 +120,7 @@ de:
       phone_home: "Tel privat"
       phone_work: "Tel Arbeit"
       phone_mobile: "Tel mobile"
-      mailing: "Versand"
+      mailing: "Benachrichtigung"
       notes: "Notizen"
       profession: "Beruf"
       firstname2: "Vorname 2"

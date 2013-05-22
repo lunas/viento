@@ -34,7 +34,7 @@ $(document).ready ->
     $(e.target).tooltip()
 
 
-  $('#collection_filter').val( $('input#collection').val() )
+  $('#pieces_search #collection_filter').val( $('input#collection').val() )
   $('#per_page_filter').val( $('input#per_page').val() )
 
   $('.edit_form').validate() if $('.edit_form').length != 0

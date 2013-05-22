@@ -6,7 +6,7 @@
       = f.input :title, label: t('.title'), input_html: {class: 'input-mini'}
       = f.input :first_name, label: t('.firstname')
       = f.input :last_name, label: t('.lastname'), input_html: {class: 'required'}
-      = f.input :status, collection: Client::STATES, as: :radio_buttons, item_wrapper_class: 'inline'
+      = f.input :status, label: t('status'), collection: Client::STATES, as: :radio_buttons, item_wrapper_class: 'inline'
       = f.input :mailing, label: t('.mailing')
       = f.input :role, label: t('role'), collection: Client::ROLES
       .form-inputs.row

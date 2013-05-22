@@ -31,4 +31,11 @@ module ApplicationHelper
     end
   end
 
+  def collection_filter(selected = Piece.latest_collection)
+    collections = (Piece.collections << 'alle').map{|c| [c, c]}
+    select_tag 'collection_filter',
+               options_for_select(collections, selected),
+               class: 'span2'
+  end
+
 end

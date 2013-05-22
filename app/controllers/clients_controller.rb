@@ -135,7 +135,7 @@ class ClientsController < ApplicationController
 
   def status_condition(status = params[:status])
     status ||= Settings.instance.default_status
-    %w[aktiv passiv alle].include?(status) ? status : nil
+    %w[ja nein alle].include?(status) ? status : nil
   end
 
   def role_condition(role = params[:role])

@@ -16,7 +16,7 @@
       %th= sortable 'sales_total', t('.sales_total')
       %th= sortable 'sales_count', t('.sales_count')
       %th= sortable 'latest_sale_date', t('.latest_sale_date')
-      %th= sortable 'mailing', t('.mailing')
+      %th= sortable 'status', t('.mailing')
       %th= sortable 'roles_mask', t('role')
       %th
   %tbody
@@ -29,7 +29,7 @@
         %td= understate client.sales_total
         %td= client.sales_count
         %td= client.latest_sale_date
-        %td= client.mailing ? t('.mailing_yes') : t('.mailing_no')
+        %td= client.status
         %td= client.role
         %td.delete
           - if client.sales_count == 0

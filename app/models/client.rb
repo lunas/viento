@@ -120,6 +120,6 @@ class Client < ActiveRecord::Base
     self.roles = [role]
   end
 
-  STATES = %w[aktiv passiv]
+  STATES = %w[ja nein]  # "Versand"
 
 end

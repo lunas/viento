@@ -2,7 +2,7 @@
   %ul.nav.nav-pills
     %li
       %label= t('collection')
-      = select_tag 'collection_filter', options_for_select((Piece.collections << 'alle').map{|c| [c, c]}, Piece.latest_collection), class: 'span2'
+      = collection_filter
     %li.divider-vertical.span1 &nbsp;
     %li
       .input-append
