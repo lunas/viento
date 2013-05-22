@@ -23,11 +23,7 @@ $(document).ready ->
           that.search()
       , @delay )
     search: ->
-      #$('#ajax-loader').show()
       $.get( $(@form_selector).attr('action'), $(@form_selector).serialize(), null, 'script')
-       #.always( ->
-       #  $('#ajax-loader').hide()
-       #)
       @term = ''
 
   $('#clients_search').keyup('input', (e)->
@@ -37,7 +33,17 @@ $(document).ready ->
       searcher.search()
     else
       searcher.searchTimeout()
+    if $(e.target).val()==''
+      $(e.target).next().hide()
+    else
+      $(e.target).next().show().css('display', 'inline-block')
   )
+  $('#clients_search .add-on').on('click', (e)->
+    $('#search').val('')
+    searcher.search()
+    $('#search').next().hide()
+  ).find('a').hover (e)->
+    $(e.target).tooltip()
 
   $('.dropdown-toggle').dropdown()
 

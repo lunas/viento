@@ -66,14 +66,19 @@ body.viento
   .page-header
     padding-bottom: 0
     margin: 0
-  .nav-pills .search-query
+  .nav-pills .input-append
     margin-top: 4px
+    input.search-query
+      -moz-border-radius: 5px 0 0 5px
+      border-radius: 5px 0 0 5px
   label
     font-size: 1em
 
   form
     input
       font-size: 1em
+    input#search
+      font-size: 13px
     input#example
       font-size: 13px
     .input-append button.btn
@@ -97,6 +102,10 @@ body.viento
 
     .form-actions.no-right-shift
       padding: 19px 0 0 10px
+
+  form#clients_search
+    .add-on
+      display: none
 
 .well-small
   padding: 9px  !important

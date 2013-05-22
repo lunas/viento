@@ -134,6 +134,7 @@ de:
       new_client: "Neue Person"
       export: "Exportieren"
       search: "Suche nach Vorname/Nachname/Ort"
+      search_delete: 'alle anzeigen'
     create:
       created: "Person erstellt"
     update:
