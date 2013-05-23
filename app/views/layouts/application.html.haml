@@ -24,7 +24,7 @@
                 =link_to t('main_menu.analysis'), analysis_menu_path
             %ul.nav.pull-right
               - if user_signed_in?
-                %strong= current_user.username
+                %span.username= current_user.username
                 = link_to t('meta.profile'), edit_user_registration_path
                 |
                 -if can? :manage, User

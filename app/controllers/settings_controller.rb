@@ -21,6 +21,7 @@ class SettingsController < ApplicationController
     check_range_and_set(:per_page, [5,10,15,20,25,50,100,500,1000,9999])
     check_range_and_set(:default_status, Client::STATES)
     check_range_and_set(:default_role, Client::ROLES)
+    check_range_and_set(:show_revenue, User::ROLES)
 
     if @errors.empty?
       flash[:success] = t('settings.saved')

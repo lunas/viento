@@ -250,10 +250,12 @@ de:
     understate_threshold_hint: "'Total gekauft für'-Summen über dieser Schwelle werden verkleinert dargestellt"
     understate_factor: "'Understatement'-Faktor"
     understate_factor_hint: "Verkleinert dargestellte Total-Summen werden durch diesen Faktor geteilt"
+    show_revenue: "Umsatzspalte auf Startseite"
+    show_revenue_hint: "Umsatzspalte sichtbar auf Klick für gewählte Rolle (und alle privilegierteren)"
     per_page: 'Standard Zeilen pro Seite'
     per_page_hint: 'Standard Anzahl Zeilen in Kundinnen/Teile-Tabellen'
-    default_status: 'Standard-Status'
-    default_status_hint: 'Status, der in der Kundinnenliste voreingestellt ist'
+    default_status: 'Standard-Versand'
+    default_status_hint: 'Versand-ja oder Versand-nein: Voreinstellung in der Kundinnenliste'
     default_role: 'Standard-Rolle'
     default_role_hint: 'Rolle, die in der Kundinnenliste voreingestellt ist'
     saved: 'Einstellungen gespeichert'

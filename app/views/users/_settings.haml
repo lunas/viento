@@ -8,6 +8,8 @@
         hint: t('settings.understate_threshold_hint'),  input_html: {class: 'input-mini'}
       = f.input :understate_factor, label: t('settings.understate_factor'),
         hint: t('settings.understate_factor_hint'),  input_html: {class: 'input-mini'}
+      = f.input :show_revenue, label: t('settings.show_revenue'), collection: User::ROLES,
+        hint: t('settings.show_revenue_hint'), required: false
       = f.input :per_page, label: t('settings.per_page'), collection: [5, 10, 15, 20, 25, 50, 100, 200, 1000, 9999],
         hint: t('settings.per_page_hint'), input_html: {class: 'input-mini'}, required: false
       = f.input :default_status, label: t('settings.default_status'), collection: Client::STATES + ['alle'],

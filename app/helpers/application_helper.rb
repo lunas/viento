@@ -39,4 +39,16 @@ module ApplicationHelper
                class: 'span2'
   end
 
+  def can_see_revenue
+    threshold = Settings.instance.show_revenue
+    threshold = threshold.to_s
+    return true if threshold == 'worker'
+    if threshold == 'boss'
+      return !(%w[boss admin] & current_user.roles).empty?
+    end
+    if threshold == 'admin'
+      return current_user.roles.include? 'admin'
+    end
+  end
+
 end
