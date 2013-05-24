@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20130519230237) do
     t.datetime "updated_at",    :null => false
     t.string   "city"
     t.integer  "sales_count"
-    t.boolean  "mailing"
+    t.string   "mailing"
   end
 
   add_index "clients", ["city"], :name => "city_ix"

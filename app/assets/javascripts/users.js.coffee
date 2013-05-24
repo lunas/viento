@@ -7,6 +7,8 @@ $(document).ready ->
   #show tab based on url anchor
   if (window.location.hash.indexOf('settings') != -1)
     $('#settings_tabs .nav-tabs a:last').tab('show')
+    # scroll to top, because otherwise flash messages are not visible
+    window.scrollTo(0, 0)
   else
     $('#settings_tabs .nav-tabs a:first').tab('show')
 

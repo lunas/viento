@@ -120,12 +120,17 @@ de:
       phone_home: "Tel privat"
       phone_work: "Tel Arbeit"
       phone_mobile: "Tel mobile"
-      mailing: "Benachrichtigung"
+      mailing: "Benachrichtigung per"
       notes: "Notizen"
       profession: "Beruf"
       firstname2: "Vorname 2"
       lastname2: "Nachname 2"
       street2: "Strasse & Nr 2"
+      mailing_private: "Tel privat"
+      mailing_work: "Tel Job"
+      mailing_mobile: "Natel"
+      mailing_email: "Email"
+      mailing_none: "gar keine"
     edit:
       edit_client: "Person bearbeiten"
       delete: "Person löschen"
@@ -250,7 +255,7 @@ de:
     understate_threshold_hint: "'Total gekauft für'-Summen über dieser Schwelle werden verkleinert dargestellt"
     understate_factor: "'Understatement'-Faktor"
     understate_factor_hint: "Verkleinert dargestellte Total-Summen werden durch diesen Faktor geteilt"
-    show_revenue: "Umsatzspalte auf Startseite"
+    show_revenue: "Umsatzspalte auf Startseite für"
     show_revenue_hint: "Umsatzspalte sichtbar auf Klick für gewählte Rolle (und alle privilegierteren)"
     per_page: 'Standard Zeilen pro Seite'
     per_page_hint: 'Standard Anzahl Zeilen in Kundinnen/Teile-Tabellen'

@@ -7,7 +7,6 @@
       = f.input :first_name, label: t('.firstname')
       = f.input :last_name, label: t('.lastname'), input_html: {class: 'required'}
       = f.input :status, label: t('status'), collection: Client::STATES, as: :radio_buttons, item_wrapper_class: 'inline'
-      = f.input :mailing, label: t('.mailing')
       = f.input :role, label: t('role'), collection: Client::ROLES
       .form-inputs.row
         = f.input :street, label: t('.street'), wrapper_html: {class: 'span2'}
@@ -15,6 +14,7 @@
       .form-inputs.row
         = f.input :zip, label: t('.zip_city'), wrapper_html: {class: 'span1'}, input_html: {class: 'input-mini'}
         = f.input :city, label: false, wrapper_html: {class: 'span3'}, input_html: {class: 'input-medium'}
+      = f.input :mailing, label: t('.mailing'), collection: Client::MAILINGS, label_method: lambda{|f| t(".mailing_#{f}")}, :include_blank => false
       = f.input :email, input_html: {class: 'email'}
       = f.input :phone_home, label: t('.phone_home')
       = f.input :phone_work, label: t('.phone_work')

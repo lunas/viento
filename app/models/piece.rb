@@ -65,12 +65,11 @@ class Piece < ActiveRecord::Base
 
   # TODO rspec
   def self.with_stock_and_sold
-  #scope :with_stock_and_sold,
-        select('pieces.id, collection, color, costs, count_produced, fabric, name, price, size')
-          .select('count(sales.id) as sold')
-          .select('count_produced - count(sales.id) as stock')
-          .joins('LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
-          .group('pieces.id')
+    select('pieces.id, collection, color, costs, count_produced, fabric, name, price, size')
+      .select('count(sales.id) as sold')
+      .select('count_produced - count(sales.id) as stock')
+      .joins('LEFT OUTER JOIN sales ON sales.piece_id = pieces.id')
+      .group('pieces.id')
   end
 
   # TODO rspec
@@ -125,11 +124,6 @@ class Piece < ActiveRecord::Base
   def revenue
     self.sales.inject(0){ |total, sale| total += sale.actual_price }
   end
-
-  #sql = "Select p.id, kollektion, name, farbe, material, groesse, preis, anzahl, kosten,
-		#count_produced(s.id) as verkauft,
-		#anzahl - count_produced(s.id) as restbestand
-		#from pieces p left join sales s on p.id = s.piece_id "
 
   def info
     "#{self.collection} - #{self.name}: #{self.color}, #{self.size}, #{self.fabric}"
