@@ -61,6 +61,28 @@ $(document).ready ->
 
   # client edit
 
+  $('#client_mailing').tooltip(
+    title: ->
+      target = $('#client_mailing')
+      if target.val() == 'private'
+        return $('#client_phone_home').val()
+      if target.val() == 'work'
+        return $('#client_phone_work').val()
+      if target.val() == 'work'
+        return $('#client_phone_work').val()
+      if target.val() == 'mobile'
+        return $('#client_phone_mobile').val()
+      if target.val() == 'email'
+        return $('#client_email').val()
+      return ''
+    trigger: 'hover'
+    placement: 'right'
+  )
+  .on('change', (e)->
+    $('#client_mailing').tooltip('show')
+  )
+
+
   if $('.edit_form').size() > 0
     $('.edit_form').validate(
       rules:

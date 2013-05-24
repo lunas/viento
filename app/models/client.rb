@@ -3,6 +3,7 @@ class Client < ActiveRecord::Base
                   :phone_home, :phone_mobile, :phone_work, :profession, :status, :mailing, :street,
                   :street2, :street_number, :title, :zip, :city, :roles_mask, :role,
                   :sales_count, :sales_total, :latest_sale_date
+  attr_reader :mailing_info
 
   validates :last_name, presence: {message: 'Nachname darf nicht leer sein'}
 
@@ -81,6 +82,10 @@ class Client < ActiveRecord::Base
 
   def latest_sale_date
     self.sales.first.try(:date) # works since sales are ordered by date DESC
+  end
+
+  def mailing_info
+    'mailing_info'
   end
 
   def phones
