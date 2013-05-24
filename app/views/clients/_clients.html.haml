@@ -13,10 +13,11 @@
       %th= sortable 'last_name', t('.lastname')
       %th= t('.phone')
       %th= t('.email')
+      %th= t('.mailing')
       %th= sortable 'sales_total', t('.sales_total')
       %th= sortable 'sales_count', t('.sales_count')
       %th= sortable 'latest_sale_date', t('.latest_sale_date')
-      %th= sortable 'status', t('.mailing')
+      %th= sortable 'status', t('status')
       %th= sortable 'roles_mask', t('role')
       %th
   %tbody
@@ -27,6 +28,7 @@
         %td
           .phone= phone_list client
         %td= client.email
+        %td= client.mailing_info
         %td= understate client.sales_total
         %td= client.sales_count
         %td= client.latest_sale_date

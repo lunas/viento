@@ -85,7 +85,14 @@ class Client < ActiveRecord::Base
   end
 
   def mailing_info
-    'mailing_info'
+    mailing_type = self.mailing
+    if mailing_type.present?
+      if mailing_type=="email"
+        self.email
+      else
+        self.send("phone_#{mailing}")
+      end
+    end
   end
 
   def phones

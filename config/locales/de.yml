@@ -104,7 +104,7 @@ de:
       city: "Ort"
       phone: "Telefon"
       email: "Email"
-      mailing: "Versand"
+      mailing: "Benach-richtigung"
       mailing_yes: 'ja'
       mailing_no: 'nein'
       street: "Strasse/Nr"
