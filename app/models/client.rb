@@ -89,8 +89,10 @@ class Client < ActiveRecord::Base
     if mailing_type.present?
       if mailing_type=="email"
         self.email
+      elsif %w[home work mobile].include? mailing_type
+        self.send("phone_#{mailing_type}")
       else
-        self.send("phone_#{mailing}")
+        '-'
       end
     end
   end
@@ -133,6 +135,6 @@ class Client < ActiveRecord::Base
   end
 
   STATES = %w[ja nein]  # "Versand"
-  MAILINGS = %w[none private work mobile email]
+  MAILINGS = %w[none home work mobile email]
 
 end

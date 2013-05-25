@@ -126,7 +126,7 @@ de:
       firstname2: "Vorname 2"
       lastname2: "Nachname 2"
       street2: "Strasse & Nr 2"
-      mailing_private: "Tel privat"
+      mailing_home: "Tel privat"
       mailing_work: "Tel Arbeit"
       mailing_mobile: "Natel"
       mailing_email: "Email"
