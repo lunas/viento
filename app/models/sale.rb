@@ -19,6 +19,10 @@ class Sale < ActiveRecord::Base
     sales
   end
 
+  def self.latest_date
+    Sale.order("date DESC").limit(1).pluck(:date).first
+  end
+
   def price
     piece.try(:price)
   end

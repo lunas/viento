@@ -45,12 +45,15 @@ jQuery ->
       $( "#sale_piece_id" ).val( ui.item.id)
       return false
 
-  if $('.sale_form').size() > 0
+  $('#set_date_today a').on('click', (e)->
+    today = new Date()
+    $('#sale_date_1i').val( today.getFullYear() )
+    $('#sale_date_2i').val( today.getMonth()+1 )
+    $('#sale_date_3i').val( today.getDate() )
+    false
+  )
 
-    $('input.datepicker').change( (event) ->
-      if $('.sale_form').valid()
-        $('input.date-alt').val( $(this).val() )
-    )
+  if $('.sale_form').size() > 0
 
     $('.sale_form').validate()
 
@@ -64,13 +67,6 @@ jQuery ->
         required: "...darf nicht leer sein."
       }
     }) for element in ['#sale_client_name_and_city', '#sale_piece_info']
-
-    $('#sale_date').rules("add", {
-      date: true
-      messages: {
-        date: "...muss ein gueltiges Datum sein."
-      }
-    })
 
     $('#sale_actual_price').rules("add", {
       required: true

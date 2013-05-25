@@ -17,4 +17,14 @@ module SalesHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
+  # not used
+  def display_date(sale)
+    d = sale.date
+    if d.present?
+      d.to_s.gsub(/-/, '.')
+    else
+      ''
+    end
+  end
+
 end

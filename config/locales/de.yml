@@ -197,6 +197,7 @@ de:
       date: "Datum"
       prize: "Preis"
       choose_from_list: 'Eintrag aus der Liste wählen'
+      today: 'heute'
     sales:
       total_found_html: "%{number} Verkäufe gefunden"
     index:

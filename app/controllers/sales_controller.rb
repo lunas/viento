@@ -118,7 +118,7 @@ class SalesController < ApplicationController
   def prepare_new_sale
     @sale.client_id = params[:client_id] || nil
     @sale.piece_id, @sale.date =  params[:piece_id] || nil
-    @sale.date = Date.today
+    @sale.date = Sale.latest_date
     @parent = @sale.client || @sale.piece
   end
 
