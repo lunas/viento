@@ -20,8 +20,8 @@
 
   - @sales.each do |sale|
     %tr{"data-sale_id" => "#{sale.id}"}
-      %td= sale.client.name
-      %td= sale.piece.name
+      %td= link_to sale.client.name, edit_client_path(sale.client)
+      %td= link_to sale.piece.name,  edit_piece_path(sale.piece)
       %td= sale.actual_price
       %td= sale.date
       %td.delete

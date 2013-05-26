@@ -35,6 +35,7 @@ de:
   will_paginate:
     next_label: "nächste"
     previous_label: "vorherige"
+    page_gap: "&hellip;"
   main_menu:
     clients: "Personen"
     pieces: "Teile"
