@@ -36,6 +36,9 @@
         - if piece.count_sold == 0
           = link_to piece, confirm: t('actions.confirm_delete'), :method => :delete do
             %i.icon-remove
+        - else
+          = link_to piece_sales_path(piece) do
+            %i.icon-shopping-cart
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @pieces,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

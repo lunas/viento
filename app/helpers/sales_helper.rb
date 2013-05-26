@@ -20,6 +20,10 @@ module SalesHelper
   def get_sales_action
     if request[:action] == 'filter'
       filter_sales_path
+    elsif request[:client_id]
+      client_sales_path request[:client_id]
+    elsif request[:piece_id]
+      piece_sales_path request[:piece_id]
     else
       sales_path
     end

@@ -19,7 +19,7 @@ class SalesController < ApplicationController
                  .order("#{sort_column} #{sort_direction}, #{second_order}" )
                  .paginate(:per_page => per_page, :page => params[:page])
     @page_title = t('sales.index.sales')
-    @page_subtitle = t('all')
+    @page_subtitle = create_index_subtitle
     respond_to do |format|
       format.html # index.html.erb
       format.js
@@ -33,7 +33,7 @@ class SalesController < ApplicationController
                  .order("#{sort_column} #{sort_direction}, #{second_order}" )
                  .paginate(:per_page => per_page, :page => params[:page])
     @page_title = t('sales.index.sales')
-    @page_subtitle = create_subtitle criteria
+    @page_subtitle = create_filter_subtitle criteria
     render :index
   end
 
@@ -160,7 +160,7 @@ class SalesController < ApplicationController
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
   end
 
-  def create_subtitle(criteria)
+  def create_filter_subtitle(criteria)
     total = 'total Anzahl'
     if criteria.has_key? :attribute
       if criteria[:attribute] == :date
@@ -180,6 +180,20 @@ class SalesController < ApplicationController
       t("analysis.collection", collection: criteria[:collection])
     subtitle = "#{name}, #{text}, #{collection}".strip
     subtitle
+  end
+
+  def create_index_subtitle
+    client_id = params[:client_id]
+    if client_id
+      Client.find(client_id).name
+    else
+      piece_id = params[:piece_id]
+      if piece_id
+        Piece.find(piece_id).info
+      else
+        t('all')
+      end
+    end
   end
 
 end

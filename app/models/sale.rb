@@ -23,7 +23,7 @@ class Sale < ActiveRecord::Base
     if params[:client_id].present?
       Sale.joins(:piece, :client).where(client_id: params[:client_id])
     elsif params[:piece_id].present?
-      Sale.joins(:piece, :client).where(client_id: params[:piece_id])
+      Sale.joins(:piece, :client).where(piece_id: params[:piece_id])
     else
       Sale.joins(:piece, :client)
     end
