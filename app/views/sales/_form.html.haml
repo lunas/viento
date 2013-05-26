@@ -14,3 +14,4 @@
   .form-actions
     = link_to t('actions.cancel'), back_path(@parent)
     = f.button :submit, value: t('actions.save'), class: 'btn-primary'
+    = link_to t('actions.delete_sale'), @sale, :confirm => t('actions.confirm_delete'), :method => :delete, class: 'btn btn-small btn-danger'

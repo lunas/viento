@@ -1,6 +1,6 @@
 = form_tag get_sales_action, :method => 'get', id: 'sales_search', :class => 'form-search' do |f|
   %ul.nav.nav-pills
-    %li= link_to t('actions.new_sale'), new_sale_path, class: 'btn btn-small'
+    %li= link_to t('actions.new_sale'), get_new_sale_path, class: 'btn btn-small'
     %li.pull-right
       %label= t('per_page')
       = select_tag 'per_page_filter', options_for_select(per_page_options, per_page), class: 'span1'

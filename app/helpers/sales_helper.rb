@@ -29,6 +29,16 @@ module SalesHelper
     end
   end
 
+  def get_new_sale_path
+    if request[:client_id]
+      new_client_sale_path request[:client_id]
+    elsif request[:piece_id]
+      new_piece_sale_path request[:piece_id]
+    else
+      new_sale_path
+    end
+  end
+
   # not used
   def display_date(sale)
     d = sale.date

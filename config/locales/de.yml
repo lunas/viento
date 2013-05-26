@@ -30,6 +30,7 @@ de:
     delete_user: "Benutzerin löschen"
     confirm_delete: "Wirklich löschen?"
     edit_sale: "Verkauf bearbeiten"
+    delete_sale: "Verkauf löschen"
     backup: "Backup"
   will_paginate:
     next_label: "nächste"
