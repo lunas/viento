@@ -191,6 +191,8 @@ de:
     update:
       piece: "Teil bearbeiten"
       updated: "Gespeichert: %{info}"
+    destroy:
+      destroyed: "Teil gelöscht: %{info}"
 
   sales:
     form:

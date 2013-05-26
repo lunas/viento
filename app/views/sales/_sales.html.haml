@@ -25,8 +25,7 @@
       %td= sale.actual_price
       %td= sale.date
       %td.delete
-        = link_to sale, confirm: t('actions.confirm_delete'), :method => :delete do
-          %i.icon-remove
+        = link_to 'x', @sale, :confirm => t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @sales,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

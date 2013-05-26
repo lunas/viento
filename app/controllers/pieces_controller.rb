@@ -126,7 +126,10 @@ class PiecesController < ApplicationController
     @piece.destroy
 
     respond_to do |format|
-      format.html { redirect_to pieces_url }
+      format.html do
+        flash[:success] = t('pieces.destroy.destroyed', info: @piece.info)
+        redirect_to pieces_url
+      end
       format.json { head :no_content }
     end
   end

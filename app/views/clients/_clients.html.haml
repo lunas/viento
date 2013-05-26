@@ -36,8 +36,7 @@
         %td= client.role
         %td.delete
           - if client.sales_count == 0
-            = link_to client, confirm: t('actions.confirm_delete'), :method => :delete do
-              %i.icon-remove
+            = link_to 'x', client, confirm: t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
           - else
             = link_to client_sales_path(client) do
               %i.icon-shopping-cart

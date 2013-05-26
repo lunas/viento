@@ -34,8 +34,7 @@
 
       %td.delete
         - if piece.count_sold == 0
-          = link_to piece, confirm: t('actions.confirm_delete'), :method => :delete do
-            %i.icon-remove
+          = link_to 'x', piece, confirm: t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
         - else
           = link_to piece_sales_path(piece) do
             %i.icon-shopping-cart
