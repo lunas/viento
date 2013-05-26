@@ -19,6 +19,16 @@ class Sale < ActiveRecord::Base
     sales
   end
 
+  def self.sales_for(params)
+    if params[:client_id].present?
+      Sale.joins(:piece, :client).where(client_id: params[:client_id])
+    elsif params[:piece_id].present?
+      Sale.joins(:piece, :client).where(client_id: params[:piece_id])
+    else
+      Sale.joins(:piece, :client)
+    end
+  end
+
   def self.latest_date
     Sale.order("date DESC").limit(1).pluck(:date).first
   end

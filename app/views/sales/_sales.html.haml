@@ -7,6 +7,7 @@
 = hidden_field_tag :fabric, params[:fabric]
 = hidden_field_tag :date_from, params[:date_from]
 = hidden_field_tag :date_to, params[:date_to]
+= hidden_field_tag :collection, params[:collection]
 
 .total_items= t('.total_found_html', number: @sales.total_entries)
 

@@ -38,6 +38,9 @@
           - if client.sales_count == 0
             = link_to client, confirm: t('actions.confirm_delete'), :method => :delete do
               %i.icon-remove
+          - else
+            = link_to client_sales_path(client) do
+              %i.icon-shopping-cart
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @clients,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

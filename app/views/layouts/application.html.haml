@@ -18,9 +18,9 @@
                 =link_to t('main_menu.clients'), clients_path
               %li{class: "#{nav_class_for(:pieces)}"}
                 =link_to t('main_menu.pieces'), pieces_path
-              %li{class: "#{nav_class_for(:sales)}"}
-                =link_to t('main_menu.new_sale'), new_sale_path
-              %li{class: "#{nav_class_for(:sales)}"}
+              %li{class: "#{nav_class_for(:sales)} dropdown"}
+                =link_to t('main_menu.sales'), sales_path
+              %li{class: "#{nav_class_for(:analysis)}"}
                 =link_to t('main_menu.analysis'), analysis_menu_path
             %ul.nav.pull-right
               - if user_signed_in?

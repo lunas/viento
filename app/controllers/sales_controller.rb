@@ -12,22 +12,22 @@ class SalesController < ApplicationController
                        params[:date_from] : Sale.minimum(:date).to_s }
   expose(:date_to)   { params[:date_to].present? ?
                        params[:date_to] : Sale.maximum(:date).to_s }
-
-  # GET /sales
-  # GET /sales.json
+  expose(:second_order) { sort_column == 'date' ? 'clients.last_name' : 'date'}
 
   def index
-    @sales = Sale.all
+    @sales = Sale.sales_for(params)
+                 .order("#{sort_column} #{sort_direction}, #{second_order}" )
+                 .paginate(:per_page => per_page, :page => params[:page])
     @page_title = t('sales.index.sales')
-
+    @page_subtitle = t('all')
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @sales }
     end
   end
 
   def filter
-    second_order = sort_column == 'date' ? 'clients.last_name' : 'date'
     criteria = get_criteria
     @sales = Sale.filter(criteria)
                  .order("#{sort_column} #{sort_direction}, #{second_order}" )
@@ -142,7 +142,7 @@ class SalesController < ApplicationController
       if piece_id
         edit_piece_path(piece_id)
       else
-        clients_path
+        sales_path
       end
     end
   end
@@ -153,7 +153,7 @@ class SalesController < ApplicationController
     sort_by = params[:sort]
     #return "clients.last_name" if sort_by == "clients.last_name"
     #Sale.column_names.include?(sort_by) ? sort_by : "name"
-    (Sale.column_names  + ['clients.last_name']).include?(sort_by) ? sort_by : "date"
+    (Sale.column_names  + ['clients.last_name', 'name']).include?(sort_by) ? sort_by : "date"
   end
 
   def sort_direction

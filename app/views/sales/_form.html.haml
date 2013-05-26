@@ -6,12 +6,10 @@
       = f.input :client_id, as: :hidden
       = f.input :piece_info, label: t('.piece'), hint: t('.choose_from_list')
       = f.input :piece_id, as: :hidden
-      -#= f.input :date , input_html: {class: 'input-medium'}, label: t('.date'), as: :date_with_today
+      = f.input :actual_price, input_html: {value: @sale.actual_price}, label: t('.prize')
       =f.input :date, label: t('.date'), class: 'input-medium' do
         = f.date_select(:date)
         %p#set_date_today= link_to t('.today')
-
-      = f.input :actual_price, input_html: {value: @sale.actual_price}, label: t('.prize')
 
   .form-actions
     = link_to t('actions.cancel'), back_path(@parent)

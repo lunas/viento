@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
   def get_criteria
     parameters = params[:analysis] ? params[:analysis] : params
     criteria = { name: parameters[:name] }
-    criteria[:collection] = parameters[:collection] if parameters[:collection]
-    if not parameters[:date_from].nil?
+    criteria[:collection] = parameters[:collection] if parameters[:collection].present?
+    if parameters[:date_from].present?
       criteria[:attribute] = :date
       criteria[:value] = date_from..date_to
       return criteria

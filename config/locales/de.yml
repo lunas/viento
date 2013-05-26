@@ -37,6 +37,7 @@ de:
   main_menu:
     clients: "Personen"
     pieces: "Teile"
+    sales: "Verkäufe"
     new_sale: "Neuer Verkauf"
     analysis: "Auswertung"
   meta:

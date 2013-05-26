@@ -6,7 +6,7 @@ module SalesHelper
     elsif parent.is_a? Piece
       edit_piece_path(parent)
     else
-      clients_path
+      sales_path
     end
   end
 
@@ -15,6 +15,14 @@ module SalesHelper
     css_class = (column == sort_column) ? "current_column #{sort_direction}" : nil
     direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
+  end
+
+  def get_sales_action
+    if request[:action] == 'filter'
+      filter_sales_path
+    else
+      sales_path
+    end
   end
 
   # not used
