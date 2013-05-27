@@ -22,7 +22,7 @@
                 =link_to t('main_menu.sales'), sales_path
               %li{class: "#{nav_class_for(:analysis)}"}
                 =link_to t('main_menu.analysis'), analysis_menu_path
-            %ul.nav.pull-right
+            %ul#meta_nav.nav.pull-right
               - if user_signed_in?
                 %span.username= current_user.username
                 = link_to t('meta.profile'), edit_user_registration_path
