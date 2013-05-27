@@ -39,6 +39,12 @@ module ApplicationHelper
                class: 'span2'
   end
 
+  def per_page_filter
+    tag('span', class: "filter_wrapper") +
+        label_tag('per_page_filter', t('per_page')) +
+        select_tag('per_page_filter', options_for_select(per_page_options, per_page), class: 'span1 filter')
+  end
+
   def can_see_revenue
     threshold = Settings.instance.show_revenue
     threshold = threshold.to_s

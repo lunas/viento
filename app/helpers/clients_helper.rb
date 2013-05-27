@@ -32,4 +32,16 @@ module ClientsHelper
     html.html_safe
   end
 
+  def status_filter
+    tag('span', class: "filter_wrapper") +
+        label_tag('status_filter', t('status')) +
+        select_tag('status_filter', options_for_select(Client::STATES + ['alle'], status_condition), class: 'span1 filter')
+  end
+
+  def role_filter
+    tag('span', class: "filter_wrapper") +
+        label_tag('role_filter', t('role')) +
+        select_tag('role_filter', options_for_select(Client::ROLES + ['alle'], role_condition), class: 'span2 filter')
+  end
+
 end

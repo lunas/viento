@@ -10,10 +10,12 @@
         %span.add-on
           %a(href="#" data-toggle="tooltip" data-placement="bottom" title="#{t('.search_delete')}") x
     %li.divider-vertical &nbsp;&nbsp;
-    = render 'filter_dropdown', field: 'status', title: t('status'), default: Settings.instance.default_status, css: ''
-    = render 'filter_dropdown', field: 'role', title: t('role'), default: Settings.instance.default_role, css: ''
+    %li= status_filter
+    %li= role_filter
     %li.divider-vertical &nbsp;&nbsp;
-    = render 'filter_dropdown', field: 'per_page', title: t('per_page'), default: Settings.instance.per_page.to_s, css: 'pull-right'
+    %li.pull-right
+      = per_page_filter
+
 
   #clients
     = render :partial => 'clients'

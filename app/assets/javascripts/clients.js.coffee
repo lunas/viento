@@ -5,6 +5,26 @@ $(document).ready ->
     false
   )
 
+  $('#clients_search').on('change', '#per_page_filter', ()->
+    $('#per_page').val( $('#clients_search #per_page_filter').val() )
+    submit_form()
+    return false
+  )
+  $('#clients_search').on('change', '#status_filter', ()->
+    $('#status').val( $('#clients_search #status_filter').val() )
+    submit_form()
+    return false
+  )
+  $('#clients_search').on('change', '#role_filter', ()->
+    $('#role').val( $('#clients_search #role_filter').val() )
+    submit_form()
+    return false
+  )
+
+
+  submit_form = ->
+    $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
+
 
 # search form
 

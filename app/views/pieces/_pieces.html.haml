@@ -6,38 +6,40 @@
 .total_items= t('.total_found_html', number: @pieces.total_entries)
 
 %table.table
-  %tr
-    %th= piece_sortable t('pieces.name')
-    %th= piece_sortable 'collection', t('collection')
-    %th= piece_sortable 'color', t('color')
-    %th= piece_sortable 'fabric', t('fabric')
-    %th= piece_sortable 'size', t('size')
-    %th= piece_sortable 'price', t('price')
-    %th= piece_sortable 'costs', t('.costs')
-    %th= piece_sortable 'count_produced', t('.produced')
-    %th= piece_sortable 'sold', t('.sold')
-    %th= piece_sortable 'stock', t('.stock')
-    %th
+  %thead
+    %tr
+      %th= piece_sortable t('pieces.name')
+      %th= piece_sortable 'collection', t('collection')
+      %th= piece_sortable 'color', t('color')
+      %th= piece_sortable 'fabric', t('fabric')
+      %th= piece_sortable 'size', t('size')
+      %th= piece_sortable 'price', t('price')
+      %th= piece_sortable 'costs', t('.costs')
+      %th= piece_sortable 'count_produced', t('.produced')
+      %th= piece_sortable 'sold', t('.sold')
+      %th= piece_sortable 'stock', t('.stock')
+      %th
 
-  - @pieces.each do |piece|
-    %tr{"data-piece_id" => "#{piece.id}"}
-      %td= piece.name
-      %td= piece.collection
-      %td= piece.color
-      %td= piece.fabric
-      %td= piece.size
-      %td= piece.price
-      %td= piece.costs
-      %td= piece.count_produced
-      %td= piece.sold
-      %td= piece.stock
+  %tbody
+    - @pieces.each do |piece|
+      %tr{"data-piece_id" => "#{piece.id}"}
+        %td= piece.name
+        %td= piece.collection
+        %td= piece.color
+        %td= piece.fabric
+        %td= piece.size
+        %td= piece.price
+        %td= piece.costs
+        %td= piece.count_produced
+        %td= piece.sold
+        %td= piece.stock
 
-      %td.delete
-        - if piece.count_sold == 0
-          = link_to 'x', piece, confirm: t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
-        - else
-          = link_to piece_sales_path(piece) do
-            %i.icon-shopping-cart
+        %td.delete
+          - if piece.count_sold == 0
+            = link_to 'x', piece, confirm: t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
+          - else
+            = link_to piece_sales_path(piece) do
+              %i.icon-shopping-cart
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @pieces,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

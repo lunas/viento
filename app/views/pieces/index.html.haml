@@ -12,8 +12,7 @@
     %li.divider-vertical.span1 &nbsp;
     %li= link_to t('actions.new_piece'), new_piece_path, class: 'btn btn-small'
     %li.pull-right
-      %label Pro Seite:
-      = select_tag 'per_page_filter', options_for_select(per_page_options, per_page), class: 'span1'
+      = per_page_filter
 
   #pieces
     = render :partial => 'pieces'

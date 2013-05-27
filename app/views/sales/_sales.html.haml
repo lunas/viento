@@ -12,20 +12,22 @@
 .total_items= t('.total_found_html', number: @sales.total_entries)
 
 %table.table#sales
-  %tr
-    %th= sale_sortable 'clients.last_name', t('client')
-    %th= sale_sortable 'name', t('piece')
-    %th= sale_sortable 'actual_price', t('prize')
-    %th= sale_sortable 'date', t('date_label')
+  %thead
+    %tr
+      %th= sale_sortable 'clients.last_name', t('client')
+      %th= sale_sortable 'name', t('piece')
+      %th= sale_sortable 'actual_price', t('prize')
+      %th= sale_sortable 'date', t('date_label')
 
-  - @sales.each do |sale|
-    %tr{"data-sale_id" => "#{sale.id}"}
-      %td= link_to sale.client.name, edit_client_path(sale.client)
-      %td= link_to sale.piece.name,  edit_piece_path(sale.piece)
-      %td= sale.actual_price
-      %td= sale.date
-      %td.delete
-        = link_to 'x', @sale, :confirm => t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
+  %tbody
+    - @sales.each do |sale|
+      %tr{"data-sale_id" => "#{sale.id}"}
+        %td= link_to sale.client.name, edit_client_path(sale.client)
+        %td= link_to sale.piece.name,  edit_piece_path(sale.piece)
+        %td= sale.actual_price
+        %td= sale.date
+        %td.delete
+          = link_to 'x', @sale, :confirm => t('actions.confirm_delete'), :method => :delete, class: 'btn btn-mini btn-danger'
 
 -# see: http://hungrycoder.xenexbd.com/ruby-on-rails/will-paginate-links-and-twitter-bootstrap.html
 = will_paginate @sales,  :renderer => 'BootstrapPaginationHelper::LinkRenderer'

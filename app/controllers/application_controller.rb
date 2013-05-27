@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
     else
       Settings.instance.per_page
     end
-
   end
 
   # Returns a hash that has
