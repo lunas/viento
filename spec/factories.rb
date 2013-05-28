@@ -13,8 +13,9 @@ FactoryGirl.define do
     phone_work    {Faker::PhoneNumber.phone_number}
     phone_mobile  {Faker::PhoneNumber.phone_number}
     profession    {Faker::Job.title}
-    sequence(:status) {|n| n % 5 == 0 ? 'passiv' : 'aktiv'}
+    sequence(:status) {|n| n % 5 == 0 ? 'nein' : 'ja'}
     sequence(:roles_mask) {|n| 2**(n % Client::ROLES.size)}
+    mailing       {Client::MAILINGS.sample}
     street        {Faker::Address.street_name}
     sequence(:street_number) {|n| n % 10 + 1}
     zip           {Faker::AddressUS.zip_code}
@@ -42,7 +43,7 @@ FactoryGirl.define do
   factory :sale do
     client
     piece
-    date         { Time.now }
+    date         { Time.new( (2001..2013).to_a.sample, (1..12).to_a.sample, (1..30).to_a.sample) }
     actual_price { piece.price }
   end
 

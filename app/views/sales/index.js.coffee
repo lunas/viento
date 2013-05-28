@@ -12,3 +12,7 @@ $('#sales th, .pagination').on('click', 'a', ()->
   $.getScript(this.href)
   return false
 )
+
+$('tr').hover( ->
+  $(this).find('td').toggleClass('active-row')
+)
