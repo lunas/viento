@@ -110,7 +110,7 @@ $(document).ready ->
         $('#explanation').text('> ' + threshold).attr('class', 'active')
       else
         result = test_value
-        $('#explanation').text('< ' + threshold).attr('class', 'passive')
+        $('#explanation').text('<= ' + threshold).attr('class', 'passive')
       $('#understate_example #example_result').val(result)
 
     $('dd').each ->
