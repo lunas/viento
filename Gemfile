@@ -52,6 +52,7 @@ end
 group :test, :development do
   gem 'ruby-debug19'
   gem 'awesome_print'
+  gem 'trucker', :git => "https://github.com/gilesbowkett/trucker.git"
 end
 
 group :test do

@@ -10,9 +10,11 @@ class Sale < ActiveRecord::Base
   validate :date
   before_save :copy_attributes_if_empty
 
+  scope :after, where("date > '#{Settings.instance.sales_since}'")
+
   # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
   def self.filter(criteria)
-    sales = Sale.joins(:piece, :client)
+    sales = after.joins(:piece, :client)
     sales = sales.where("pieces.name" => criteria[:name] )          if criteria[:name] != 'total Anzahl'
     sales = sales.where( criteria[:attribute] => criteria[:value] ) if criteria[:value] != 'total Anzahl' && criteria.has_key?(:attribute)
     sales = sales.where( "pieces.collection" => criteria[:collection] ) if criteria.has_key?(:collection) && criteria[:collection] != 'total Anzahl'
@@ -21,16 +23,16 @@ class Sale < ActiveRecord::Base
 
   def self.sales_for(params)
     if params[:client_id].present?
-      Sale.joins(:piece, :client).where(client_id: params[:client_id])
+      after.joins(:piece, :client).where(client_id: params[:client_id])
     elsif params[:piece_id].present?
-      Sale.joins(:piece, :client).where(piece_id: params[:piece_id])
+      after.joins(:piece, :client).where(piece_id: params[:piece_id])
     else
-      Sale.joins(:piece, :client)
+      after.joins(:piece, :client)
     end
   end
 
   def self.latest_date
-    Sale.order("date DESC").limit(1).pluck(:date).first
+    after.order("date DESC").limit(1).pluck(:date).first
   end
 
   def price

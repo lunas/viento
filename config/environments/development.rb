@@ -49,4 +49,7 @@ Viento::Application.configure do
     :enable_starttls_auto => true
   }
 
+  # path for legacy db migration (Trucker)
+  # config.autoload_paths += %W(#{config.root}/app/models/legacy)
+
 end

@@ -7,12 +7,13 @@ class Client < ActiveRecord::Base
 
   validates :last_name, presence: {message: 'Nachname darf nicht leer sein'}
 
-  has_many :sales, order: "date DESC"
+  has_many :sales, order: "date DESC", conditions: proc { ["sales.date > ?", Settings.instance.sales_since] }
   has_many :pieces, through: :sales
 
-  scope :with_sales_data, select('clients.*')
-    .select('sum(s.actual_price) as sales_total, max(s.date) as latest_sale_date')
+  scope :with_sales_data,
+    select('clients.*, sum(s.actual_price) as sales_total, max(s.date) as latest_sale_date')
     .joins('left outer join sales s on clients.id = s.client_id')
+    .where("s.date > '#{Settings.instance.sales_since}' or s.date is null")
     .group('clients.id')
 
   scope :for_export, with_sales_data.order("last_name, first_name, zip")
@@ -20,7 +21,8 @@ class Client < ActiveRecord::Base
   def self.filter(search, status, role)
     if search.present?
       search_crit = "%#{search}%"
-      clients = includes(:sales).where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
+      clients = includes(:sales).where('(last_name LIKE ? or first_name LIKE ? or city LIKE ?) and sales.date > ?',
+                                       search_crit, search_crit, search_crit, Settings.instance.sales_since)
     else
       clients = includes(:sales)
     end
@@ -53,6 +55,10 @@ class Client < ActiveRecord::Base
         memo
     end
   end
+
+  #def sales
+  #  Sale.after.where(client_id: self.id).order('date DESC')
+  #end
 
   def address
     "#{street} #{street_number}".strip

@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/gilesbowkett/trucker.git
+  revision: 3236d18a321283d785839dca88ec2875feecd67d
+  specs:
+    trucker (0.5.1)
+
+GIT
   remote: https://github.com/lunas/goldmine.git
   revision: 8fca4979fabd3075a36e118a124f3c99b38f772b
   specs:
@@ -290,6 +296,7 @@ DEPENDENCIES
   slim
   spork
   timecop
+  trucker!
   uglifier (>= 1.0.3)
   unicorn
   whenever

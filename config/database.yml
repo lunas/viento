@@ -21,3 +21,10 @@ production:
   pool: 5
   username: viento
   password: viento
+
+legacy:
+  adapter: mysql2
+  encoding: utf8
+  database: viento_legacy
+  username: viento
+  password: viento

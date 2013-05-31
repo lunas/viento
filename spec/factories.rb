@@ -43,7 +43,7 @@ FactoryGirl.define do
   factory :sale do
     client
     piece
-    date         { Time.new( (2001..2013).to_a.sample, (1..12).to_a.sample, (1..30).to_a.sample) }
+    date          { Time.new( (2001..2013).to_a.sample, (1..12).to_a.sample, (1..30).to_a.sample) }
     actual_price { piece.price }
   end
 

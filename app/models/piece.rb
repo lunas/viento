@@ -4,7 +4,7 @@ class Piece < ActiveRecord::Base
 
   attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten, :piece_info
 
-  has_many :sales
+  has_many :sales, order: "date DESC", conditions: proc { ["sales.date > ?", Settings.instance.sales_since] }
   has_many :clients, through: :sales, order: "sales.date, clients.last_name, clients.first_name"
 
   # Siehe auch die als private definierte Methode "validate" unten
