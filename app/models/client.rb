@@ -20,7 +20,8 @@ class Client < ActiveRecord::Base
   def self.filter(search, status, role)
     if search.present?
       search_crit = "%#{search}%"
-      clients = includes(:sales).where('last_name LIKE ? or first_name LIKE ? or city LIKE ?', search_crit, search_crit, search_crit)
+      clients = includes(:sales).where('last_name LIKE ? or first_name LIKE ? or city LIKE ?',
+                                       search_crit, search_crit, search_crit)
     else
       clients = includes(:sales)
     end

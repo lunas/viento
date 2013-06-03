@@ -8,6 +8,7 @@ $('#clients tr td:not([class*=delete])').click (e)->
 
 $('#clients th, .pagination').on('click', 'a', ()->
   $.getScript(this.href)
+  history.pushState(null, "", this.href);
   false
 )
 

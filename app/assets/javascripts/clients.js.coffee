@@ -2,6 +2,7 @@ $(document).ready ->
 
   $('#clients th, .pagination, .dropdown-menu').on('click', 'a', ()->
     $.getScript(this.href)
+    history.pushState(null, "", this.href);
     false
   )
 
@@ -23,8 +24,10 @@ $(document).ready ->
 
 
   submit_form = ->
-    $.get( $('#clients_search').attr('action'), $('#clients_search').serialize(), null, 'script')
-
+    action   = $('#clients_search').attr('action')
+    form_data = $('#clients_search').serialize()
+    $.get(action, formData, null, 'script')
+    history.pushState(null, "", action + "?" + form_data)
 
 # search form
 

@@ -28,14 +28,16 @@ $(document).ready ->
 
   # general functions
 
-  $(document).ajaxStart(->
+  $(document).ajaxStart ->
     $('#ajax-loader').show()
-  )
-  .ajaxStop(->
-    $('#ajax-loader').hide()
-  )
 
-  $('tr').hover( ->
+  .ajaxStop ->
+    $('#ajax-loader').hide()
+
+
+  $('tr').hover ->
     $(this).find('td').toggleClass('active-row')
-  )
+
+  $(window).bind "popstate", ->
+    $.getScript(location.href)
 
