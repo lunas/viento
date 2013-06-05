@@ -26,7 +26,7 @@ $(document).ready ->
   submit_form = ->
     action   = $('#clients_search').attr('action')
     form_data = $('#clients_search').serialize()
-    $.get(action, formData, null, 'script')
+    $.get(action, form_data, null, 'script')
     history.pushState(null, "", action + "?" + form_data)
 
 # search form
@@ -46,7 +46,10 @@ $(document).ready ->
           that.search()
       , @delay )
     search: ->
-      $.get( $(@form_selector).attr('action'), $(@form_selector).serialize(), null, 'script')
+      action = $(@form_selector).attr('action')
+      data   = $(@form_selector).serialize()
+      $.get( action, data, null, 'script')
+      history.pushState(null, "", action + "?" + data)
       @term = ''
 
   $('#clients_search').keyup('input', (e)->
@@ -104,7 +107,6 @@ $(document).ready ->
   .on('change', (e)->
     $('#client_mailing').tooltip('show')
   )
-
 
   if $('.edit_form').size() > 0
     $('.edit_form').validate(

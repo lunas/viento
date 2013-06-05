@@ -41,3 +41,7 @@ $(document).ready ->
   $(window).bind "popstate", ->
     $.getScript(location.href)
 
+  $('#main').on 'click', '.go_back', (e)->
+    console.log('go back')
+    window.history.back()
+    return false

@@ -15,7 +15,7 @@
         = check_box_tag(:copy_new, :class => "checkbox")
         %label.checkbox{for: :copy_new, id: 'copy_new_label'}
           = t('.copy_new')
-        = link_to t('actions.cancel'), pieces_path
+        = back_btn(text: t('actions.cancel'), type: :link)
         = f.submit t('actions.save'), class: 'btn-primary'
 
 

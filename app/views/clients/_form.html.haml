@@ -27,7 +27,7 @@
       = f.input :street2, label: t('.street2')
 
       .form-actions
-        = link_to t('actions.cancel'), clients_path
+        = back_btn(text: t('actions.cancel'), type: :link)
         = f.submit t('actions.save'), class: 'btn btn-primary'
 
 

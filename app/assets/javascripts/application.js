@@ -27,3 +27,4 @@
 //=require users
 //=require analysis
 //=require datatable_bootstrap_paging
+

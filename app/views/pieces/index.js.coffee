@@ -13,6 +13,7 @@ $('#messages').hide()
 
 $('#pieces th, .pagination').on('click', 'a', ()->
   $.getScript(this.href)
+  history.pushState(null, "", this.href);
   false
 )
 

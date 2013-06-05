@@ -31,6 +31,7 @@ de:
     confirm_delete: "Wirklich löschen?"
     edit_sale: "Verkauf bearbeiten"
     delete_sale: "Verkauf löschen"
+    back: 'zurück'
     backup: "Backup"
   will_paginate:
     next_label: "nächste"
@@ -52,7 +53,7 @@ de:
   start:
     index:
       title: 'Übersicht'
-      clients: 'Kundinnen'
+      clients: 'Personen'
       explain_clients: 'Adressliste der Kundinnen, Interessentinnen, Ehemalige etc.'
       pieces: 'Teile'
       explain_pieces: 'Teile mit Grösse, Farbe, Preis und produzierte und verkaufte Stückzahl pro Kollektion.'
@@ -101,7 +102,7 @@ de:
     bought_1_html: "Bisher ein 1 Teil gekauft fuer %{amount}:"
     bought_more_html: "Bisher %{num} Teile gekauft fuer CHF %{amount}:"
     clients:
-      total_found_html: "%{number} Kundinnen gefunden"
+      total_found_html: "%{number} Personen gefunden"
       firstname: "Vorname"
       lastname: "Nachname"
       city: "Ort"
@@ -264,11 +265,11 @@ de:
     show_revenue: "Umsatzspalte auf Startseite für"
     show_revenue_hint: "Umsatzspalte sichtbar auf Klick für gewählte Rolle (und alle privilegierteren)"
     per_page: 'Standard Zeilen pro Seite'
-    per_page_hint: 'Standard Anzahl Zeilen in Kundinnen/Teile-Tabellen'
+    per_page_hint: 'Standard Anzahl Zeilen in Personen/Teile-Tabellen'
     default_status: 'Standard-Versand'
-    default_status_hint: 'Versand-ja oder Versand-nein: Voreinstellung in der Kundinnenliste'
+    default_status_hint: 'Versand-ja oder Versand-nein: Voreinstellung in der Personenliste'
     default_role: 'Standard-Rolle'
-    default_role_hint: 'Rolle, die in der Kundinnenliste voreingestellt ist'
+    default_role_hint: 'Rolle, die in der Personen voreingestellt ist'
     saved: 'Einstellungen gespeichert'
     update_error: ' ist ungültig'
     example:

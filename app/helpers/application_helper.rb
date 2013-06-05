@@ -57,4 +57,10 @@ module ApplicationHelper
     end
   end
 
+  def back_btn(options = {})
+    text = options[:text] || t('actions.back')
+    css  = options[:class] || (options[:type] == :link ? '' : 'btn btn-small')
+    link_to text, '#', class: 'go_back ' + css
+  end
+
 end

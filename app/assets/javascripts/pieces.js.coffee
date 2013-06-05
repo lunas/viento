@@ -1,15 +1,16 @@
 $(document).ready ->
   $('#pieces th, .pagination').on('click', 'a', ()->
     $.getScript(this.href)
+    history.pushState(null, "", this.href);
     false
   )
   $('#pieces_search').on('change', '#collection_filter', ()->
-    $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
+    submit_form()
     return false
   )
   $('#pieces_search').on('change', '#per_page_filter', ()->
     $('#per_page').val( $('#pieces_search #per_page_filter').val() )
-    $.get( $('#pieces_search').attr('action'), $('#pieces_search').serialize(), null, 'script')
+    submit_form()
     return false
   )
 

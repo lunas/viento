@@ -1,6 +1,7 @@
 .span5
-  -if @client.sales.empty?
-    %ul.nav.nav-pills
+  %ul.nav.nav-pills
+    %li= back_btn
+    -if @client.sales.empty?
       %li= link_to t('.delete'), @client, :confirm => t('.confirm_delete'), :method => :delete, class: 'btn btn-small btn-danger'
 
   = render 'form'
