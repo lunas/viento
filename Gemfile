@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'pg'
-gem 'rake', '0.8.7'  # version 0.9.2 somehow broken, according to stackoverflow
-
 gem 'mysql2'
 
 gem 'simple_form'
@@ -16,13 +14,12 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'devise'
-gem 'omniauth-twitter'
 gem 'will_paginate'
 gem 'factory_girl_rails'
 gem 'ffaker'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'client_side_validations'
-# gem 'client_side_validations-simple_form'
+ # gem 'client_side_validations-simple_form'
 gem 'goldmine',  :git => 'https://github.com/lunas/goldmine.git'
 gem 'decent_exposure'
 gem 'sidekiq'
@@ -40,7 +37,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 
@@ -50,7 +47,6 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'ruby-debug19'
   gem 'awesome_print'
 end
 
