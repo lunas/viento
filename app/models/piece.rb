@@ -27,6 +27,8 @@ class Piece < ActiveRecord::Base
                          :in => 0..10000,
                          :message => "darf nicht leer sein und muss zwischen 0 und 10000 liegen."
 
+  validate :check_for_double
+
   def self.collections
     Piece.order("collection DESC").pluck(:collection).uniq
   end
@@ -147,6 +149,18 @@ class Piece < ActiveRecord::Base
 
   def self.table_by_collection(from, to)
     period(from, to).table_by(:collection, "Kollektion")
+  end
+
+  def check_for_double
+    p = Piece.where(name: self.name, collection: self.collection,
+                    color: self.color, fabric: self.fabric, size: self.size).first
+    if p.nil?
+      true
+    elsif p.id = self.id
+      true
+    else
+      errors[:base] << I18n.translate('activerecord.errors.messages.duplicate_piece')
+    end
   end
 
   private
