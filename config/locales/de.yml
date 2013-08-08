@@ -108,7 +108,7 @@ de:
       city: "Ort"
       phone: "Telefon"
       email: "Email"
-      mailing: "Benach-richtigung"
+      mailing: "Benachrichtigung"
       mailing_yes: 'ja'
       mailing_no: 'nein'
       street: "Strasse/Nr"
@@ -403,6 +403,7 @@ de:
       too_long: ist zu lang (nicht mehr als %{count} Zeichen)
       too_short: ist zu kurz (nicht weniger als %{count} Zeichen)
       wrong_length: hat die falsche Länge (muss genau %{count} Zeichen haben)
+      duplicate_piece: Es gibt schon ein Teil mit genau diesem Namen, Kollektion, Farbe, Grösse und Material
     template:
       body: ! 'Bitte überprüfen Sie die folgenden Felder:'
       header:
