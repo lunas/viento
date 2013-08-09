@@ -1,3 +1,4 @@
+require File.dirname(__FILE__) + '/legacy_base'
 class LegacyPiece < LegacyBase
   set_table_name 'pieces'
 
@@ -13,8 +14,6 @@ class LegacyPiece < LegacyBase
       count_produced: self.anzahl,
       price: self.preis,
       costs: self.kosten,
-      created_at: self.created_at,
-      updated_at: self.updated_at,
       sales_count: 0
     }
   end

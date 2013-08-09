@@ -1,9 +1,11 @@
 namespace :db do
   namespace :migrate do
 
-    desc 'Migrates clients'
-    task :clients => :environment do
-      require 'lib/tasks/legacy/legacy_client'
+    desc 'Creates 2 users, then migrates clients, pieces, and sales. Deletes all existing data in new database!'
+    task :legacy_viento => :environment do
+      require File.dirname(__FILE__) + '/legacy/legacy_client'
+      require File.dirname(__FILE__) + '/legacy/legacy_piece'
+      require File.dirname(__FILE__) + '/legacy/legacy_sale'
 
       puts 'Deleting clients...'
       Client.destroy_all
@@ -13,22 +15,23 @@ namespace :db do
       Sale.destroy_all
       puts 'Existing data deleted.'
 
-      puts 'Migrating clients'
       ActiveRecord::Base.record_timestamps = false
 
-      LegacyClient.each do |lc|
-        lc.migrate
-      end
+      puts "Migrating clients"
+      LegacyClient.all.each { |lc| lc.migrate }
 
-      LegacyPiece.each do |lc|
-        lc.migrate
-      end
+      puts "\nMigrating pieces"
+      LegacyPiece.all.each { |lc| lc.migrate }
 
-      LegacySale.each do |lc|
-        lc.migrate
-      end
+      puts "\nMigrating sales"
+      LegacySale.all.each { |lc| lc.migrate }
 
       ActiveRecord::Base.record_timestamps = true
+
+      puts "\nCopied:"
+      puts "- #{LegacyClient.num_migrated} clients"
+      puts "- #{LegacyPiece.num_migrated} pieces"
+      puts "- #{LegacySale.num_migrated} sales"
     end
 
   end

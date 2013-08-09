@@ -1,3 +1,6 @@
+require File.dirname(__FILE__) + '/legacy_base'
+require File.dirname(__FILE__) + '/legacy_role'
+
 class LegacyClient < LegacyBase
   set_table_name 'clients'
 
@@ -29,9 +32,7 @@ class LegacyClient < LegacyBase
       zip: self.plz,
       city: self.ort,
       roles_mask: [self.role.rolle],
-      sales_count: 0,
-      created_at: self.created_at,
-      updated_at: self.updated_at
+      sales_count: 0
     }
   end
 
