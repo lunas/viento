@@ -113,7 +113,7 @@ class Client < ActiveRecord::Base
     where("roles_mask & #{2**ROLES.index(role.to_s)} > 0" )
   end
 
-  ROLES = %w[Kundinnen Interessentinnen Zeitschriften Andere Ehemalige Abschuss]
+  ROLES = %w[Kundinnen Interessentinnen Ehemalige Abschuss Zeitschriften Andere]
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
