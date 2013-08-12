@@ -7,32 +7,40 @@ namespace :db do
       require File.dirname(__FILE__) + '/legacy/legacy_piece'
       require File.dirname(__FILE__) + '/legacy/legacy_sale'
 
-      puts 'Deleting clients...'
-      Client.destroy_all
-      puts 'Deleting pieces...'
-      Piece.destroy_all
-      puts 'Deleting sales...'
-      Sale.destroy_all
-      puts 'Existing data deleted.'
+      puts 'Going to delete ALL clients, pieces, and sales. Are you sure? (y/n)'
+      input = STDIN.gets.strip
+      if input != 'y'
+        puts 'bye'
 
-      ActiveRecord::Base.record_timestamps = false
+      else
 
-      puts "Migrating clients"
-      LegacyClient.all.each { |lc| lc.migrate }
+        puts 'Deleting clients...'
+        Client.destroy_all
+        puts 'Deleting pieces...'
+        Piece.destroy_all
+        puts 'Deleting sales...'
+        Sale.destroy_all
+        puts 'Existing data deleted.'
 
-      puts "\nMigrating pieces"
-      LegacyPiece.all.each { |lc| lc.migrate }
+        ActiveRecord::Base.record_timestamps = false
 
-      puts "\nMigrating sales"
-      LegacySale.all.each { |lc| lc.migrate }
+        puts "Migrating clients"
+        LegacyClient.all.each { |lc| lc.migrate }
 
-      ActiveRecord::Base.record_timestamps = true
+        puts "\nMigrating pieces"
+        LegacyPiece.all.each { |lc| lc.migrate }
 
-      puts "\nCopied:"
-      puts "- #{LegacyClient.num_migrated} clients"
-      puts "- #{LegacyPiece.num_migrated} pieces"
-      puts "- #{LegacySale.num_migrated} sales"
+        puts "\nMigrating sales"
+        LegacySale.all.each { |lc| lc.migrate }
+
+        ActiveRecord::Base.record_timestamps = true
+
+        puts "\nCopied:"
+        puts "- #{LegacyClient.num_migrated} clients"
+        puts "- #{LegacyPiece.num_migrated} pieces"
+        puts "- #{LegacySale.num_migrated} sales"
+
+      end
     end
-
   end
 end

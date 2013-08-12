@@ -24,21 +24,15 @@ class LegacyClient < LegacyBase
       phone_work: self.tel_job,
       profession: self.beruf,
       status: self.state_id == 1 ? 'ja' : 'nein',
-      roles_mask: role_num,
+      role: self.role.rolle,
       mailing: nil,
       street: self.strasse,
       street2: self.adresse2,
       street_number: self.hausnummer,
       zip: self.plz,
       city: self.ort,
-      roles_mask: [self.role.rolle],
       sales_count: 0
     }
   end
 
-  def role_num
-    i = Client::ROLES.index self.role.rolle
-    raise "Invalid legacy role: #{self.role.rolle}." if i.nil?
-    2**i
-  end
 end

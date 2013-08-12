@@ -3,9 +3,16 @@ class LegacyBase < ActiveRecord::Base
   establish_connection :legacy
 
   class << self; attr_accessor :num_migrated; end
+
   def inc_counter
     self.class.num_migrated ||= 0
     self.class.num_migrated += 1
+  end
+
+  class << self
+    def set_table_name table
+      self.table_name = table
+    end
   end
 
   def migrate
