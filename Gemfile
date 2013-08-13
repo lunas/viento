@@ -74,8 +74,10 @@ gem 'dotenv', :groups => [:development, :test]
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
+group :production do
 # Use unicorn as the app server
-gem 'unicorn'
+  gem 'unicorn'
+end
 
 # Deploy with Capistrano
 gem 'capistrano'
