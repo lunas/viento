@@ -32,6 +32,17 @@ module ClientsHelper
     html.html_safe
   end
 
+  def notify_by(client)
+    case client.mailing
+      when 'home', 'work', 'mobile'
+        client.send( "phone_#{client.mailing}".to_sym)
+      when 'email'
+        client.email
+      else
+        ''
+    end
+  end
+
   def status_filter
     tag('span', class: "filter_wrapper") +
         label_tag('status_filter', t('status')) +

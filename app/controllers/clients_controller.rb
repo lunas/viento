@@ -131,7 +131,7 @@ class ClientsController < ApplicationController
 
   def sort_column
     (Client.column_names + %w[sales_total sales_count latest_sale_date])
-          .include?(params[:sort]) ? params[:sort] : "last_name"
+      .include?(params[:sort]) ? params[:sort] : "last_name"
   end
 
   def status_condition(status = params[:status])
