@@ -117,6 +117,8 @@ de:
       latest_sale_date: "Datum letzter Kauf"
     form:
       title: "Anrede"
+      polite_form: 'Siezen'
+      polite_form_hint: 'Soll man diese Person siezen?'
       firstname: "Vorname"
       lastname: "Nachname"
       street: "Strasse & Nr"

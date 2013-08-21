@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
   attr_accessible :company, :country, :email, :first_name, :first_name2, :last_name, :last_name2, :notes,
                   :phone_home, :phone_mobile, :phone_work, :profession, :status, :mailing, :street,
-                  :street2, :street_number, :title, :zip, :city, :roles_mask, :role,
+                  :street2, :street_number, :title, :polite_form, :zip, :city, :roles_mask, :role,
                   :sales_count, :sales_total, :latest_sale_date
   attr_reader :mailing_info
 

@@ -3,7 +3,9 @@
   = f.error_notification
   .row
     .span5
-      = f.input :title, label: t('.title'), input_html: {class: 'input-mini'}
+      .form-inputs.row
+        = f.input :title, label: t('.title'), wrapper_html: { class: 'span2' }, input_html: {class: 'input-mini'}
+        = f.input :polite_form, label: t('.polite_form'), wrapper_html: { class: 'span1' }, input_html: {class: 'input-mini'}
       = f.input :first_name, label: t('.firstname')
       = f.input :last_name, label: t('.lastname'), input_html: {class: 'required'}
       = f.input :status, label: t('status'), collection: Client::STATES, as: :radio_buttons, item_wrapper_class: 'inline'
