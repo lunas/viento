@@ -2,12 +2,9 @@ class AnalysisController < ApplicationController
 
   before_filter :authenticate_user!
 
-  expose(:collection){ params[:analysis].try(:[], :collection).present? ?
-                       params[:analysis][:collection] : nil }
-  expose(:date_from) { params[:analysis].try(:[], :date_from).present? ?
-                       params[:analysis][:date_from] : Sale.minimum(:date).to_s }
-  expose(:date_to)   { params[:analysis].try(:[], :date_to).present? ?
-                       params[:analysis][:date_to] : Sale.maximum(:date).to_s }
+  expose(:collection){ get_analysis_param(:collection, nil) }
+  expose(:date_from) { get_analysis_param(:date_from, Sale.minimum(:date).to_s) }
+  expose(:date_to)   { get_analysis_param(:date_to,   Sale.maximum(:date).to_s) }
 
   def index
     @page_title = t('analysis.index.title')
@@ -46,6 +43,14 @@ class AnalysisController < ApplicationController
   end
 
   private
+
+  def get_analysis_param(key, alternative)
+    param = params[:analysis].try(:[], key)
+    return param if param.present?
+    param = params[key]
+    return param if param.present?
+    return nil
+  end
 
   def create_subtitle(criteria)
     if criteria[:attribute] == :date

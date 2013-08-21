@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     where("roles_mask & #{2**ROLES.index(role.to_s)} > 0" )
   end
 
-  ROLES = %w[boss worker admin]
+  ROLES = %w[worker boss admin]
 
   def roles=(roles)
     roles.collect!{ |r| r.to_s }

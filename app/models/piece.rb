@@ -187,7 +187,7 @@ class Piece < ActiveRecord::Base
     Piece.all
       .pivot(pivot_column_name) {|p| p.send(pivot_column) }  # group by pivot_column, e.g. 'color'
       .pivot("Name") {|p| p.name }                           # group each color by piece name
-      .to_2d("Anzahl", {cell: cell_block, row_total: total_block, col_total: total_block} )
+      .to_2d("", {cell: cell_block, row_total: total_block, col_total: total_block} )
   end
 
 end

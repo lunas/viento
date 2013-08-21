@@ -6,19 +6,20 @@
       %th= t('.produced_count')
       %th= t('.sales_count')
       %th= t('.percent_sold')
-      - if can_see_revenue
+      - if show_revenue = can_see_revenue
         %th.revenue= t('.revenue')
     %tbody
+      - show_it = nil
       - @collections.each do |collection|
         %tr{"data-collection" => "#{collection.collection}"}
           %td= collection.collection
           %td= collection.total_produced.to_i
           %td= collection.total_sold.to_i
-          %td= collection.percent_sold.to_i
-          - if can_see_revenue
+          %td= "#{collection.percent_sold.to_i} %"
+          - if show_revenue
             %td.revenue= collection.total_revenue.to_i
 
 #start_image
   = image_tag 'sophie-seite.jpg'
-  - if can_see_revenue
+  - if show_revenue
     %span

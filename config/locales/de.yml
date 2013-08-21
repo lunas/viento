@@ -62,7 +62,7 @@ de:
       revenue_by_collection: 'Umsatz pro Kollektion'
       sales_count: 'Verkaufte Teile'
       produced_count: 'Produzierte Teile'
-      percent_sold: '%verkaufter Teile'
+      percent_sold: '% verkaufter Teile'
       revenue: 'Umsatz'
   analysis:
     index:
