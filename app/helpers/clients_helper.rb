@@ -32,6 +32,7 @@ module ClientsHelper
     html.html_safe
   end
 
+  # not currently used
   def notify_by(client)
     case client.mailing
       when 'home', 'work', 'mobile'
@@ -53,6 +54,12 @@ module ClientsHelper
     tag('span', class: "filter_wrapper") +
         label_tag('role_filter', t('role')) +
         select_tag('role_filter', options_for_select(Client::ROLES + ['alle'], role_condition), class: 'span2 filter')
+  end
+
+  def mailing_filter
+    tag('span', class: "filter_wrapper") +
+        label_tag('mailing_filter', "Benachrichtigung") +
+        select_tag('mailing_filter', options_for_select(%w[mit ohne egal], mailing_condition), class: 'span1 filter')
   end
 
 end

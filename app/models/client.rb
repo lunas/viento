@@ -17,7 +17,7 @@ class Client < ActiveRecord::Base
 
   scope :for_export, with_sales_data.order("last_name, first_name, zip")
 
-  def self.filter(search, status, role)
+  def self.filter(search, status, role, mailing)
     if search.present?
       search_crit = "%#{search}%"
       clients = includes(:sales).where('last_name LIKE ? or first_name LIKE ? or city LIKE ?',
@@ -27,11 +27,20 @@ class Client < ActiveRecord::Base
     end
     clients = clients.with_status(status) unless status.blank? || status == 'alle'
     clients = clients.with_role(role) unless role.blank? || role == 'alle'
+    clients = clients.with_mailing(mailing) unless mailing.blank? || mailing == 'egal'
     clients
   end
 
   def self.with_status(status)
     where('status = ?', status)
+  end
+
+  def self.with_mailing(mailing)
+    if mailing == 'mit'
+      where( mailing: MAILINGS.reject{|m| m=='none'} )
+    else
+      where( mailing: ['none', nil])
+    end
   end
 
   def self.to_csv( options = {} )

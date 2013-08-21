@@ -3,13 +3,13 @@ class ClientsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  helper_method :sort_column, :sort_direction, :status_condition, :role_condition, :per_page
+  helper_method :sort_column, :sort_direction, :status_condition, :role_condition, :per_page, :mailing_condition
 
   # GET /clients
   # GET /clients.json
   def index
     @clients = Client.with_sales_data
-                     .filter(params[:search], status_condition, role_condition)
+                     .filter(params[:search], status_condition, role_condition, mailing_condition)
                      .order(sort_column + ' ' + sort_direction)
                      .paginate(:per_page => per_page, :page => params[:page])
     @page_title = t('clients.index.clients')
@@ -142,6 +142,11 @@ class ClientsController < ApplicationController
   def role_condition(role = params[:role])
     role ||= Settings.instance.default_role
     (Client::ROLES + ['alle']).include?(role) ? role : nil
+  end
+
+  def mailing_condition(mailing = params[:mailing])
+    mailing ||= Settings.instance.default_mailing
+    %w[mit ohne egal].include?(mailing) ? mailing : nil
   end
 
 end

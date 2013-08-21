@@ -4,5 +4,6 @@ understate_factor: 2
 per_page: 15
 default_status: ja
 default_role: Kundinnen
-show_revenue: boss
+default_mailing: egal
+show_revenue: admin
 sales_since: 2001.01.01.
