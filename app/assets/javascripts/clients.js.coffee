@@ -27,6 +27,10 @@ $(document).ready ->
     false
   )
 
+  $('#clients_search #export_clients').click ->
+    $.ajax(url: '/clients/export.xls').done ->
+      alert('Personen exportiert.')
+    false
 
   submit_form = ->
     action   = $('#clients_search').attr('action')

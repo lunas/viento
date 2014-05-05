@@ -145,6 +145,8 @@ de:
       clients: "Personen"
       new_client: "Neue Person"
       export: "Exportieren"
+      export_clients: 'Kunden => Excel'
+      export_phones: 'Telefonliste => Excel'
       search: "Suche nach Vorname/Nachname/Ort"
       search_delete: 'alle anzeigen'
     create:

@@ -39,6 +39,7 @@ $(document).ready ->
     $(this).find('td').toggleClass('active-row')
 
   $(window).bind "popstate", ->
+    alert('popstate')
     $.getScript(location.href)
 
   $('#main').on 'click', '.go_back', (e)->
