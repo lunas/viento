@@ -14,6 +14,13 @@ $(document).ready ->
     return false
   )
 
+  submit_form = ->
+    action   = $('#pieces_search').attr('action')
+    form_data = $('#pieces_search').serialize()
+    $.get(action, form_data, null, 'script')
+    history.pushState(null, "", action + "?" + form_data)
+
+
   # search form
   $('#pieces_search').keyup('input', (e)->
     searcher.form_selector = '#pieces_search'

@@ -15,7 +15,7 @@ task :backup => [:environment] do
   dir = Dir.new(backup_folder)
   all_backups = dir.entries.sort[2..-1].reverse
   puts "Created backup: #{backup_file}"
-  max_backups = (ENV["MAX"].to_i if ENV["MAX"].to_i > 0) || 7
+  max_backups = (ENV["MAX"].to_i if ENV["MAX"].to_i > 0) || 18
   unwanted_backups = all_backups[max_backups..-1] || []
   for unwanted_backup in unwanted_backups
     FileUtils.rm_rf(File.join(backup_base, unwanted_backup))
