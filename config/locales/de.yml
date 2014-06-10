@@ -164,6 +164,7 @@ de:
       produced: "Produzierte Stückzahl"
       costs: "Produktionskosten"
       copy_new: "nach dem Speichern neues Teil mit gleichen Angaben anzeigen"
+      notes: "Notizen"
     pieces:
       total_found_html: "%{number} Teile gefunden"
       costs: "Kosten"

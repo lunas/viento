@@ -108,11 +108,10 @@ $(document).ready ->
       }
     })
     $('#piece_kosten').rules("add", {
-    required: true
+    required: false
     geld: true
     range: [0, 10000]
     messages: {
-      required: "...darf nicht leer sein."
       range: "...muss zwischen 0 und 10 000 liegen"
     }
     })

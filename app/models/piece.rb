@@ -2,7 +2,7 @@ class Piece < ActiveRecord::Base
 
   require 'goldmine'
 
-  attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten, :piece_info
+  attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten, :piece_info, :notes
 
   has_many :sales
   has_many :clients, through: :sales, order: "sales.date, clients.last_name, clients.first_name"
@@ -10,7 +10,8 @@ class Piece < ActiveRecord::Base
   # Siehe auch die als private definierte Methode "validate" unten
 
   validates_numericality_of :size, :count_produced, :price, :costs,
-                            :message => "darf nur Zahlen enthalten."
+                            :message => "darf nur Zahlen enthalten.",
+                            :allow_nil => true
 
   validates_presence_of :collection, :name, :color, :fabric, :size, :preis,
                         :message => "darf nicht leer sein."
@@ -25,7 +26,8 @@ class Piece < ActiveRecord::Base
 
   validates_inclusion_of :price, :costs,
                          :in => 0..10000,
-                         :message => "darf nicht leer sein und muss zwischen 0 und 10000 liegen."
+                         :message => "darf nicht leer sein und muss zwischen 0 und 10000 liegen.",
+                         :allow_nil => true
 
   validate :check_for_double
 
