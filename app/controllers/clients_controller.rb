@@ -27,7 +27,7 @@ class ClientsController < ApplicationController
     @clients = Client.with_role('Kundinnen')  # .with_status('ja')
                      .where("first_name like ? or last_name like ?", term, term)
                      .order("last_name, first_name, city")
-                     .limit(20)
+                     .limit(100)
     respond_to do |format|
       format.html
       format.js

@@ -25,7 +25,7 @@ class PiecesController < ApplicationController
     term = "%#{params[:term]}%"
     @pieces = Piece.where("name like ?", term)
                    .order("collection DESC, name, color, fabric, size")
-                   .limit(30)
+                   .limit(100)
     respond_to do |format|
       format.html
       format.js
