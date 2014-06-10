@@ -95,7 +95,7 @@ $(document).ready ->
     ), "Kollektion muss entweder die Form '12' oder '12/13' haben."
 
     jQuery.validator.addMethod "geld", ((value, element) ->
-      return value.match(/^\d+(\.?\d[05])?$/)
+      return value.match(/(^\d+(\.?\d[05])?$)?/)
     ), "Muss ein Geldbetrag der Form '600' oder '600.00' oder '600.25' sein."
 
     $('#piece_preis').rules("add", {
