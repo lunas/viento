@@ -24,8 +24,7 @@ class ClientsController < ApplicationController
   # GET /clients/find?term=abc
   def find
     term = "%#{params[:term]}%"
-    @clients = Client.with_role('Kundinnen')
-                     .with_status('ja')
+    @clients = Client.with_role('Kundinnen')  # .with_status('ja')
                      .where("first_name like ? or last_name like ?", term, term)
                      .order("last_name, first_name, city")
                      .limit(20)
