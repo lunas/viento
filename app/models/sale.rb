@@ -6,7 +6,7 @@ class Sale < ActiveRecord::Base
 
   # checks whether actual_price OR self.piece.price is present!
   validates :client_id, :piece_id, :actual_price, presence: true
-  validate :client_name_and_city_matches_client, :piece_info_matches_piece
+  validate :client_name_and_city_matches_client, :piece_info_matches_piece, :piece_available
   validate :date
   before_save :copy_attributes_if_empty
 
@@ -84,6 +84,12 @@ class Sale < ActiveRecord::Base
     return if @tmp_piece_info.blank? # when created not by controller
     if @tmp_piece_info != self.piece.try(:info)
       errors.add(:piece_info, I18n.t('sales.errors.choose_piece_form_list') )
+    end
+  end
+
+  def piece_available
+    if piece.sold_out
+      errors.add(:piece_info, "Dieses Teil ist ausverkauf: Bestand = #{piece.count_stock}!")
     end
   end
 

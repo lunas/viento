@@ -8,7 +8,8 @@
 
 .span6
   %ul.nav.nav-pills
-    %li= link_to t('.new_sale'), new_piece_sale_path(@piece), class: 'btn btn-small'
+    -if ! @piece.sold_out
+      %li= link_to t('.new_sale'), new_piece_sale_path(@piece), class: 'btn btn-small'
 
   - if !@piece.new_record?
     = render 'sales', piece: @piece

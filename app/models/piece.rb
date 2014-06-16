@@ -103,6 +103,10 @@ class Piece < ActiveRecord::Base
     find_by_sql(sql);
   end
 
+  def sold_out
+    count_stock <= 0
+  end
+
   def count_stock
     self.count_produced - self.sales.size
   end
