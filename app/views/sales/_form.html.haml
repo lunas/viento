@@ -4,7 +4,7 @@
     .span8
       = f.input :client_name_and_city, label: t('.client'), hint: t('.choose_from_list')
       = f.input :client_id, as: :hidden
-      = f.input :piece_info, label: t('.piece'), hint: t('.choose_from_list')
+      = f.input :piece_info, label: t('.piece') #, hint: t('.choose_from_list')
       = f.input :piece_id, as: :hidden
       = f.input :actual_price, input_html: {value: @sale.actual_price}, label: t('.prize')
       =f.input :date, label: t('.date'), class: 'input-medium' do

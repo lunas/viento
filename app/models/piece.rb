@@ -134,7 +134,11 @@ class Piece < ActiveRecord::Base
   end
 
   def info
-    "#{self.collection} - #{self.name}: #{self.color}, #{self.size}, #{self.fabric}"
+    "#{self.collection} - #{self.name}: #{self.fabric}, #{self.size}, #{self.color}"
+  end
+
+  def info_name_first
+    " #{self.name} (#{self.collection}): #{self.fabric}, #{self.size}, #{self.color}"
   end
 
   def id_with_info_and_price

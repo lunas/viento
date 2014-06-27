@@ -4,6 +4,8 @@ class PiecesController < ApplicationController
 
   helper_method :sort_column, :sort_direction, :collection_condition, :per_page
 
+  expose(:available){ params[:available].present? ? params[:available] : false}
+
   # GET /pieces
   # GET /pieces.json
   def index
@@ -24,7 +26,7 @@ class PiecesController < ApplicationController
   def find
     term = "%#{params[:term]}%"
     @pieces = Piece.where("name like ?", term)
-                   .order("collection DESC, name, color, fabric, size")
+                   .order("collection DESC, name, fabric, size, color")
                    .limit(100)
     respond_to do |format|
       format.html

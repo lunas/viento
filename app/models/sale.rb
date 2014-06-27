@@ -88,8 +88,8 @@ class Sale < ActiveRecord::Base
   end
 
   def piece_available
-    if piece.sold_out
-      errors.add(:piece_info, "Dieses Teil ist ausverkauf: Bestand = #{piece.count_stock}!")
+    if piece && piece.sold_out
+      errors.add(:piece_info, "Dieses Teil ist ausverkauf.")
     end
   end
 
