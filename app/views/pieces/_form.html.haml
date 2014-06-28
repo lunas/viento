@@ -1,7 +1,7 @@
 = simple_form_for @piece, html: {class: 'form-horizontal piece_form'} do |f|
   = f.error_notification
   .row
-    .span6
+    .span7
       = f.input :collection, label: t('collection'), input_html: {class: 'input-small'}
       = f.input :name, label: t('piece.name')
       = f.input :color, label: t('color')

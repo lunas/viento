@@ -1,4 +1,4 @@
-.span6
+.span7
   %ul.nav.nav-pills
     %li= back_btn
     -if @piece.sales.empty?
@@ -6,7 +6,7 @@
 
   = render 'form'
 
-.span6
+.span7
   %ul.nav.nav-pills
     -if ! @piece.sold_out
       %li= link_to t('.new_sale'), new_piece_sale_path(@piece), class: 'btn btn-small'
