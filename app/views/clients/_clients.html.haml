@@ -14,6 +14,7 @@
       %th= sortable 'last_name', t('.lastname')
       %th= sortable 'city', t('.city')
       %th= t('.mailing')
+      %th= t('.phone')
       %th= sortable 'sales_total', t('.sales_total')
       %th= sortable 'sales_count', t('.sales_count')
       %th= sortable 'latest_sale_date', t('.latest_sale_date')
@@ -27,6 +28,8 @@
         %td= client.last_name
         %td= client.city
         %td= client.mailing_info
+        %td
+          .phone= phone_list client
         %td= understate client.sales_total
         %td= client.sales_count
         %td= client.latest_sale_date

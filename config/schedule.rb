@@ -18,7 +18,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "/Users/lukasnick/workspaces/viento2/log/cron.log"
-every 1.day, at: '19:51' do
-  rake "db:backup"
+# set :output, File.join( File.dirname(__FILE__) , '../../log/cron.log')
+set :output, '/Users/lukas/workspaces/viento/log/cron.log'
+every 1.day, at: '14:48' do
+  rake 'db:backup'
 end

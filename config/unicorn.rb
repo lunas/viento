@@ -1,6 +1,12 @@
 #https://devcenter.heroku.com/articles/rails-unicorn
 
-worker_processes 3
+working_directory File.join( File.dirname(__FILE__), '../' )
+pid File.join( File.dirname(__FILE__), '../tmp/pids/unicorn.pid' )
+stderr_path File.join( File.dirname(__FILE__), '../log/unicorn.log' )
+stdout_path File.join( File.dirname(__FILE__), '../log/unicorn.log' )
+
+listen '/tmp/unicorn.viento.sock'
+worker_processes 2
 timeout 30
 preload_app true
 
