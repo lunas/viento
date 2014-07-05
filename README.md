@@ -8,12 +8,13 @@
 
 This is a not exhaustive list:
 
-* git clone git@github.com:lunas/viento.git
-* brew install mysql
+* `git clone git@github.com:lunas/viento.git`
+* `brew install mysql`
 * adapt config/database.yml
-* brew install redis
-* brew install nginx
-* bundle install
+* `brew install redis`
+  * To have it started at login: `ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents`
+* `brew install nginx`
+* `bundle install`
 
 To create the db, tables, and initial users: `rake db:setup`
 
@@ -42,7 +43,7 @@ Edit /usr/local/etc/nginx/nginx.conf so it include sites-enabled:
 In the section `htpp` add the line:
 
 ```
-  include /etc/local/etc/nginx/sites-enabled/*;
+  include /usr/local/etc/nginx/sites-enabled/*;
 ```
 
 Then, in `/etc/local/etc/nginx/sites-enabled/`, create a simlink to our nginx.conf file:
@@ -89,6 +90,7 @@ Run the start script. It
 * starts sidekiq: `bundle exec sidekiq`
 * starts nginx 
 * starts unicorn (via config/unicorn_init.sh)
+* deletes public/index.html (might have been cached from old session)
 
 ### Cron/Whenever
 

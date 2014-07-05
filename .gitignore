@@ -16,3 +16,7 @@
 
 *.pem
 public/assets
+db_backups/
+db/backups
+public/index.html
+
