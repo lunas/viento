@@ -75,6 +75,7 @@ gem 'dotenv', :groups => [:development, :test]
 # gem 'jbuilder'
 
 group :production do
+  gem 'foreman'
 # Use unicorn as the app server
   gem 'unicorn'
 end
