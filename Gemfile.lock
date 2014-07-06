@@ -88,6 +88,9 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffaker (1.16.2)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     fssm (0.2.10)
     haml (4.0.3)
       tilt
@@ -246,6 +249,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   ffaker
+  foreman
   goldmine!
   haml
   haml-rails

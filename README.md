@@ -39,7 +39,7 @@ Then create sites-enabled in /usr/local/etc/nginx:
 mkdir /usr/local/etc/nginx/sites-enabled
 ```
 
-Edit /usr/local/etc/nginx/nginx.conf so it include sites-enabled:  
+Edit /usr/local/etc/nginx/nginx.conf so it includes sites-enabled:  
 In the section `htpp` add the line:
 
 ```
@@ -59,6 +59,20 @@ sudo nginx -s reload
 ```
 
 Or stop nginx before changing nginx.conf (`sudo nginx -s stop`), then start it with `sudo nginx`.
+
+To make sure nginx can be started as non-root, create the log file and change its
+access rights so it is writable for everybody:
+
+```
+cd ~/Sites/viento/
+touch log/nginx.log
+chmod 666 log/nginx.log
+```
+
+To start nginx then right away:
+```
+nginx
+```
 
 #### Unicorn
 
