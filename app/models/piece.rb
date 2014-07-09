@@ -180,7 +180,7 @@ class Piece < ActiveRecord::Base
     cell_block = ->(pieces) {
       pieces.inject([0,0]) do |result, piece|
         result[0] += piece.sales_count.to_i
-        result[1] += piece.count_produced.to_i
+        result[1] += piece.count_stock.to_i
         result
       end
     }

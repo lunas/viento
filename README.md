@@ -100,11 +100,11 @@ Make it executable: `chmod +x config/unicorn_init.sh`
 
 Run the start script. It
 
+* stops existing nginx, redis, unicorn, and sidekiq processes, then
 * starts redis: `redis-server /usr/local/etc/redis.conf`
 * starts sidekiq: `bundle exec sidekiq`
 * starts nginx 
 * starts unicorn (via config/unicorn_init.sh)
-* deletes public/index.html (might have been cached from old session)
 
 ### Cron/Whenever
 

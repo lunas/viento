@@ -80,8 +80,10 @@ group :production do
   gem 'unicorn'
 end
 
-# Deploy with Capistrano
-gem 'capistrano'
+group :development do
+  # Deploy with Capistrano
+  gem 'capistrano'
+end
 
 # To use debugger
 # gem 'debugger'
