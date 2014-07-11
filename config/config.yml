@@ -1,8 +1,8 @@
 ---
 understate_threshold: 2000
 understate_factor: 2
-per_page: 100
-default_status: ja
+per_page: 200
+default_status: alle
 default_role: Kundinnen
 default_mailing: egal
 show_revenue: admin

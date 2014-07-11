@@ -18,8 +18,8 @@ class SettingsController < ApplicationController
 
     check_range_and_set(:understate_threshold, (0..100000))
     check_range_and_set(:understate_factor, (1..20))
-    check_range_and_set(:per_page, [5,10,15,20,25,50,100,500,1000,9999])
-    check_range_and_set(:default_status, Client::STATES)
+    check_range_and_set(:per_page, [5,10,15,20,25,50,100, 200,500,1000,9999])
+    check_range_and_set(:default_status, Client::STATES + ['alle'])
     check_range_and_set(:default_role, Client::ROLES)
     check_range_and_set(:show_revenue, User::ROLES)
 
