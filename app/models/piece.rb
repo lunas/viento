@@ -79,8 +79,12 @@ class Piece < ActiveRecord::Base
   # TODO rspec
   def self.filter(search, collection)
     if search.present?
+      search.strip!
+      search_num = search.to_i
       search = "%#{search}%"
-      pieces = with_stock_and_sold.where('name LIKE ? OR color LIKE ? OR fabric LIKE ?', search, search, search)
+      sql = 'name LIKE ? OR color LIKE ? OR fabric LIKE ? OR size LIKE ? or PRICE LIKE ?'
+      pieces = with_stock_and_sold
+                 .where( sql, search, search, search, search_num, search_num )
     else
       pieces = with_stock_and_sold
     end
