@@ -2,7 +2,7 @@ class PiecesController < ApplicationController
 
   before_filter :authenticate_user!
 
-  helper_method :sort_column, :sort_direction_for, :collection_condition, :per_page
+  helper_method :sort_column, :sort_direction, :collection_condition, :per_page
 
   expose(:available){ params[:available].present? ? params[:available] : false}
 
@@ -166,24 +166,12 @@ class PiecesController < ApplicationController
   end
 
   def insert_sort_direction( columns )
-    direction = sort_direction_for columns[0]
     if columns.size == 1
-      sort_string = columns[0] + " #{direction}"
+      sort_string = columns[0] + " #{sort_direction}"
     else
-      sort_string = columns[0] + " #{direction}, " + columns[1.. -1].join(', ')
+      sort_string = columns[0] + " #{sort_direction}, " + columns[1.. -1].join(', ')
     end
   end
-
-  def sort_direction_for(column)
-    direction = params[:direction]
-    if %w[asc desc].include? direction
-      direction
-    else
-      %w{collection size price costs count_produced stock sold}.include?(column) ?
-        'desc' : 'asc'
-    end
-  end
-
 
   def sortable_columns
     Piece.column_names + ['stock', 'sold']
