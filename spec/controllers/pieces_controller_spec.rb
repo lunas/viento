@@ -34,6 +34,25 @@ describe PiecesController do
     {}
   end
 
+  describe 'sort_order' do
+
+    before do
+      pc.stub(:sort_column).and_return('name')
+      pc.stub(:sort_direction).and_return('asc')
+    end
+
+    context 'no sort column given' do
+
+      let(:pc) { PiecesController.new }
+
+      it 'returns predefined sort order' do
+        pc.send( :sort_order ).should eq %w{collection name fabric size}
+      end
+    end
+
+
+  end
+
   describe "GET index" do
     it "assigns all pieces as @pieces" do
       piece = Piece.create! valid_attributes

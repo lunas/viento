@@ -2,16 +2,15 @@ class PiecesController < ApplicationController
 
   before_filter :authenticate_user!
 
-  helper_method :sort_column, :sort_direction, :collection_condition, :per_page
+  helper_method :sort_column, :sort_direction_for, :collection_condition, :per_page
 
   expose(:available){ params[:available].present? ? params[:available] : false}
 
   # GET /pieces
   # GET /pieces.json
   def index
-    second_order = sort_column == 'name' ? 'collection desc' : 'name'
     @pieces = Piece.filter(params[:search], collection_condition)
-                   .order("#{sort_column} #{sort_direction}, #{second_order}" )
+                   .order( sort_order )
                    .paginate(:per_page => per_page, :page => params[:page])
     @page_title = t('pieces.index.pieces')
 
@@ -36,7 +35,6 @@ class PiecesController < ApplicationController
   end
 
   def collection
-
   end
 
   # GET /pieces/1
@@ -140,7 +138,11 @@ class PiecesController < ApplicationController
   private
 
   def sort_column
-    (Piece.column_names + ['stock', 'sold']).include?(params[:sort]) ? params[:sort] : "name"
+    if sortable_columns.include?(params[:sort])
+      params[:sort]
+    else
+      params[:collection_filter] == 'alle' ? 'collection' : 'name'
+    end
   end
 
   def collection_condition(collection = params[:collection_filter])
@@ -148,5 +150,43 @@ class PiecesController < ApplicationController
     (Piece.collections << 'alle').include?(collection) ? collection: nil
   end
 
+  def sort_order
+    sort_columns = %w{collection name fabric size}
+    scol = sort_column
+    sort_columns = if sort_columns.include? scol
+      cols = sort_columns.reject { |coll| coll == scol }
+      cols.unshift(scol)
+    else if sortable_columns.include? scol
+           sort_columns.unshift scol
+         else
+           scol
+         end
+    end
+    insert_sort_direction(sort_columns)
+  end
+
+  def insert_sort_direction( columns )
+    direction = sort_direction_for columns[0]
+    if columns.size == 1
+      sort_string = columns[0] + " #{direction}"
+    else
+      sort_string = columns[0] + " #{direction}, " + columns[1.. -1].join(', ')
+    end
+  end
+
+  def sort_direction_for(column)
+    direction = params[:direction]
+    if %w[asc desc].include? direction
+      direction
+    else
+      %w{collection size price costs count_produced stock sold}.include?(column) ?
+        'desc' : 'asc'
+    end
+  end
+
+
+  def sortable_columns
+    Piece.column_names + ['stock', 'sold']
+  end
 
 end
