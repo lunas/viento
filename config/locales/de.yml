@@ -227,6 +227,7 @@ de:
     message: "Nachricht"
     send: "Senden"
     sent: "Nachricht wurde verschickt"
+    scheduled: "Nachricht wird verschickt"
     failed: "Fehler beim Senden: %{error}"
     note: 'Bitte für Fehler eine Trello-Karte erstellen!'
 

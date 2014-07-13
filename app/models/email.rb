@@ -1,5 +1,6 @@
 class Email
-  include ActionView::Helpers
+
+  # Almonst unnecessary anymore, now... but still used in EmailsController
 
   attr_reader :username
   attr_accessor :referer, :message
@@ -8,20 +9,6 @@ class Email
     @username = username
     @referer = referer
     @message = message
-  end
-
-  def self.create(attributes)
-    clean = attributes.inject({}) {|memo,pair| memo[pair.first.to_sym] = ActionController::Base.helpers.sanitize(pair.last); memo}
-    Email.new(clean[:username], clean[:referer], clean[:message])
-  end
-
-  # unused!
-  def deliver
-    UserMailer.feedback_email(@username, @referer, @message).deliver
-  end
-
-  def empty?
-    return @message.empty?
   end
 
 end

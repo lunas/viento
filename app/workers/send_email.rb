@@ -5,7 +5,6 @@ class SendEmail
 
   def perform(email)
     begin
-
       raise 'Nachricht fehlt' if email['message'].nil?
       email = sanitize(email)
       UserMailer.feedback_email(email[:username], email[:referer], email[:message]).deliver
