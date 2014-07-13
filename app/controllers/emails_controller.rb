@@ -8,6 +8,12 @@ class EmailsController < ApplicationController
   end
 
   def create
+    SendEmail.perform_async params[:email].to_h
+    referer = ActionController::Base.helpers.sanitize params[:email][:referer]
+    redirect_to referer, notice: t('email.sent')
+  end
+
+  def create_old
     @email = Email.create(params[:email])
     begin
       raise "Nachricht fehlt" if @email.empty?
