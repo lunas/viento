@@ -2,4 +2,4 @@
 # Options here can still be overridden by cmd line args.
 #   sidekiq -C config.yml
 ---
-:concurrency:  25
+:concurrency:  3
