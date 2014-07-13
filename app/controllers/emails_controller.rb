@@ -19,7 +19,4 @@ class EmailsController < ApplicationController
     redirect_to @email.referer, notice: notice
   end
 
-  def index
-    #@page_title = t('start.index.title')
-  end
 end

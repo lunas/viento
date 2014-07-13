@@ -98,7 +98,7 @@ Make it executable: `chmod +x config/unicorn_init.sh`
 
 ### Start
 
-Run the start script. It
+Run the start script ```script/start.command``` (double click). It...
 
 * stops existing nginx, redis, unicorn, and sidekiq processes, then
 * starts redis: `redis-server /usr/local/etc/redis.conf`
@@ -106,9 +106,21 @@ Run the start script. It
 * starts nginx 
 * starts unicorn (via config/unicorn_init.sh)
 
+To stop all services, run ```script/stop.command```.
+
 ### Cron/Whenever
 
 To setup regular backup:
 
 * set the correct log path in config/schedule.rb (must be an absolute path!)
 * cd to the app directory and run `whenever --update-crontab viento`
+
+## Feedback email
+
+To enable sending feedback emails, create the file ```.env``` in the root directory and 
+put the correct username and password for the Gmail account otniev.gmail.com into it:
+
+```
+GMAIL_USERNAME=otniev    
+GMAIL_PASSWORD=the_password
+```

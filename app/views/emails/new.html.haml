@@ -1,3 +1,7 @@
+.row
+  .well.well-sm
+    = link_to t('email.note'), 'https://www.trello.com', target: '_blank'
+
 = simple_form_for :email, url: emails_path, :method => 'post',
   html: {class:'form-horizontal', id: 'email'} do |f|
   .row

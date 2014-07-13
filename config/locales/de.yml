@@ -228,6 +228,7 @@ de:
     send: "Senden"
     sent: "Nachricht wurde verschickt"
     failed: "Fehler beim Senden: %{error}"
+    note: 'Bitte für Fehler eine Trello-Karte erstellen!'
 
   users:
     index:
