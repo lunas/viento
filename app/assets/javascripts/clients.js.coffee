@@ -99,8 +99,6 @@ $(document).ready ->
         return $('#client_phone_home').val()
       if target.val() == 'work'
         return $('#client_phone_work').val()
-      if target.val() == 'work'
-        return $('#client_phone_work').val()
       if target.val() == 'mobile'
         return $('#client_phone_mobile').val()
       if target.val() == 'email'
