@@ -82,9 +82,15 @@ class Piece < ActiveRecord::Base
       search.strip!
       search_num = search.to_i
       search = "%#{search}%"
-      sql = 'name LIKE ? OR color LIKE ? OR fabric LIKE ? OR size LIKE ? or PRICE LIKE ?'
-      pieces = with_stock_and_sold
-                 .where( sql, search, search, search, search_num, search_num )
+      if search_num > 0
+        sql = 'name LIKE ? OR color LIKE ? OR fabric LIKE ? OR size LIKE ? or price LIKE ?'
+        pieces = with_stock_and_sold
+                 .where( sql, search, search, search, search_num, search_num)
+      else
+        sql = 'name LIKE ? OR color LIKE ? OR fabric LIKE ?'
+        pieces = with_stock_and_sold
+                 .where( sql, search, search, search )
+      end
     else
       pieces = with_stock_and_sold
     end
