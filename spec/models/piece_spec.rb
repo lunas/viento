@@ -67,11 +67,11 @@ describe Piece do
   describe "table_by_" do
 
     before :each do
-      @sputnik34 = FactoryGirl.create(:piece, name: 'Sputnik', collection: "10", size: 34)
-      @sputnik36 = FactoryGirl.create(:piece, name: 'Sputnik', collection: "10", size: 36)
-      @chelsea34 = FactoryGirl.create(:piece, name: 'Chelsea', collection: "11", size: 34)
-      @chelsea36 = FactoryGirl.create(:piece, name: 'Chelsea', collection: "11", size: 36)
-      @xenia36   = FactoryGirl.create(:piece, name: 'Xenia',   collection: "10", size: 36)
+      @sputnik34 = FactoryGirl.create(:piece, name: 'Sputnik', collection: "10", size: 34, count_produced: 10)
+      @sputnik36 = FactoryGirl.create(:piece, name: 'Sputnik', collection: "10", size: 36, count_produced: 20)
+      @chelsea34 = FactoryGirl.create(:piece, name: 'Chelsea', collection: "11", size: 34, count_produced: 30)
+      @chelsea36 = FactoryGirl.create(:piece, name: 'Chelsea', collection: "11", size: 36, count_produced: 40)
+      @xenia36   = FactoryGirl.create(:piece, name: 'Xenia',   collection: "10", size: 36, count_produced: 50)
 
       FactoryGirl.create(:sale, piece: @sputnik34, date: '2013-02-01')
       FactoryGirl.create(:sale, piece: @sputnik34, date: '2013-03-01', client: Client.first)
@@ -100,11 +100,11 @@ describe Piece do
     describe "table_by_size" do
       it "crosstabs pieces by name and size" do
         table = Piece.table_by_size
-        table[0].should == ["Name/Groesse", "34", "36", "total Anzahl"]
-        table[1].should == ["Chelsea", 2, 2, 4]
-        table[2].should == ["Sputnik", 2, 2, 4]
-        table[3].should == ["Xenia", nil, 1, 1]
-        table[4].should == ["total Anzahl", 4, 5, 9]
+        table[0].should == ["Name/Groesse", "34", "36", "total"]
+        table[1].should == ["Chelsea", [2, 28], [2, 38], [4, 66]]
+        table[2].should == ["Sputnik", [2, 8], [2, 18],  [4, 26]]
+        table[3].should == ["Xenia", nil, [1, 49], [1, 49]]
+        table[4].should == ["total", [4, 36], [5, 105], [9, 141]]
       end
     end
 
@@ -115,11 +115,11 @@ describe Piece do
       end
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
-        table[0].should == ["Name/Kollektion", "10", "11", "total Anzahl"]
-        table[1].should == ["Chelsea", nil, 4, 4]
-        table[2].should == ["Sputnik", 4, nil, 4]
-        table[3].should == ["Xenia",   1, nil, 1]
-        table[4].should == ["total Anzahl", 5, 4, 9]
+        table[0].should == ["Name/Kollektion", "10", "11", "total"]
+        table[1].should == ["Chelsea", nil, [4, 66], [4, 66]]
+        table[2].should == ["Sputnik", [4, 26], nil, [4, 26]]
+        table[3].should == ["Xenia",   [1, 49], nil, [1, 49]]
+        table[4].should == ["total",   [5, 75], [4, 66], [9, 141]]
       end
     end
 
@@ -130,11 +130,11 @@ describe Piece do
       end
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
-        table[0].should == ["Name/Kollektion", "10", "11", "total Anzahl"]
-        table[1].should == ["Chelsea", nil, 2, 2]
-        table[2].should == ["Sputnik", 2, nil, 2]
-        table[3].should == ["Xenia",   1, nil, 1]
-        table[4].should == ["total Anzahl", 3, 2, 5]
+        table[0].should == ["Name/Kollektion", "10", "11", "total"]
+        table[1].should == ["Chelsea", nil, [2, 68], [2, 68] ]
+        table[2].should == ["Sputnik", [2, 28], nil, [2, 28] ]
+        table[3].should == ["Xenia",   [1, 49], nil, [1, 49] ]
+        table[4].should == ["total",   [3, 77], [2, 68], [5, 145] ]
       end
     end
 
@@ -145,10 +145,10 @@ describe Piece do
       end
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
-        table[0].should == ["Name/Kollektion", "10", "11", "total Anzahl"]
-        table[1].should == ["Chelsea", nil, 2, 2]
-        table[2].should == ["Sputnik", 2, nil, 2]
-        table[3].should == ["total Anzahl", 2, 2, 4]
+        table[0].should == ["Name/Kollektion", "10", "11", "total"]
+        table[1].should == ["Chelsea", nil, [2, 68], [2, 68] ]
+        table[2].should == ["Sputnik", [2, 28], nil, [2, 28] ]
+        table[3].should == ["total",   [2, 28], [2, 68], [4, 96] ]
       end
     end
 
@@ -159,12 +159,11 @@ describe Piece do
       end
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
-        table[0].should == ["Name/Kollektion", "10", "total Anzahl"]
-        table[1].should == ["Xenia",            1,    1]
-        table[2].should == ["total Anzahl",     1,    1]
+        table[0].should == ["Name/Kollektion", "10",     "total"]
+        table[1].should == ["Xenia",            [1, 49], [1, 49] ]
+        table[2].should == ["total",     [1, 49], [1, 49] ]
       end
     end
-
 
 
     context "date criteria exclude all sales" do

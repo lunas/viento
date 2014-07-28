@@ -47,9 +47,9 @@ describe Client do
     context "with sales" do
       before :each do
         @client = FactoryGirl.create(:client)
-        @client.sales << Sale.new(actual_price: 1000, date: 4.days.ago)
-        @client.sales << Sale.new(actual_price: 400,  date: 2.days.ago)
-        @client.sales << Sale.new(actual_price: 500,  date: 7.days.ago)
+        FactoryGirl.create(:sale, client: @client, actual_price: 1000, date: 4.days.ago)
+        FactoryGirl.create(:sale, client: @client, actual_price: 400,  date: 2.days.ago)
+        FactoryGirl.create(:sale, client: @client, actual_price: 500,  date: 7.days.ago)
       end
       it "returns the latest sale of this client" do
         @client.latest_sale_date.should == 2.days.ago.to_date
