@@ -35,20 +35,20 @@ describe Piece do
 
       context "Piece with 2 sales" do
         before :each do
-          @piece.sales << Sale.new(actual_price: 300)
-          @piece.sales << Sale.new(actual_price: 400)
-          @piece2.sales << Sale.new(actual_price: 1000)
+          FactoryGirl.create(:sale, piece: @piece, actual_price: 300)
+          FactoryGirl.create(:sale, piece: @piece, actual_price: 400)
+          FactoryGirl.create(:sale, piece: @piece2, actual_price: 1000)
         end
 
         describe "count_sold" do
           it "returns the number of its sales" do
-            @piece.count_sold.should == 2
+            @piece.reload.count_sold.should == 2
           end
         end
         describe "revenue" do
           it "returns the sum of the actual_prices of its sales" do
-            @piece.revenue.should == 700
-            @piece2.revenue.should == 1000
+            @piece.reload.revenue.should == 700
+            @piece2.reload.revenue.should == 1000
           end
           context "piece with no sales" do
             before do
