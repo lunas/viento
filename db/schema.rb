@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140610203442) do
+ActiveRecord::Schema.define(:version => 20140731060017) do
 
   create_table "clients", :force => true do |t|
     t.string   "title"
@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20140610203442) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "city"
-    t.integer  "sales_count"
     t.string   "mailing"
     t.boolean  "polite_form",   :default => true
+    t.integer  "sales_count",   :default => 0
   end
 
   add_index "clients", ["city"], :name => "city_ix"
@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(:version => 20140610203442) do
     t.integer  "count_produced"
     t.decimal  "price",          :precision => 10, :scale => 0
     t.decimal  "costs",          :precision => 10, :scale => 0
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.integer  "sales_count"
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.text     "notes"
+    t.integer  "sales_count",                                   :default => 0
   end
 
   add_index "pieces", ["collection"], :name => "collection_ix"

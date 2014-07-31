@@ -106,7 +106,7 @@ describe Sale do
     end
   end
 
-  describe "#save" do
+  describe "validation" do
     context "client_name_and_city matches with client specified by client_id" do
       before do
         @piece = FactoryGirl.create(:piece, name: 'Testo')
@@ -151,6 +151,24 @@ describe Sale do
         sale.valid?.should be_false
       end
     end
-
   end
+
+  describe '#save' do
+    describe 'saving a new sale updates cache counts' do
+      before do
+        @piece = FactoryGirl.create(:piece, name: 'Testo')
+        @client = FactoryGirl.create(:client)
+        @sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+      end
+
+      it 'increments the sales_count of the client it belongs to' do
+        expect { @sale.save }.to change { @client.reload.sales_count }.by 1
+      end
+
+      it 'increments the sales_count of the piece it belongs to' do
+        expect { @sale.save }.to change { @piece.reload.sales_count }.by 1
+      end
+    end
+  end
+
 end

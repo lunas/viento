@@ -1,8 +1,9 @@
+require 'goldmine'
+
 class Piece < ActiveRecord::Base
 
-  require 'goldmine'
-
-  attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size, :preis, :kosten, :piece_info, :notes
+  attr_accessible :collection, :color, :costs, :count_produced, :fabric, :name, :price, :size,
+                  :preis, :kosten, :piece_info, :notes, :sales_count
 
   has_many :sales
   has_many :clients, through: :sales, order: "sales.date, clients.last_name, clients.first_name"
