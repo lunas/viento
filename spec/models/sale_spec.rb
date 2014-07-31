@@ -154,7 +154,7 @@ describe Sale do
   end
 
   describe '#save' do
-    describe 'saving a new sale updates cache counts' do
+    describe 'saving a new sale' do
       before do
         @piece = FactoryGirl.create(:piece, name: 'Testo')
         @client = FactoryGirl.create(:client)
@@ -167,6 +167,73 @@ describe Sale do
 
       it 'increments the sales_count of the piece it belongs to' do
         expect { @sale.save }.to change { @piece.reload.sales_count }.by 1
+      end
+    end
+
+    describe 'updating a sale' do
+      context 'changing the piece the sale belongs to' do
+        before do
+          @piece1 = FactoryGirl.create(:piece, name: 'Testo', size: 36)
+          @piece2 = FactoryGirl.create(:piece, name: 'Testo', size: 38)
+          @client = FactoryGirl.create(:client)
+          @sale = FactoryGirl.create(:sale, piece: @piece1, client: @client)
+        end
+
+        it 'decrements the sales_count of the old piece' do
+          expect {
+            @sale.piece = @piece2
+            @sale.save
+          }.to change { @piece1.reload.sales_count }.by -1
+        end
+
+        it 'increments the sales_count of the new piece' do
+          expect {
+            @sale.piece = @piece2
+            @sale.save
+          }.to change { @piece2.reload.sales_count }.by 1
+        end
+      end
+
+      context 'changing the client the sale belongs to' do
+        before do
+          @piece = FactoryGirl.create(:piece, name: 'Testo')
+          @client1 = FactoryGirl.create(:client)
+          @client2 = FactoryGirl.create(:client)
+          @sale = FactoryGirl.create(:sale, piece: @piece, client: @client1)
+        end
+
+        it 'decrements the sales_count of the old piece' do
+          expect {
+            @sale.client = @client2
+            @sale.save
+          }.to change { @client1.reload.sales_count }.by -1
+        end
+
+        it 'increments the sales_count of the new piece' do
+          expect {
+            @sale.client = @client2
+            @sale.save
+          }.to change { @client2.reload.sales_count }.by 1
+        end
+      end
+
+    end
+  end
+
+  describe '#destroy' do
+    describe 'deleting a sale' do
+      before do
+        @piece = FactoryGirl.create(:piece, name: 'Testo')
+        @client = FactoryGirl.create(:client)
+        @sale = FactoryGirl.create(:sale, piece: @piece, client: @client)
+      end
+
+      it 'decrements the sales_count of the client it belongs to' do
+        expect { @sale.destroy }.to change { @client.reload.sales_count }.by -1
+      end
+
+      it 'decrements the sales_count of the piece it belongs to' do
+        expect { @sale.destroy }.to change { @piece.reload.sales_count }.by -1
       end
     end
   end

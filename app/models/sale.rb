@@ -10,7 +10,7 @@ class Sale < ActiveRecord::Base
   validate :date
   before_save :copy_attributes_if_empty
 
-  # see: :if => ->(er) { !er.new_record? && er.event_id_changed? }
+  # see stackoverflow
   # before_save :update_counter_cache, if: ->(sale) { !sale.new_record? && sale.piece_id_changed? }
 
   # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
