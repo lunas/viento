@@ -202,14 +202,14 @@ describe Sale do
           @sale = FactoryGirl.create(:sale, piece: @piece, client: @client1)
         end
 
-        it 'decrements the sales_count of the old piece' do
+        it 'decrements the sales_count of the old client' do
           expect {
             @sale.client = @client2
             @sale.save
           }.to change { @client1.reload.sales_count }.by -1
         end
 
-        it 'increments the sales_count of the new piece' do
+        it 'increments the sales_count of the new client' do
           expect {
             @sale.client = @client2
             @sale.save

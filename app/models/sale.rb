@@ -10,8 +10,9 @@ class Sale < ActiveRecord::Base
   validate :date
   before_save :copy_attributes_if_empty
 
-  # see stackoverflow
-  # before_save :update_counter_cache, if: ->(sale) { !sale.new_record? && sale.piece_id_changed? }
+  # see http://stackoverflow.com/questions/9403577/rails-counter-cache-not-updating-correctly
+  before_save :update_piece_counter_cache,  if: ->(sale) { !sale.new_record? && sale.piece_id_changed? }
+  before_save :update_client_counter_cache, if: ->(sale) { !sale.new_record? && sale.client_id_changed? }
 
   # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
   def self.filter(criteria)
@@ -76,6 +77,16 @@ class Sale < ActiveRecord::Base
     self.date = Date.today if self.date.blank?
   end
 
+  def update_piece_counter_cache
+    Piece.decrement_counter(:sales_count, self.piece_id_was)
+    Piece.increment_counter(:sales_count, self.piece_id)
+  end
+
+  def update_client_counter_cache
+    Client.decrement_counter(:sales_count, self.client_id_was)
+    Client.increment_counter(:sales_count, self.client_id)
+  end
+
   def client_name_and_city_matches_client
     return if @tmp_client_name_and_city.blank? # when created not by controller
     if @tmp_client_name_and_city != self.client.try(:name_and_city)
@@ -91,9 +102,14 @@ class Sale < ActiveRecord::Base
   end
 
   def piece_available
-    if piece && piece.sold_out
+    # return unless piece_changed?
+    if piece.try(:sold_out)
       errors.add(:piece_info, "Dieses Teil ist ausverkauf.")
     end
+  end
+
+  def piece_changed?
+    return true
   end
 
 end
