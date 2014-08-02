@@ -26,11 +26,11 @@ describe Client do
     context "with sales" do
       before :each do
         @client = FactoryGirl.create(:client)
-        @client.sales << Sale.new(actual_price: 1000)
-        @client.sales << Sale.new(actual_price: 400)
+        FactoryGirl.create(:sale, client: @client, actual_price: 1000)
+        FactoryGirl.create(:sale, client: @client, actual_price: 400)
       end
       it "returns the number of the client's sales" do
-        @client.sales_count.should == 2
+        @client.reload.sales_count.should == 2
       end
     end
     context "without sales" do
