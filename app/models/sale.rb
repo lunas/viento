@@ -102,14 +102,14 @@ class Sale < ActiveRecord::Base
   end
 
   def piece_available
-    # return unless piece_changed?
+    return if piece.nil? || piece_unchanged?
     if piece.try(:sold_out)
       errors.add(:piece_info, "Dieses Teil ist ausverkauf.")
     end
   end
 
-  def piece_changed?
-    return true
+  def piece_unchanged?
+    ! piece_id_changed?
   end
 
 end
