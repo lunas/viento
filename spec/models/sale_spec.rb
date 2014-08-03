@@ -151,6 +151,49 @@ describe Sale do
         sale.valid?.should be_false
       end
     end
+    describe 'piece_available' do
+      context 'stock > 0' do
+        before do
+          @client = FactoryGirl.create(:client)
+          @piece = FactoryGirl.create(:piece, count_produced: 1)
+        end
+        it 'is valid' do
+          sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+          sale.valid?.should be_true
+        end
+      end
+      context 'stock = 0' do
+        before do
+          @client = FactoryGirl.create(:client)
+          @piece = FactoryGirl.create(:piece, count_produced: 0)
+        end
+        it 'is not valid' do
+          sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+          sale.valid?.should be_false
+        end
+        it 'has error "ausverkauft"' do
+          sale = Sale.new(piece_id: @piece.id, client_id: @client.id)
+          sale.valid?.should be_false
+          sale.errors.first.first.should == :piece_info
+        end
+      end
+      context "stock = 0, but piece didn't change" do
+        before do
+          @piece = FactoryGirl.create(:piece, name: 'Testo', count_produced: 1)
+          @rosa = FactoryGirl.create(:client, first_name: 'Rosa')
+          @betty = FactoryGirl.create(:client, first_name: 'Betty')
+          @sale = FactoryGirl.create(:sale, piece: @piece, client: @rosa)
+          @sale.client = @betty
+        end
+        it 'is sold out' do
+          @sale.piece.reload.sold_out.should be_true
+        end
+        it 'is still valid' do
+          @sale.valid?.should be_true
+        end
+      end
+    end
+
   end
 
   describe '#save' do

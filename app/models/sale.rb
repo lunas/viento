@@ -10,6 +10,7 @@ class Sale < ActiveRecord::Base
   validate :date
   before_save :copy_attributes_if_empty
 
+
   # see http://stackoverflow.com/questions/9403577/rails-counter-cache-not-updating-correctly
   before_save :update_piece_counter_cache,  if: ->(sale) { !sale.new_record? && sale.piece_id_changed? }
   before_save :update_client_counter_cache, if: ->(sale) { !sale.new_record? && sale.client_id_changed? }
