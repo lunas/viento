@@ -7,5 +7,5 @@ nginx -s stop
 # now start them again
 nginx
 
-cd ~/workspaces/viento
+cd ~/Sites/viento
 foreman start
