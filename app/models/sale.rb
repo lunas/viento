@@ -15,12 +15,13 @@ class Sale < ActiveRecord::Base
   before_save :update_piece_counter_cache,  if: ->(sale) { !sale.new_record? && sale.piece_id_changed? }
   before_save :update_client_counter_cache, if: ->(sale) { !sale.new_record? && sale.client_id_changed? }
 
+  # TODO rspec
   # Sale.joins(:piece).where("pieces.name = ? and pieces.size = ?", 'Bastos', 34)
   def self.filter(criteria)
     sales = Sale.joins(:piece, :client)
-    sales = sales.where("pieces.name" => criteria[:name] )          if criteria[:name] != 'total Anzahl'
-    sales = sales.where( criteria[:attribute] => criteria[:value] ) if criteria[:value] != 'total Anzahl' && criteria.has_key?(:attribute)
-    sales = sales.where( "pieces.collection" => criteria[:collection] ) if criteria.has_key?(:collection) && criteria[:collection] != 'total Anzahl'
+    sales = sales.where("pieces.name" => criteria[:name] )          if criteria[:name] != 'total'
+    sales = sales.where( criteria[:attribute] => criteria[:value] ) if criteria[:value] != 'total' && criteria.has_key?(:attribute)
+    sales = sales.where( "pieces.collection" => criteria[:collection] ) if criteria.has_key?(:collection) && criteria[:collection] != 'total'
     sales
   end
 
