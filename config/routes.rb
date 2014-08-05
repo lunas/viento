@@ -6,8 +6,8 @@ Viento::Application.routes.draw do
              :path_prefix => 'auth',
              path_names: {sign_in: "login", sign_out: "logout"},
              controllers: {
-              registrations: 'registrations',
-              #omniauth_callbacks: "omniauth_callbacks"
+               registrations: 'registrations',
+               #omniauth_callbacks: "omniauth_callbacks"
              }
 
   resources :users
