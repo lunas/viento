@@ -18,7 +18,7 @@ task :backup => [:environment] do
   max_backups = (ENV["MAX"].to_i if ENV["MAX"].to_i > 0) || 18
   unwanted_backups = all_backups[max_backups..-1] || []
   for unwanted_backup in unwanted_backups
-    FileUtils.rm_rf(File.join(backup_base, unwanted_backup))
+    FileUtils.rm_rf(File.join(backup_folder, unwanted_backup))
   end
   puts "Deleted #{unwanted_backups.length} backups, #{all_backups.length - unwanted_backups.length} backups available"
 end

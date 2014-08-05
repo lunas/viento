@@ -86,7 +86,9 @@ class Client < ActiveRecord::Base
     self.sales.map(&:actual_price).inject(0, :+)
   end
 
-  def sales_count
+  # Doesn't ask the cached sales_count but
+  # counts in fact all sales.
+  def real_sales_count
     self.sales.size
   end
 

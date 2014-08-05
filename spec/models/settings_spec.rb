@@ -1,4 +1,4 @@
-require 'rspec'
+require 'spec_helper'
 require File.expand_path("../../../app/models/settings.rb", __FILE__)
 
 describe Settings do
@@ -13,7 +13,7 @@ describe Settings do
       @settings.understate_threshold.should == 2000
       @settings.understate_factor.should == 4
       @settings.per_page.should == 15
-      @Settings.instance.default_status == 'aktiv'
+      @settings.default_status == 'aktiv'
       @settings.default_role == 'Kundinnen'
     end
   end
