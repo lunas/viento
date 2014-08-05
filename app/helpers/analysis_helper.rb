@@ -3,16 +3,19 @@ module AnalysisHelper
   def cell_link(cell, row_index, col_index, table, analyzed_by)
     if cell.nil?
       cell
-    elsif cell.first == 0
-      "0/#{cell.second}"
+    elsif cell[1] == 0
+      "#{cell.first}/0/#{cell.last}"
     else
-      l = link_to cell.first.to_s, filter_sales_path(search_params_hash(table, row_index, col_index, analyzed_by))
-      l + "/#{cell.second}"
+      l = "#{cell.first}/"
+      l += link_to cell[1].to_s, filter_sales_path(search_params_hash(table, row_index, col_index, analyzed_by))
+      l += "/#{cell.last}"
+      l.html_safe
     end
   end
 
   def search_params_hash(table, row_index, col_index, analyzed_by)
-    hash = {"name" => table[row_index].first,
+    hash = {
+      "name" => table[row_index].first,
       analyzed_by.to_sym => table.first[col_index]
     }
     if params[:analysis]
