@@ -101,10 +101,10 @@ describe Piece do
       it "crosstabs pieces by name and size" do
         table = Piece.table_by_size
         table[0].should == ["Name/Groesse", "34", "36", "total"]
-        table[1].should == ["Chelsea", [2, 28], [2, 38], [4, 66]]
-        table[2].should == ["Sputnik", [2, 8], [2, 18],  [4, 26]]
-        table[3].should == ["Xenia", nil, [1, 49], [1, 49]]
-        table[4].should == ["total", [4, 36], [5, 105], [9, 141]]
+        table[1].should == ["Chelsea", [30, 2, 28], [40, 2, 38], [70, 4, 66]]
+        table[2].should == ["Sputnik", [10, 2, 8], [20, 2, 18],  [30, 4, 26]]
+        table[3].should == ["Xenia", nil, [50, 1, 49], [50, 1, 49]]
+        table[4].should == ["total", [40, 4, 36], [110, 5, 105], [150, 9, 141]]
       end
     end
 
@@ -116,10 +116,10 @@ describe Piece do
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
         table[0].should == ["Name/Kollektion", "10", "11", "total"]
-        table[1].should == ["Chelsea", nil, [4, 66], [4, 66]]
-        table[2].should == ["Sputnik", [4, 26], nil, [4, 26]]
-        table[3].should == ["Xenia",   [1, 49], nil, [1, 49]]
-        table[4].should == ["total",   [5, 75], [4, 66], [9, 141]]
+        table[1].should == ["Chelsea", nil, [70, 4, 66], [70, 4, 66]]
+        table[2].should == ["Sputnik", [30, 4, 26], nil, [30, 4, 26]]
+        table[3].should == ["Xenia",   [50, 1, 49], nil, [50, 1, 49]]
+        table[4].should == ["total",   [80, 5, 75], [70, 4, 66], [150, 9, 141]]
       end
     end
 
@@ -131,10 +131,10 @@ describe Piece do
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
         table[0].should == ["Name/Kollektion", "10", "11", "total"]
-        table[1].should == ["Chelsea", nil, [2, 68], [2, 68] ]
-        table[2].should == ["Sputnik", [2, 28], nil, [2, 28] ]
-        table[3].should == ["Xenia",   [1, 49], nil, [1, 49] ]
-        table[4].should == ["total",   [3, 77], [2, 68], [5, 145] ]
+        table[1].should == ["Chelsea", nil, [70, 2, 68], [70, 2, 68] ]
+        table[2].should == ["Sputnik", [30, 2, 28], nil, [30, 2, 28] ]
+        table[3].should == ["Xenia",   [50, 1, 49], nil, [50, 1, 49] ]
+        table[4].should == ["total",   [80, 3, 77], [70, 2, 68], [150, 5, 145] ]
       end
     end
 
@@ -146,9 +146,9 @@ describe Piece do
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
         table[0].should == ["Name/Kollektion", "10", "11", "total"]
-        table[1].should == ["Chelsea", nil, [2, 68], [2, 68] ]
-        table[2].should == ["Sputnik", [2, 28], nil, [2, 28] ]
-        table[3].should == ["total",   [2, 28], [2, 68], [4, 96] ]
+        table[1].should == ["Chelsea", nil, [70, 2, 68], [70, 2, 68] ]
+        table[2].should == ["Sputnik", [30, 2, 28], nil, [30, 2, 28] ]
+        table[3].should == ["total",   [30, 2, 28], [70, 2, 68], [100, 4, 96] ]
       end
     end
 
@@ -160,8 +160,8 @@ describe Piece do
       it "lists the sales per collection and piece" do
         table = Piece.table_by_collection(@from, @to)
         table[0].should == ["Name/Kollektion", "10",     "total"]
-        table[1].should == ["Xenia",            [1, 49], [1, 49] ]
-        table[2].should == ["total",     [1, 49], [1, 49] ]
+        table[1].should == ["Xenia",            [50, 1, 49], [50, 1, 49] ]
+        table[2].should == ["total",     [50, 1, 49], [50, 1, 49] ]
       end
     end
 

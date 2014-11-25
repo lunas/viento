@@ -189,17 +189,19 @@ class Piece < ActiveRecord::Base
   def self.table_by(pivot_column, pivot_column_name)
 
     cell_block = ->(pieces) {
-      pieces.inject([0,0]) do |result, piece|
-        result[0] += piece.sales_count.to_i
-        result[1] += piece.count_stock.to_i
+      pieces.inject([0,0,0]) do |result, piece|
+        result[0] += piece.count_produced
+        result[1] += piece.sales_count.to_i
+        result[2] += piece.count_stock.to_i
         result
       end
     }
     total_block = ->(items) {
-      items.inject([0,0]) do |result, item|
+      items.inject([0,0,0]) do |result, item|
         unless item.nil?
           result[0] += item[0]
           result[1] += item[1]
+          result[2] += item[2]
         end
         result
       end
