@@ -151,7 +151,7 @@ class PiecesController < ApplicationController
   end
 
   def sort_order
-    sort_columns = %w{collection name fabric size}
+    sort_columns = %w{collection name fabric color size}
     scol = sort_column
     sort_columns = if sort_columns.include? scol
       cols = sort_columns.reject { |coll| coll == scol }
