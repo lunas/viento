@@ -1,11 +1,9 @@
 #!/bin/sh
 
 # first kill existing processes of redis/sidekiq/unicorn, then alson nginx:
-kill $(ps aux | grep -E 'redis|sidekiq|unicorn' | grep -v grep | awk '{print $2}')
-nginx -s stop
+kill $(ps aux | grep -E 'redis|sidekiq|puma' | awk '{print $2}')
 
-# now start them again
-nginx
+brew services restart nginx
 
 cd ~/Sites/viento
 foreman start

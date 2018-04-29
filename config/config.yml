@@ -1,7 +1,7 @@
 ---
 understate_threshold: 10000
 understate_factor: 2
-per_page: 1000
+per_page: 20   # with per_page = 1000, client index takes more than a minute => nginx timeout!
 default_status: alle
 default_role: Kundinnen
 default_mailing: egal

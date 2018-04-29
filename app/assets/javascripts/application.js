@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
 //xx = xxrequire_tree . << loads in wrong order; so load manually:
 //=require bootstrap-all
 //=require clients

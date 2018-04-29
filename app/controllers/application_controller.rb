@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  #before_filter do
+  #  Rack::MiniProfiler.authorize_request
+  #end
+
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
@@ -10,7 +14,7 @@ class ApplicationController < ActionController::Base
   def per_page
     if params[:per_page].present?
       pp = params[:per_page].to_i
-      [5, 10, 15, 20, 25, 50, 100, 200, 500, 1000, 9999].include?(pp) ?
+      [5, 10, 15, 20, 25, 50, 100].include?(pp) ?
           pp : Settings.instance.per_page
     else
       Settings.instance.per_page

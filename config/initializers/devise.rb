@@ -233,4 +233,5 @@ Devise.setup do |config|
   # raise "Go register your app with dev.Twitter.com and put the consumer key and secret into your environment." if ENV["TWITTER_CONSUMER_KEY"].nil? or ENV["TWITTER_CONSUMER_SECRET"].nil?
   # config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
 
+  config.secret_key = '5a748ff0979b9f9fd60e47455cb8afd67e3927f40ce37e59a9ea0798bdc0c2e4d566652e752af808bb91915858328657e057b28d7baf473fcf47699564b82ea2'
 end
